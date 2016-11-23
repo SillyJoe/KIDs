@@ -42,7 +42,7 @@
 
 .footer-row {
     padding-top: 3%;
-    padding-left: 10%;
+    padding-left: 20%;
     padding-right: 10%;
 }
 
@@ -122,11 +122,12 @@
     }
     
     .news-odd, .news-even {
-    height: 260px;
+    height: 285px;
     }
     
     .news-block {
         padding-left: 40px;
+        
     }
     
     .upper_row {
@@ -139,13 +140,17 @@
     
 }
 
+#news_section {
+    background-color: #f2eeee;
+}
+
 .btn-news-left, .btn-news-right {
     background-color: #8a9bc9;
-    min-height: 960px;
+    min-height: 1048px;
     opacity: 0.3;
     font-size: 60px;
     vertical-align: middle;
-    margin-top: 30px;
+/*    margin-top: 30px;*/
     padding-top: 40%;
 }
 
