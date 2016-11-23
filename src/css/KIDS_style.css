@@ -3,6 +3,8 @@
     src: url('../Fonts/A.C.M.E.ttf');
 }
 
+
+
 #footer
 {
     
@@ -42,8 +44,9 @@
 
 .footer-row {
     padding-top: 3%;
-    padding-left: 20%;
+    padding-left: 10%;
     padding-right: 10%;
+
 }
 
 @media (max-width: 768px) {
@@ -73,8 +76,7 @@
 
 
 
-.news-odd {
-  background-color: #CCCCCC  
+.news-odd {  
 }
 
 .no_left_pad {
@@ -132,10 +134,14 @@
     
     .upper_row {
     padding-top: 5%;
+    padding-right: 0px;
     background-color: #b3e7ff;
     background-image: url('../assets/ship_ensemble_res.png');
-    height: 820px;
+    height: 810px;
+    width: auto;
     margin-bottom: 40px;
+    margin-right: 0px;
+   
     }
     
 }
