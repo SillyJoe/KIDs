@@ -215,7 +215,7 @@
     color: #8a9bc9;
     opacity: 0.5;
     position: fixed;
-/*    display: none;*/
+    display: none;
     top: 0px;
     right: 0px;
 }
