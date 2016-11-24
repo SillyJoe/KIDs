@@ -3,7 +3,9 @@
     src: url('../Fonts/A.C.M.E.ttf');
 }
 
-
+#logo {
+    width: 200px;
+}
 
 #footer
 {
