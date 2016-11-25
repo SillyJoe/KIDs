@@ -160,7 +160,7 @@
           console.log('fooo');
           var duration = 300;
           var offset = 750;
-          
+          if($(window).width() < 768) offset = 10;
           if($(this).scrollTop()>offset) {
                   $('.back-to-top').fadeIn(duration);
 

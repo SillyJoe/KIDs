@@ -101,12 +101,12 @@
                   </div>
                     <button class="btn btn-primary">Більше...</button><button class="btn btn-danger">Редагувати</button>
               </div>
-              <div class="col-md-6 col-xs-12">
+              <div class="col-md-6 col-xs-12 news_image">
                 <img src="assets/news/news1.jpg" class="img-responsive thumbnail">
               </div>
           </div>
           <div class="row content-row news-row">
-              <div class="col-md-6 col-xs-12">
+              <div class="col-md-6 col-xs-12 news_image">
                 <img src="assets/news/news1.jpg" class="img-responsive thumbnail">
               </div>
               <div class="col-md-6 col-xs-12 news-even">
@@ -118,7 +118,7 @@
                     <button class="btn btn-primary">Більше...</button><button class="btn btn-danger">Редагувати</button>
               </div> 
           </div>
-          <div class="row content-row news-row">
+          <div class="row content-row news-row" style="border-bottom:0px">
               <div class="col-md-6 col-xs-12 news-odd">
                   <div class="news_text">
                     <h2>Some interesting news</h2>
@@ -127,7 +127,7 @@
                  </div>
                     <button class="btn btn-primary">Більше...</button><button class="btn btn-danger">Редагувати</button>
               </div>
-              <div class="col-md-6 col-xs-12">
+              <div class="col-md-6 col-xs-12 news_image">
                 <img src="assets/news/news1.jpg" class="img-responsive thumbnail">
               </div>
       </div>
@@ -136,6 +136,11 @@
           <i class="fa fa-angle-double-right"></i>
       </div>
       </div>
+          <div class="row hidden-md hidden-lg hidden-xl">
+            <div class="col-xs-12 btn-news-down">
+                <i class="fa fa-angle-double-down"></i>
+            </div>
+          </div>
           
           </div>
           <div class="row">
@@ -201,6 +206,7 @@
           console.log('fooo');
           var duration = 300;
           var offset = 750;
+          if($(window).width() < 768) offset = 10;
           var showbutton = 900;
           if($(this).scrollTop()>offset) {
                   $('.back-to-top').fadeIn(duration);
