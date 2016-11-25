@@ -48,16 +48,16 @@
                 <li class="dropdown">
                   <a href="aboutus.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Наша школа <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="aboutus.html#we">Про нас</a></li>
-                    <li><a href="aboutus.html#teachers">Вчителі</a></li>
-                    <li><a href="aboutus.html#gallery">Галерея</a></li>
+                      <li><a class="drop_item" href="aboutus.html#we"><i id="menu_icon" class="fa fa-mortar-board menu_icon"></i> Про нас</a></li>
+                    <li><a class="drop_item" href="aboutus.html#teachers"><i id="menu_icon" class="fa fa-book menu_icon"></i> Вчителі</a></li>
+                    <li><a class="drop_item" href="aboutus.html#gallery"><i id="menu_icon" class="fa fa-camera menu_icon"></i> Галерея</a></li>
                   </ul>
                 </li>
                   <li class="dropdown">
                   <a href="services.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Послуги <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="services.html#english">Англійська мова</a></li>
-                    <li><a href="services.html#german">Німецька мова</a></li>
+                    <li><a class="drop_item" href="services.html#english"><img class="img menu_flag" src="assets/flag_gb.png"> Англійська</a></li>
+                    <li><a class="drop_item" href="services.html#german"><img class="img menu_flag" src="assets/flag_ger.png"> Німецька</a></li>
                   </ul>
                 </li>
                 <li><a href="passtest.html">Пройти тест <span class="sr-only">Test yourself</span></a></li>
@@ -86,8 +86,10 @@
                   </div>
           </div>
         <div id="news_section" class="row">
-        <div class="col-md-1 hidden-xs btn-news-left">
+        <div class="col-md-1 hidden-xs" style="padding-left:0px; padding-right:0px;">
+        <div class="btn-news-left">
             <i class="fa fa-angle-double-left"></i>
+        </div>
         </div>
         <div class="col-md-10 col-xs-12 news-block">
           <div class="row content-row news-row">
@@ -198,18 +200,62 @@
       $(document).ready(function(){
           console.log('fooo');
           var duration = 300;
-          var offset = 800;
+          var offset = 750;
+          var showbutton = 900;
           $(window).scroll(function(){
               
               if($(this).scrollTop()>offset) {
                   $('.back-to-top').fadeIn(duration);
-                  console.log('Showing button');
+
               } else {
                   $('.back-to-top').fadeOut(duration);
-                  console.log('Hiding button');
+ 
               }
+              
+              if ($('.btn-news-left').css('display') == 'none') {
+                  if($(this).scrollTop()>showbutton) {
+                      console.log('Showing button!');
+                       $('.btn-news-left').fadeIn(10);
+                      $('.btn-news-right').fadeIn(10);
+                      $('.btn-news-left').animate({
+                          minHeight: '1048px',
+                          paddingTop: '500px',
+
+                      }, 1000);
+                      $('.btn-news-right').animate({
+                          height: '1048px',
+                          paddingTop: '500px',
+
+                      }, 1000);
+
+                  }
+            }
           });
+          
+          
+          $(".drop_item").hover(function(){
+              console.log('bar');
+              $(this).find(".menu_icon").animate({
+                  fontSize: '+25px'
+              })
+              $(this).find(".menu_flag").animate({
+                  height: '+25px'
+              })
+          })
+          
+           $(".drop_item").mouseout(function(){
+                $(this).find(".menu_icon").animate({
+                  fontSize: '14px'
+              }, 100)
+                $(this).find(".menu_flag").animate({
+                  height: '18px'
+              }, 100)
+                
+           })
+                                       
+          
       });
+      
     </script>
   </body>
 </html

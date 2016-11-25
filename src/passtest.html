@@ -29,7 +29,7 @@
           </div>
           
           <!--Menu div -->
-                  <div class="col-xs-12 col-md-9" style="padding-top:2%">
+                  <div class="col-xs-12 col-md-9">
                       <nav class="navbar navbar-default">
           <div class="container-fluid no_left_pad">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -48,19 +48,19 @@
                 <li class="dropdown">
                   <a href="aboutus.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Наша школа <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="aboutus.html#we">Про нас</a></li>
-                    <li><a href="aboutus.html#teachers">Вчителі</a></li>
-                    <li><a href="aboutus.html#gallery">Галерея</a></li>
+                      <li><a class="drop_item" href="aboutus.html#we"><i id="menu_icon" class="fa fa-mortar-board menu_icon"></i> Про нас</a></li>
+                    <li><a class="drop_item" href="aboutus.html#teachers"><i id="menu_icon" class="fa fa-book menu_icon"></i> Вчителі</a></li>
+                    <li><a class="drop_item" href="aboutus.html#gallery"><i id="menu_icon" class="fa fa-camera menu_icon"></i> Галерея</a></li>
                   </ul>
                 </li>
                   <li class="dropdown">
                   <a href="services.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Послуги <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="services.html#english">Англійська мова</a></li>
-                    <li><a href="services.html#english">Німецька мова</a></li>
+                    <li><a class="drop_item" href="services.html#english"><img class="img menu_flag" src="assets/flag_gb.png"> Англійська</a></li>
+                    <li><a class="drop_item" href="services.html#german"><img class="img menu_flag" src="assets/flag_ger.png"> Німецька</a></li>
                   </ul>
                 </li>
-                <li class="active"><a href="passtest.html">Пройти тест <span class="sr-only">Test yourself</span></a></li>
+                <li><a href="passtest.html">Пройти тест <span class="sr-only">Test yourself</span></a></li>
                   <li><a href="contactus.html">Контакти <span class="sr-only">Contact us</span></a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
@@ -149,7 +149,7 @@
       $(document).ready(function(){
           console.log('fooo');
           var duration = 300;
-          var offset = 800;
+          var offset = 750;
           $(window).scroll(function(){
               
               if($(this).scrollTop()>offset) {
@@ -160,7 +160,29 @@
                   console.log('Hiding button');
               }
           });
+          $(".drop_item").hover(function(){
+              console.log('bar');
+              $(this).find(".menu_icon").animate({
+                  fontSize: '+25px'
+              })
+              $(this).find(".menu_flag").animate({
+                  height: '+25px'
+              })
+          })
+          
+           $(".drop_item").mouseout(function(){
+                $(this).find(".menu_icon").animate({
+                  fontSize: '14px'
+              }, 'fast')
+                $(this).find(".menu_flag").animate({
+                  height: '18px'
+              }, 'fast')
+                
+           })
+                                       
+          
       });
+      
     </script>
   </body>
 </html

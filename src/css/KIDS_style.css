@@ -7,6 +7,14 @@
     width: 200px;
 }
 
+.menu_icon {
+    max-height: 14px;
+}
+
+.menu_flag {
+    height: 18px;
+}
+
 #footer
 {
     
@@ -76,7 +84,11 @@
     padding-top: 30px;
 }
 
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  color: #777;
+  background-color: #2f4685;
 
+}
 
 .news-odd {  
 }
@@ -108,14 +120,14 @@
 
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #2f4685;
-  background-color: #ffffff;
+  color: #777;
+  background-color: #2f4685;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  color: #2f4685;
-  background-color: #ffffff;
+  color: #777;
+  background-color: #2f4685;
 }
 
 @media (min-width: 768px) {
@@ -152,14 +164,18 @@
     background-color: #f2eeee;
 }
 
+.btn-news-left {
+    padding-left: 40%;
+}
+
 .btn-news-left, .btn-news-right {
     background-color: #8a9bc9;
-    min-height: 1048px;
+    display: none;
+    min-height: 1px;
     opacity: 0.3;
     font-size: 60px;
     vertical-align: middle;
-/*    margin-top: 30px;*/
-    padding-top: 40%;
+
 }
 
 
@@ -169,9 +185,13 @@
 }
 
 .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-   margin-bottom: 10px;
-   font-size: 110%;
+   color: #2f4685;
+    margin-bottom: 5%;
+    margin-top: 5%;
+   font-size: 100%;
+   font-family: acme;
   }
+
 
 .dropdown-menu {
   position: absolute;
@@ -186,14 +206,18 @@
   font-size: 14px;
   text-align: left;
   list-style: none;
-  background-color: #ffffff;
+  background-color: white;
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, .15);
-  border-radius: 4px;
+  border-radius: 5px;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
           box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+
+.navbar-nav > li > .dropdown-menu {
+  margin-top: 0;
 }
 
 .navbar-nav > li > a {
