@@ -160,6 +160,16 @@
           console.log('fooo');
           var duration = 300;
           var offset = 750;
+          
+          if($(this).scrollTop()>offset) {
+                  $('.back-to-top').fadeIn(duration);
+
+              } else {
+                  $('.back-to-top').fadeOut(duration);
+ 
+              }
+              
+          
           $(window).scroll(function(){
               
               if($(this).scrollTop()>offset) {

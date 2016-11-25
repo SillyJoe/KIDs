@@ -202,6 +202,11 @@
           var duration = 300;
           var offset = 750;
           var showbutton = 900;
+          if($(this).scrollTop()>offset) {
+                  $('.back-to-top').fadeIn(duration);
+
+              }
+          
           $(window).scroll(function(){
               
               if($(this).scrollTop()>offset) {
