@@ -14,6 +14,7 @@
     <link href="css/font-awesome.css" rel="stylesheet">
     <link href="./css/KIDS_style.css" rel="stylesheet">
 
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -23,15 +24,20 @@
   </head>
   <body>
       <div class="upper_row">
+    <div class="row">
+        <div class="col-xs-offset-4 col-xs-4 hidden-sm hidden-md hidden-lg" style="margin-bottom: 3%; margin-top: 3%;">
+            <a href="index.html"><img src="assets/logo.png" class="img img-responsive" alt="логотип мовної школи KIDs"></a>
+        </div>
+    </div>
       <div class="row">
-          <div class="col-md-3 hidden-xs hidden-sm">
+          <div class="col-lg-3 hidden-xs">
            
           </div>
           
           <!--Menu div -->
-                  <div class="col-xs-12 col-md-9">
+                  <div class="col-xs-12 col-lg-9 container-menu">
                       <nav class="navbar navbar-default">
-          <div class="container-fluid no_left_pad">
+          <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -74,24 +80,24 @@
           
       </div> <!-- row -->
           
-              <a id="down_button" href="#news"><img src="assets/down_btn.png" class="img-responsive"></a>
+          <a id="down_button" href="#news"><img id="downImage" src="assets/down_btn.png" class="img-responsive"></a>
               
     </div> <!--upper row -->
           
       <div id="news" class="container">
-          <div class="page-header">
-              <div class="row">
+        <div class="page-header">
+            <div class="row">
               <div class="col-md-10 col-xs-12"><h1>Що в нас нового?</h1></div>
               <div id="add_news_button" class="col-md-2 col-xs-12"><button class="btn btn-danger btn-lg add_news_button">Додати...</button></div>
-                  </div>
+         </div>
           </div>
         <div id="news_section" class="row">
-        <div class="col-md-1 hidden-xs" style="padding-left:0px; padding-right:0px;">
+        <div class="hidden-xs hidden-sm col-md-1" style="padding-left:0px; padding-right:0px;">
         <div class="btn-news-left">
             <i class="fa fa-angle-double-left"></i>
         </div>
         </div>
-        <div class="col-md-10 col-xs-12 news-block">
+        <div class="col-xs-12 col-md-10 news-block">
           <div class="row content-row news-row">
               <div class="col-md-6 col-xs-12 news-odd">
                   <div class="news_text">
@@ -132,12 +138,12 @@
               </div>
       </div>
       </div>
-      <div class="col-md-1 hidden-xs btn-news-right">
+      <div class="hidden-xs hidden-sm col-md-1 btn-news-right">
           <i class="fa fa-angle-double-right"></i>
       </div>
       </div>
-          <div class="row hidden-md hidden-lg hidden-xl">
-            <div class="col-xs-12 btn-news-down">
+          <div class="row">
+            <div class="col-xs-12 hidden-md hidden-lg btn-news-down">
                 <i class="fa fa-angle-double-down"></i>
             </div>
           </div>
@@ -146,7 +152,7 @@
           <div class="row">
             <div id="footer">
               <div class="row footer-row">
-                <div class="col-xs-4 left-col">
+                <div class="col-xs-12 col-sm-4 left-col">
                     <ul class="list-unstyled">
                         <li><a href="index.html#news">Що нового</a></li>
                         <li><a href="aboutus.html">Наша школа</a></li>
@@ -164,7 +170,7 @@
                         <li><a href="contactus.html">Контакти</a></li>
                     </ul>
                 </div>
-                <div class="col-xs-4 left-col">
+                <div class="col-xs-12 col-sm-4 left-col">
                     <address>
                         <h4>KIDS</h4>
                         <p>Товариство об'єднаних репетиторів<br>
@@ -176,13 +182,13 @@
 		              <i class="fa fa-envelope"></i> <a href="mailto:confusion@food.net"> kate_ivasenko5@i.ua</a>
                     </address>
                   </div>
-                <div class="col-xs-4 edge-col">
+                <div class="col-xs-12 col-sm-4 edge-col">
                       <p class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><br>
                       <a href="https://vk.com/kids_khm"><i class="fa fa-vk"></i></a></p>
                 </div>
             </div>
                 <div class="row">
-                    <div class="col-xs-offset-5 col-xs-4">
+                    <div class="col-xs-offset-3 col-xs-6 col-sm-offset-5 col-sm-4">
                         <p>Created by <a href="mailto:petrodzher@gmail.com">off-sky</a></p>
                     </div>
                 </div>

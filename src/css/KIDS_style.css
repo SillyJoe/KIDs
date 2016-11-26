@@ -1,14 +1,32 @@
+
+@keyframes downbuttonlg {
+    from {width: 20px;}
+    to {width: 25px;}
+}
+
+@keyframes downbuttonmd {
+    from {width: 40px;}
+    to {width: 45px;}
+}
+
 @font-face {
     font-family: acme;
     src: url('../Fonts/A.C.M.E.ttf');
 }
 
 #logo {
-    width: 200px;
+    max-width: 100%;
+    margin-bottom: 3%;
+    margin-top: 3%;
 }
+
 
 .menu_icon {
     max-height: 14px;
+}
+
+.container-menu {
+    margin-top: 2%;
 }
 
 .menu_flag {
@@ -49,7 +67,9 @@
     left: 50%;
     width: 35px;
     position: absolute;
-    bottom: 10px;
+    bottom: 15px;
+    display: none;
+    
 }
 
 .footer-row {
@@ -59,14 +79,7 @@
 
 }
 
-@media (max-width: 768px) {
-    #down_button {
-        display: none;
-    }
-    .no_left_pad {
-        padding-left: 15px;
-    }
-}
+
 
 .upper_row {
     background-color: #b3e7ff;
@@ -75,6 +88,8 @@
     
 
 }
+
+
 
 .news-row {
    min-height: 350px;
@@ -126,35 +141,17 @@
   background-color: #2f4685;
 }
 
-@media (min-width: 768px) {
-    
-    .news_text {
+
+.news_text {
         max-height: 200px;
         overflow: hidden;
     }
-    
-    .news-odd, .news-even {
+
+ .news-odd, .news-even {
     height: 285px;
     }
-    
-    .news-block {
-        padding-left: 40px;
-        
-    }
-    
-    .upper_row {
-    padding-top: 5%;
-    padding-right: 0px;
-    background-color: #b3e7ff;
-    background-image: url('../assets/ship_ensemble_res.png');
-    height: 810px;
-    width: auto;
-    margin-bottom: 40px;
-    margin-right: 0px;
-   
-    }
-    
-}
+
+
 
 #news_section {
     background-color: #f2eeee;
@@ -224,12 +221,6 @@
   margin-top: 0;
 }
 
-.navbar-nav > li > a {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  line-height: 25px;
-  font-size: 18px;
-}
 
 .btn-primary {
   color: #fff;
@@ -258,14 +249,92 @@
 
 /*Major responsiveness improvement*/
 
+/*Media queries*/
+
+
+/*for smallest screens*/
+@media (max-width: 400px) {
+    
+    #footer
+{
+    
+    bottom: 0px;
+    width: 100%;
+    background-color: #645f5f;
+    height:600px;
+    color: beige;
+    
+}
+
+
+    
+.footer-row .social {
+    padding-left: 10%;
+    color: beige;
+    font-size: 400%;
+}
+
+.footer-row > .left-col {
+    border-right: 0px;
+    height: 210px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+    
+    #footer
+    {
+    font-size: 40%;
+    }
+}
+
+
 @media (max-width: 768px) {
+    
+    
+    
+     #footer
+{
+    
+    bottom: 0px;
+    width: 100%;
+    background-color: #645f5f;
+    height:600px;
+    color: beige;
+    
+}
+
+
+.footer-row .social {
+    padding-left: 10%;
+    color: beige;
+    font-size: 400%;
+}
+
+.footer-row > .left-col {
+    border-right: 0px;
+    height: 210px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+    
+    #footer
+    {
+    font-size: 40%;
+    }
+    
         .navbar-default .navbar-nav .open .dropdown-menu > li > a {
        color: white;
         margin-bottom: 5%;
         margin-top: 5%;
-       font-size: 100%;
+       font-size: 80%;
        font-family: acme;
       }
+    
+    .navbar-default .navbar-nav > li > a {
+      color: #ffffff;
+      font-family: acme;
+        font-size: 80%;
+    }
     
     .news_row {
         border-bottom: 0px;
@@ -280,4 +349,124 @@
     font-size: 80%;
     
     }
+    
+    #down_button {
+        display: none;
+    }
 }
+
+/*for medium screens*/
+@media (min-width: 768px) {
+    
+    .navbar-nav > li > a {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      line-height: 20px;
+      font-size: 12px;
+    }
+    
+    .news-block {
+        padding-left: 40px;
+    }
+    
+    #logo {
+    max-width: 100%;
+    margin-bottom: 3%;
+    margin-top: 3%;
+        margin-left: 20%;
+    }
+    
+    #down_button {
+        left: 50%;
+        width: 20px;
+        position: absolute;
+        bottom: 10px;
+        display: inline;
+    
+    }
+    
+   
+    
+    container-menu {
+        margin-top: 0px;
+    }
+    
+    #footer
+    {
+    
+    font-size: 70%;
+    
+    }
+    
+    .upper_row {
+    padding-top: 1%;
+    padding-right: 0px;
+    background-color: #b3e7ff;
+    background-image: url('../assets/ship_ensemble_res_768.png');
+    background-size: 100% no-repeat; 
+    height: 405px;
+    width: auto;
+    margin-bottom: 40px;
+    margin-right: 0px;
+   
+    }
+    
+}
+
+/*for largest screens*/
+@media (min-width: 900px) {
+    
+    #footer
+    {
+    
+    font-size: 100%;
+    
+    }
+    
+    .navbar-nav > li > a {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      line-height: 25px;
+      font-size: 18px;
+    }
+    
+    .news-block {
+        padding-left: 40px;
+    }
+    
+    #logo {
+    max-width: 200px;
+    margin-bottom: 3%;
+    margin-top: 3%;
+        margin-left: 20%;
+    }
+    
+    #down_button {
+        left: 50%;
+        width: 40px;
+        position: absolute;
+        bottom: 10px;
+        display: inline;
+    
+    }
+    
+    
+    container-menu {
+        margin-top: 0px;
+    }
+    
+    .upper_row {
+    padding-top: 5%;
+    padding-right: 0px;
+    background-color: #b3e7ff;
+    background-image: url('../assets/ship_ensemble_res.png');
+    background-size: 100% no-repeat; 
+    min-height: 820px;
+    width: auto;
+    margin-bottom: 40px;
+    margin-right: 0px;
+   
+    }
+    
+}
+
