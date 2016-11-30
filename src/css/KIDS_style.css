@@ -4,6 +4,8 @@
     to {width: 25px;}
 }
 
+
+
 @keyframes downbuttonmd {
     from {width: 40px;}
     to {width: 45px;}
@@ -14,15 +16,108 @@
     src: url('../Fonts/A.C.M.E.ttf');
 }
 
+/*Gallery styles*/
+
+.gal-frame {
+    overflow: hidden
+}
+.gal-container {
+    overflow-x: scroll;
+    min-height: 290px;
+    border-bottom: solid 2px white;
+    min-width: 100%;
+    white-space: nowrap;
+    margin-bottom:  -19px; 
+}
+
+
+
+.gal-event {
+    border-left: solid 2px white;
+    min-width: 250px;
+    min-height: 290px;
+    display: inline-block;
+}
+
+.gal-description {
+   color: white;
+   min-height: 145px;
+   padding-left: 10px;
+}
+
+.gal-photo {
+    display: inline-block;
+    min-height: 145px;
+    min-width: 70px;
+    position: relative;
+}
+
+.gal-thumbnail {
+    max-width: 70px;
+    position: absolute;
+    bottom:2px;
+}
+
+/*End of gallery styles*/
+
 #logo {
     max-width: 100%;
     margin-bottom: 3%;
     margin-top: 3%;
 }
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
 
+.info-panel {
+
+    margin-bottom: 0px;
+    border-radius: 0px;
+
+}
+
+.left-scr, .right-scr {
+    
+    border: solid 3px white;
+    text-align: center;
+    line-height: 290px;
+    font-size: 300%;
+    color: white;
+    
+}
+
+.left-scr:hover, .right-scr:hover {
+    
+    background-color: white;
+}
+
+.left-scr:hover a, .right-scr:hover a {
+    
+    color: #b3e7ff;
+}
+
+
+
+.left-scr a,
+.right-scr a
+{
+    display: inline-block;
+    vertical-align: middle;
+    color: white;
+    line-height: normal;
+
+}
 
 .menu_icon {
     max-height: 14px;
+}
+
+.page-head {
+    padding: 0px;
+    margin-right: 0px;
 }
 
 .container-menu {
@@ -146,6 +241,15 @@
         max-height: 200px;
         overflow: hidden;
     }
+.teacher-text {
+    overflow: hidden;
+    max-height: 200px;
+}
+
+#teacher-left,
+    #teacher-right {
+    line-height: 400px;
+}
 
  .news-odd, .news-even {
     height: 285px;
@@ -155,6 +259,41 @@
 
 #news_section {
     background-color: #f2eeee;
+}
+
+.left-scr-sm, .right-scr-sm {
+    display: none;
+    position: absolute;
+    bottom: 40%;
+    background-color: #8a9bc9;
+    opacity: 0.4;
+    height: 90px;
+    line-height: 90px;
+    width: 45px;
+    text-align: center;
+    font-size: 150%;
+}
+
+.left-scr-sm i, .right-scr-sm i {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.left-scr-sm {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    left: 15px;
+}
+.right-scr-sm {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    right: 15px;
+}
+
+
+
+.left-scr-sm:hover, .right-scr-sm:hover {
+    opacity: 0.7;
 }
 
 .btn-news-left {
@@ -287,35 +426,39 @@
     }
 }
 
-
+/*Medium screens*/
 @media (max-width: 768px) {
     
     
+   
+    .left-scr-sm, .right-scr-sm {
+        display: inline-block;
+    }        
     
      #footer
-{
-    
-    bottom: 0px;
-    width: 100%;
-    background-color: #645f5f;
-    height:600px;
-    color: beige;
-    
-}
+    {
+
+        bottom: 0px;
+        width: 100%;
+        background-color: #645f5f;
+        height:600px;
+        color: beige;
+
+    }
 
 
-.footer-row .social {
-    padding-left: 10%;
-    color: beige;
-    font-size: 400%;
-}
+    .footer-row .social {
+        padding-left: 10%;
+        color: beige;
+        font-size: 400%;
+    }
 
-.footer-row > .left-col {
-    border-right: 0px;
-    height: 210px;
-    padding-left: 5%;
-    padding-right: 5%;
-}
+    .footer-row > .left-col {
+        border-right: 0px;
+        height: 210px;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
     
     #footer
     {
@@ -355,8 +498,12 @@
     }
 }
 
+
+
 /*for medium screens*/
 @media (min-width: 768px) {
+    
+    
     
     .navbar-nav > li > a {
       padding-top: 5px;
@@ -416,6 +563,7 @@
 /*for largest screens*/
 @media (min-width: 900px) {
     
+    
     #footer
     {
     
@@ -470,3 +618,14 @@
     
 }
 
+
+@media (max-width:1000px) {
+     .left-scr, .right-scr {
+        line-height: 400px;
+    }
+    #teacher-left,
+    #teacher-right {
+    line-height: 700px;
+    }
+    
+}
