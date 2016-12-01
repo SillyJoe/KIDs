@@ -1,3 +1,32 @@
+/*Services styles*/
+
+#english .panel-title a, 
+#german .panel-title a
+{
+    display: inline-block;
+    width: 900px;
+    height: 50px;
+    padding-top: 20px;
+
+    
+}
+
+.panel-title a:hover, 
+.panel-title a:focus
+{
+    text-decoration: none;
+}
+
+#english .panel-heading,
+#german .panel-heading
+{
+    height: 50px;
+    line-height: 50px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+/*End of services styles*/
 
 @keyframes downbuttonlg {
     from {width: 20px;}
@@ -76,6 +105,7 @@
 
     margin-bottom: 0px;
     border-radius: 0px;
+    
 
 }
 
@@ -393,7 +423,11 @@
 
 /*for smallest screens*/
 @media (max-width: 400px) {
-    
+    #english .panel-title a, 
+    #german .panel-title a
+{
+    width: 200px;
+}
     #footer
 {
     
@@ -428,7 +462,11 @@
 
 /*Medium screens*/
 @media (max-width: 768px) {
-    
+    #english .panel-title a, 
+    #german .panel-title a
+{
+    width: 500px;
+}
     
    
     .left-scr-sm, .right-scr-sm {
@@ -562,7 +600,12 @@
 
 /*for largest screens*/
 @media (min-width: 900px) {
-    
+    #english .panel-title a, 
+    #german .panel-title a
+{
+    width: 700px;
+}
+  
     
     #footer
     {
