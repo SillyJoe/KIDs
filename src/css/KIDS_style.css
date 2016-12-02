@@ -1,3 +1,14 @@
+/*Contact us styles*/
+.address-panel {
+    border-radius: 10px;
+    background-color: #c8d5eb;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+
+
+
+
 /*Services styles*/
 
 #english .panel-title a, 
@@ -109,7 +120,8 @@ td strong {
 
     margin-bottom: 0px;
     border-radius: 0px;
-    
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 
 }
 
