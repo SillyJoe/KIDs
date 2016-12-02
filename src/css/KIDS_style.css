@@ -11,6 +11,10 @@
     
 }
 
+td strong {
+    font-size: 120%;
+}
+
 .panel-title a:hover, 
 .panel-title a:focus
 {
