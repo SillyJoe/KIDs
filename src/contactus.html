@@ -112,7 +112,12 @@
                         <div class="col-xs-12">
                             <div class="panel panel-default address-panel">
                               <div class="panel-body">
-                                     <img id="map-img" src="assets/Map_ex.png" alt="map" class="img img-responsive">
+                                  
+                                     <a id="map" href="#map-img"><img id="map-img" src="assets/Map.png" alt="map" class="img img-thumbnail"></a>
+                                    <br>
+                                  
+                                    <p>Натисніть на карту, щоб збільшити</p>
+                                  
                               </div>
                             </div>
                         </div>
@@ -190,6 +195,7 @@
           console.log('fooo');
           var duration = 300;
           var offset = 750;
+          var mapzoom = true;
           if($(window).width() < 768) offset = 10;
           $(window).scroll(function(){
               
@@ -219,6 +225,17 @@
                   height: '18px'
               }, 'fast')
                 
+           })
+           
+           $("#map").click(function(){
+               if (mapzoom){
+                   $("#map-img").attr("src", "assets/Map_ex.png");
+                   mapzoom = !mapzoom;
+               } else {
+                   $("#map-img").attr("src", "assets/Map.png");
+                   mapzoom = !mapzoom;
+               }
+               
            })
                                        
           

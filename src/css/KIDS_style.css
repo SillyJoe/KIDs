@@ -1,9 +1,10 @@
 /*Contact us styles*/
 .address-panel {
-    border-radius: 10px;
-    background-color: #c8d5eb;
+    border: 1px solid #ddd;
+    padding: 10px 5px 10px 5px;
     -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
           box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    background-color: rgba(200, 213, 235, 0.5)
 }
 
 
@@ -122,11 +123,13 @@ td strong {
 
 .teacher-box {
     border: 1px solid #ddd;
-    padding: 10px 10px 10px 10px;
+    padding: 10px 5px 10px 5px;
     -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
           box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
     margin-left: 15px;
     margin-right: 15px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.3)
 }
 
 /*End of about us styles*/
@@ -632,9 +635,7 @@ td strong {
 /*for largest screens*/
 @media (min-width: 900px) {
     
-    #map-img {
-        min-width: 800px;
-    }
+
     
     #english .panel-title a, 
     #german .panel-title a
