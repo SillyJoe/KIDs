@@ -9,6 +9,8 @@
 
 
 
+
+
 /*Services styles*/
 
 #english .panel-title a, 
@@ -115,6 +117,19 @@ td strong {
   display: -ms-flexbox;
   display:         flex;
 }
+
+/*About us styles*/
+
+.teacher-box {
+    border: 1px solid #ddd;
+    padding: 10px 10px 10px 10px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+/*End of about us styles*/
 
 .info-panel {
 
@@ -333,7 +348,7 @@ td strong {
 .right-scr-sm {
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
-    right: 15px;
+    right: 0px;
 }
 
 
@@ -616,6 +631,11 @@ td strong {
 
 /*for largest screens*/
 @media (min-width: 900px) {
+    
+    #map-img {
+        min-width: 800px;
+    }
+    
     #english .panel-title a, 
     #german .panel-title a
 {
