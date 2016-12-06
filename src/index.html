@@ -85,21 +85,21 @@
               
     </div> <!--upper row -->
           
-      <div id="news" class="container">
+      <div id="news" class="container" ng-controller="newsController">
         <div class="page-header">
             <div class="row">
               <div class="col-md-10 col-xs-12"><h1>Що в нас нового?</h1></div>
               <div id="add_news_button" class="col-md-2 col-xs-12"><button class="btn btn-danger btn-lg add_news_button">Додати...</button></div>
          </div>
           </div>
-        <div id="news_section" class="row" ng-controller="newsController">
+        <div id="news_section" class="row" >
         <div class="hidden-xs hidden-sm col-md-1" style="padding-left:0px; padding-right:0px;">
         <div class="btn-news-left" ng-click="scrollPrevious()">
             <i class="fa fa-angle-double-left"></i>
         </div>
         </div>
         <div class="col-xs-12 col-md-10 news-block" ng-init="initialize()">
-          <div class="row content-row news-row">
+          <div class="row content-row news-row" ng-if="newsOne.title != ''">
               <div class="col-md-6 col-xs-12 news-odd">
                   <div class="news_text">
                     <h2>{{newsOne.title}}</h2>
@@ -114,7 +114,7 @@
                 <img ng-src="{{newsOne.photo}}" class="img-responsive thumbnail">
               </div>
           </div>
-          <div class="row content-row news-row">
+          <div class="row content-row news-row" ng-if="newsTwo.title != ''">
               <div class="col-md-6 col-xs-12 news_image">
                 <img ng-src="{{newsTwo.photo}}" class="img-responsive thumbnail">
               </div>
@@ -129,7 +129,7 @@
                   </div>
               </div> 
           </div>
-          <div class="row content-row news-row" style="border-bottom:0px">
+          <div class="row content-row news-row" ng-if="newsThree.title != ''" style="border-bottom:0px">
               <div class="col-md-6 col-xs-12 news-odd">
                   <div class="news_text">
                     <h2>{{newsThree.title}}</h2>
@@ -150,7 +150,7 @@
       </div>
       </div>
           <div class="row">
-            <div class="col-xs-12 hidden-md hidden-lg btn-news-down">
+            <div class="col-xs-12 hidden-md hidden-lg btn-news-down" ng-click="scrollNext()">
                 <i class="fa fa-angle-double-down"></i>
             </div>
           </div>

@@ -14,6 +14,7 @@ angular.module('kiddsApp.controllers', [])
     }
     
     $scope.scrollNext = function(){
+        console.log('scrollNext clicked');
         var newsSize = $scope.news.length;
         console.log('News length: '+$scope.news.length);
         
@@ -24,8 +25,6 @@ angular.module('kiddsApp.controllers', [])
             $scope.current += 3;
             $scope.newsOne = $scope.news[$scope.current];
         }
-        console.log('current: '+$scope.current);
-        console.log('current title: '+$scope.news[$scope.current].title);
         
         if ($scope.current + 1 >= newsSize) {
             $scope.newsTwo =  $scope.blankNews;
