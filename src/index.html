@@ -22,7 +22,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body ng-app="kiddsApp">
       <div class="upper_row">
     <div class="row">
         <div class="col-xs-offset-4 col-xs-4 hidden-sm hidden-md hidden-lg" style="margin-bottom: 3%; margin-top: 3%;">
@@ -92,54 +92,60 @@
               <div id="add_news_button" class="col-md-2 col-xs-12"><button class="btn btn-danger btn-lg add_news_button">Додати...</button></div>
          </div>
           </div>
-        <div id="news_section" class="row">
+        <div id="news_section" class="row" ng-controller="newsController">
         <div class="hidden-xs hidden-sm col-md-1" style="padding-left:0px; padding-right:0px;">
-        <div class="btn-news-left">
+        <div class="btn-news-left" ng-click="scrollPrevious()">
             <i class="fa fa-angle-double-left"></i>
         </div>
         </div>
-        <div class="col-xs-12 col-md-10 news-block">
+        <div class="col-xs-12 col-md-10 news-block" ng-init="initialize()">
           <div class="row content-row news-row">
               <div class="col-md-6 col-xs-12 news-odd">
                   <div class="news_text">
-                    <h2>Some interesting news</h2>
-                    <h4><small><date>01.01.2016</date></small></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent maximus libero sit amet purus ornare porta. Nam vehicula nulla eu lacus sodales, vitae mattis ligula sollicitudin. Mauris rhoncus tortor mauris, in ultrices nunc scelerisque id. Aenean at volutpat mauris.</p>
+                    <h2>{{newsOne.title}}</h2>
+                    <h4><small><date>{{newsOne.date}}</date></small></h4>
+                    <p>{{newsOne.text}}</p>
                   </div>
+                  <div ng-if="newsOne.text != ''">
                     <button class="btn btn-primary">Більше...</button><button class="btn btn-danger">Редагувати</button>
+                  </div>
               </div>
               <div class="col-md-6 col-xs-12 news_image">
-                <img src="assets/news/news1.jpg" class="img-responsive thumbnail">
+                <img ng-src="{{newsOne.photo}}" class="img-responsive thumbnail">
               </div>
           </div>
           <div class="row content-row news-row">
               <div class="col-md-6 col-xs-12 news_image">
-                <img src="assets/news/news1.jpg" class="img-responsive thumbnail">
+                <img ng-src="{{newsTwo.photo}}" class="img-responsive thumbnail">
               </div>
               <div class="col-md-6 col-xs-12 news-even">
                   <div class="news_text">
-                    <h2>Some interesting news</h2>
-                    <h4><small><date>01.01.2016</date></small></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent maximus libero sit amet purus ornare porta. Nam vehicula nulla eu lacus sodales, vitae mattis ligula sollicitudin. Mauris rhoncus tortor mauris, in ultrices nunc scelerisque id. Aenean at volutpat mauris.</p>
+                    <h2>{{newsTwo.title}}</h2>
+                    <h4><small><date>{{newsTwo.date}}</date></small></h4>
+                    <p>{{newsTwo.text}}</p>
                   </div>
+                    <div ng-if="newsTwo.text != ''">
                     <button class="btn btn-primary">Більше...</button><button class="btn btn-danger">Редагувати</button>
+                  </div>
               </div> 
           </div>
           <div class="row content-row news-row" style="border-bottom:0px">
               <div class="col-md-6 col-xs-12 news-odd">
                   <div class="news_text">
-                    <h2>Some interesting news</h2>
-                    <h4><small><date>01.01.2016</date></small></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent maximus libero sit amet purus ornare porta. Nam vehicula nulla eu lacus sodales, vitae mattis ligula sollicitudin. Mauris rhoncus tortor mauris, in ultrices nunc scelerisque id. Aenean at volutpat mauris.</p>
+                    <h2>{{newsThree.title}}</h2>
+                    <h4><small><date>{{newsThree.date}}</date></small></h4>
+                    <p>{{newsThree.text}}</p>
                  </div>
+                    <div ng-if="newsThree.text != ''">
                     <button class="btn btn-primary">Більше...</button><button class="btn btn-danger">Редагувати</button>
+                  </div>
               </div>
               <div class="col-md-6 col-xs-12 news_image">
-                <img src="assets/news/news1.jpg" class="img-responsive thumbnail">
+                <img ng-src="{{newsThree.photo}}" class="img-responsive thumbnail">
               </div>
       </div>
       </div>
-      <div class="hidden-xs hidden-sm col-md-1 btn-news-right">
+      <div class="hidden-xs hidden-sm col-md-1 btn-news-right" ng-click="scrollNext()">
           <i class="fa fa-angle-double-right"></i>
       </div>
       </div>
@@ -206,6 +212,16 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!--          Angular-->
+          <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+          <script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
+          
+          
+<!--          My javascript-->
+          <script src="js/app.js"></script>
+          <script src="js/controllers.js"></script>
+          <script src="js/services.js"></script>
+          
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/core/bootstrap.min.js"></script>
     <script>
