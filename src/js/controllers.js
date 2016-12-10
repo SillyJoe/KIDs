@@ -69,3 +69,79 @@ angular.module('kiddsApp.controllers', [])
     }
     
 }])
+
+.controller('teachersController', ['$scope', 'teachersFactory', '$timeout', function($scope, teachersFactory, $timeout){
+    $scope.teachers = teachersFactory;
+    $scope.current = 0;
+    $scope.teacherOne = $scope.teachers[0];
+    $scope.teacherTwo = $scope.teachers[1];
+    $scope.teacherThree = $scope.teachers[2];
+    $scope.moveLeft = false;
+    $scope.moveRight = false;
+    
+    $scope.scrollTeacherNext = function(){
+        $scope.moveRight = true;
+        var noOfTeachers = $scope.teachers.length;
+       if($scope.current - 1 < 0) {
+           $scope.current = noOfTeachers -1;
+           $scope.teacherOne = $scope.teachers[$scope.current];
+       } else {
+          $scope.teacherOne = $scope.teachers[--$scope.current]; 
+       }
+      console.log('Teacher 1 '+$scope.teacherOne.lastName);
+       if ($scope.current + 1 >= noOfTeachers) {
+           $scope.teacherTwo = $scope.teachers[0];
+           $scope.teacherThree = $scope.teachers[1];
+           
+           $scope.moveRight = false;
+            return;
+        } else {
+           $scope.teacherTwo = $scope.teachers[$scope.current + 1];
+        }
+        console.log('Teacher 2 '+$scope.teacherTwo.lastName);
+        if ($scope.current + 2 >= noOfTeachers) {
+           $scope.teacherThree = $scope.teachers[0]; 
+        } else {
+           $scope.teacherThree = $scope.teachers[$scope.current + 2];
+        }
+       console.log('Teacher 3 '+$scope.teacherThree.lastName);
+        console.log('Current: '+$scope.current);
+        $scope.moveRight = false;
+       
+        
+    }
+    
+    
+  $scope.scrollTeacherPrevious = function(){
+      $scope.moveLeft = true;
+      var noOfTeachers = $scope.teachers.length;
+        if (($scope.current + 1) >= noOfTeachers) {
+            $scope.current = 0;
+            $scope.teacherOne = $scope.teachers[$scope.current];
+        } else {
+            $scope.teacherOne = $scope.teachers[++$scope.current];
+        }
+         console.log('Teacher 1 '+$scope.teacherOne.lastName);
+        if ($scope.current + 1 >= noOfTeachers) {
+           $scope.teacherTwo = $scope.teachers[0];
+           $scope.teacherThree = $scope.teachers[1];
+            setTimeout(function(){
+            $scope.moveLeft = false;
+            }, 600);
+            return;
+        } else {
+           $scope.teacherTwo = $scope.teachers[$scope.current + 1];
+        }
+        console.log('Teacher 2 '+$scope.teacherTwo.lastName);
+        if ($scope.current + 2 >= noOfTeachers) {
+           $scope.teacherThree = $scope.teachers[0]; 
+        } else {
+           $scope.teacherThree = $scope.teachers[$scope.current + 2];
+        }
+        console.log('Teacher 3 '+$scope.teacherThree.lastName);
+        console.log('Current: '+$scope.current);
+      setTimeout(function(){
+            $scope.moveLeft = false;
+        }, 600);
+  }
+}])

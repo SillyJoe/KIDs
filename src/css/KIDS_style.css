@@ -1,3 +1,5 @@
+
+
 /*Contact us styles*/
 .address-panel {
     border: 1px solid #ddd;
@@ -122,15 +124,68 @@ td strong {
 /*About us styles*/
 
 .teacher-box {
+    position: absolute;
+    display: inline-block;
+    float: none;
+    white-space: normal;
     border: 1px solid #ddd;
     padding: 10px 5px 10px 5px;
     -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
           box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
     margin-left: 15px;
     margin-right: 15px;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.3)
 }
+
+.teacherMinus {
+    top: 70px;
+    left: 15px;
+    bottom: 70px;
+}
+
+.teacherOne {
+    top: 70px;
+    left: 240px;
+    bottom: 70px;
+}
+
+.teacherTwo {
+    top: 70px;
+    left: 500px;
+    bottom: 70px;
+}
+
+.teacherThree {
+    top: 70px;
+    left: 760px;
+    bottom: 70px;
+}
+
+.teacherPlus {
+    top: 70px;
+    left: 1010px;
+    bottom: 70px;
+}
+
+.teacherFrame {
+    position: relative;
+    min-height: 610px;
+}
+
+.teacher-text {
+    overflow: hidden;
+    max-height: 200px;
+}
+
+#teacher-left,
+    #teacher-right {
+    line-height: 400px;
+}
+
+ .news-odd, .news-even {
+    height: 285px;
+    }
 
 /*End of about us styles*/
 
@@ -305,19 +360,7 @@ td strong {
         max-height: 195px;
         overflow: hidden;
     }
-.teacher-text {
-    overflow: hidden;
-    max-height: 200px;
-}
 
-#teacher-left,
-    #teacher-right {
-    line-height: 400px;
-}
-
- .news-odd, .news-even {
-    height: 285px;
-    }
 
 
 
@@ -708,4 +751,121 @@ td strong {
     line-height: 700px;
     }
     
+}
+
+@media (min-width: 1000px) {
+            .teacher-box {
+            position: absolute;
+            display: inline-block;
+            float: none;
+            min-width: 170px;
+            white-space: normal;
+            border: 1px solid #ddd;
+            padding: 10px 5px 10px 5px;
+            -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+                  box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+            margin-left: 5px;
+            margin-right: 5px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.3)
+        }
+
+        .teacherMinus {
+            top: 70px;
+            left: 15px;
+            bottom: 50px;
+        }
+
+        .teacherOne {
+            top: 70px;
+            left: 265px;
+            bottom: 50px;
+        }
+
+        .teacherTwo {
+            top: 70px;
+            left: 515px;
+            bottom: 50px;
+        }
+
+        .teacherThree {
+            top: 70px;
+            left: 765px;
+            bottom: 50px;
+        }
+
+        .teacherPlus {
+            top: 70px;
+            left: 1010px;
+            bottom: 50px;
+        }
+
+        .teacherFrame {
+            position: relative;
+            min-height: 550px;
+        }
+            .teacher-text {
+            overflow: hidden;
+
+           max-height: 180px;
+        }
+}
+
+
+
+
+@media (min-width: 1200px) {
+        .teacher-box {
+        position: absolute;
+        display: inline-block;
+        float: none;
+        white-space: normal;
+        border: 1px solid #ddd;
+        padding: 10px 5px 10px 5px;
+        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+              box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+        margin-left: 15px;
+        margin-right: 15px;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.3)
+    }
+    
+    teacher-text {
+        max-height: 300px;
+    }
+
+    .teacherMinus {
+        top: 70px;
+        left: 15px;
+        bottom: 70px;
+    }
+
+    .teacherOne {
+        top: 70px;
+        left: 240px;
+        bottom: 70px;
+    }
+
+    .teacherTwo {
+        top: 70px;
+        left: 500px;
+        bottom: 70px;
+    }
+
+    .teacherThree {
+        top: 70px;
+        left: 760px;
+        bottom: 70px;
+    }
+
+    .teacherPlus {
+        top: 70px;
+        left: 1010px;
+        bottom: 70px;
+    }
+
+    .teacherFrame {
+        position: relative;
+        min-height: 610px;
+    }
 }
