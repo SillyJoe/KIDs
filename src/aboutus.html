@@ -141,7 +141,7 @@
                 <div class="col-lg-10 col-xs-12">
                  
                   <div class="row row-eq-height">
-                      <div id="teacher-left" class="col-md-1 hidden-xs left-scr" ng-click="scrollTeacherPrevious()">
+                      <div id="teacher-left" class="col-md-1 hidden-xs left-scr">
                           <a href="#"><i class="fa fa-caret-left"></i></a>
                       </div>
                       <div class="col-xs-12 col-md-10" style="overflow:hidden;">
@@ -490,25 +490,37 @@
                console.log('Scrolling teachers left...');
                if (!busy) {
                    busy = true;
-                       var loopCounter = 0;
+                    var loopCounter = 0;
                    positions.unshift(positions.pop());
                    $('.teacher-box').each(function(){
                        var newPos = positions[loopCounter];
                        if (newPos == posScaleIn) {
-                            $(this).transition({'top': '-=25px', 'left': newPos, scale: [1.2, 1.1]});
+                            $(this).on("leftscr", function(){
+                                $(this).transition({'top': '-=25px', 'left': newPos, scale: [1.2, 1.1]});
+                            })
                         } else if (newPos == posScaleOutLeft) {
-                            $(this).transition({'top': '+=25px', 'left': newPos, scale: [1, 1]});
+                            $(this).on("leftscr", function(){
+                                $(this).transition({'top': '+=25px', 'left': newPos, scale: [1, 1]});
+                            })
                         }  else if (newPos == posZeroOpacityLeft) {
-                            $(this).transition({'opacity':'0.0'});
-                            $(this).transition({'left': newPos});
-                            $(this).transition({"opacity": "1.0"});
+                            $(this).on("leftscr", function(){
+                                $(this).transition({'opacity':'0.0'});
+                                $(this).transition({'left': newPos});
+                                $(this).transition({"opacity": "1.0"});
+                            })
                         }  else {
-                            $(this).transition({'left': newPos});
+                            $(this).on("leftscr", function(){
+                                 $(this).transition({'left': newPos});
+                            })
                         }
 
                        loopCounter++;
 
                    })
+                   $(".teacher-box").trigger("leftscr");
+                    console.log("Left scroll triggered");
+                   
+                   $(".teacher-box").off("leftscr");
                    $('.teacherFrame').scrollLeft(250);
                    setTimeout(function() {
                      busy = false;  
@@ -531,20 +543,32 @@
                    $('.teacher-box').each(function(){
                        var newPos = positions[loopCounter];
                        if (newPos == posScaleIn) {
-                            $(this).transition({'top': '-=25px', 'left': newPos, scale: [1.2, 1.1]});
+                           $(this).on("rightscr", function(){
+                                $(this).transition({'top': '-=25px', 'left': newPos, scale: [1.2, 1.1]});
+                           })
                         } else if (newPos == posScaleOutRight) {
-                            $(this).transition({'top': '+=25px', 'left': newPos, scale: [1, 1]});
+                            $(this).on("rightscr", function(){
+                                $(this).transition({'top': '+=25px', 'left': newPos, scale: [1, 1]});
+                            })
                         }  else if (newPos == posZeroOpacityRight) {
-                            $(this).transition({'opacity':'0.0'});
-                            $(this).transition({'left': newPos});
-                            $(this).transition({"opacity": "1.0"});
+                            $(this).on("rightscr", function(){
+                                $(this).transition({'opacity':'0.0'});
+                                $(this).transition({'left': newPos});
+                                $(this).transition({"opacity": "1.0"});
+                            })
                         }  else {
-                            $(this).transition({'left': newPos});
+                            $(this).on("rightscr", function(){
+                                $(this).transition({'left': newPos});
+                            })
                         }
 
                        loopCounter++;
 
                    })
+                   $(".teacher-box").trigger("rightscr");
+                    console.log("Right scroll triggered");
+                   
+                   $(".teacher-box").off("rightscr");
                    $('.teacherFrame').scrollLeft(250);
                    setTimeout(function() {
                     busy = false;  
