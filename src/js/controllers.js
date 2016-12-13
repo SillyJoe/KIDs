@@ -1,10 +1,8 @@
 angular.module('kiddsapp.controllers', [])
-.controller('indexController', ['$scope', 'stateChange', '$state', function($scope, stateChange, $state){
+.controller('indexController', ['$scope', function($scope){
     console.log('Index controller loaded...');
-    $scope.stateChange = stateChange;
-    $scope.changeStateTo = function(newState) {
-        $state.go(newState);
-    }
+    
+    
 }])
 .controller('newsController', ['$scope', 'newsFactory', function($scope, newsFactory){
     
