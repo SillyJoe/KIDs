@@ -1,5 +1,5 @@
 'use strict'
-angular.module('kiddsApp.services', [])
+angular.module('kiddsapp.services', [])
 .factory('newsFactory', [function(){
     var news = [
         {
@@ -75,5 +75,191 @@ angular.module('kiddsApp.services', [])
       "description": "Викладає англійську мову у KIDS. Випускниця Тернопільського національного економічного університету ім. Гнатюка. Має досвід роботи у США і викладання у Хмельницькій національній прикордонній академії. Чудовий комунікатор, вона одразу робить акцент на спілкуванні англійською, що стрімко покращує якість усного мовлення в учнів."
     }
     ]
-    return teachers;
+    return {
+        teachers: teachers,
+        getTeacherById: function(teacherId){
+            for (var i = 0; i < teachers.length; i++) {
+                if (teachers[i].id == teacherId) {
+                    return teachers[i];
+                }
+            }
+        }
+    }
+}])
+.factory('galleryFactory', [function(){
+    var gallery = [
+        {
+            id: 3,
+            name: 'Halloween',
+            date: '30.10.2014',
+            photos: [
+                {
+                    id: 0,
+                    ref: 'assets/photo1.png'
+                },
+                {
+                    id: 1,
+                    ref: 'assets/photo2.png'
+                },
+                {
+                    id: 2,
+                    ref: 'assets/photo3.png'
+                },
+                {
+                    id: 3,
+                    ref: 'assets/photo1.png'
+                }
+            ]
+        },
+        {
+            id: 2,
+            name: 'New Year',
+            date: '01.01.2015',
+            photos: [
+                {
+                    id: 0,
+                    ref: 'assets/photo1.png'
+                },
+                {
+                    id: 1,
+                    ref: 'assets/photo2.png'
+                },
+                {
+                    id: 2,
+                    ref: 'assets/photo3.png'
+                },
+                {
+                    id: 3,
+                    ref: 'assets/photo1.png'
+                },
+                {
+                    id: 4,
+                    ref: 'assets/photo4.png'
+                },
+                {
+                    id: 5,
+                    ref: 'assets/photo5.png'
+                },
+                {
+                    id: 6,
+                    ref: 'assets/photo6.png'
+                },
+                {
+                    id: 7,
+                    ref: 'assets/photo7.png'
+                },
+                {
+                    id: 8,
+                    ref: 'assets/photo1.png'
+                },
+                {
+                    id: 9,
+                    ref: 'assets/photo2.png'
+                },
+                {
+                    id: 10,
+                    ref: 'assets/photo5.png'
+                }
+            ]
+        },
+        {
+            id: 1,
+            name: 'Speaking Club with John Woo',
+            date: '02.03.2015',
+            photos: [
+                {
+                    id: 0,
+                    ref: 'assets/photo1.png'
+                },
+                {
+                    id: 1,
+                    ref: 'assets/photo2.png'
+                },
+                {
+                    id: 2,
+                    ref: 'assets/photo3.png'
+                },
+                {
+                    id: 3,
+                    ref: 'assets/photo1.png'
+                }
+            ]
+        },
+        {
+            id: 0,
+            name: 'Movie session',
+            date: '04.04.2015',
+            photos: [
+                {
+                    id: 0,
+                    ref: 'assets/photo1.png'
+                },
+                {
+                    id: 1,
+                    ref: 'assets/photo2.png'
+                },
+                {
+                    id: 2,
+                    ref: 'assets/photo3.png'
+                },
+                {
+                    id: 3,
+                    ref: 'assets/photo1.png'
+                }
+            ]
+        }
+    ]  
+    return {
+        getGallery: function(){
+            return gallery;
+        },
+        addEvent: function(event) {
+            var id = gallery[gallery.length - 1].id+1;
+            event.id = id;
+            gallery.unshift(event);
+        },
+        removeEvent: function(eventId){
+            for(var i = 0; i < gallery.length; i++){
+                if (gallery[i].id == eventId) {
+                    gallery.splice(i, 1);
+                    return true;
+                }
+            }
+            return false;
+        },
+        addPhotoToEvent: function(eventId, photo){
+            for(var i = 0; i < gallery.length; i++){
+                if (gallery[i].id == eventId) {
+                    var event = gallery[i];
+                    var id = event.photos[event.photos.length-1].id+1;
+                    photo.id = id;
+                    event.photos.push(photo);
+                    return true;
+                }
+            }
+            return false;
+        },
+        removePhotoFromEvent: function(eventId, photoId) {
+            for(var i = 0; i < gallery.length; i++){
+                if (gallery[i].id == eventId) {
+                    var event = gallery[i];
+                    for (var g = 0; g < event.photos.length; g++) {
+                        if (event.photos[g] == photoId) {
+                            event.photos.splice(g, 1);
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        },
+        getEventById: function(eventId){
+            for(var i = 0; i < gallery.length; i++){
+                if (gallery[i].id == eventId) {
+                    return gallery[i];
+                }
+            }
+            return {};
+        }
+    }
 }])

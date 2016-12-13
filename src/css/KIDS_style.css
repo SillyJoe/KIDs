@@ -79,7 +79,24 @@ td strong {
     margin-bottom:  -19px; 
 }
 
+.event-detail-div {
+    width: 200px;
+    height: 150px;
+    overflow: hidden;
+    border: solid 4px white;
+    border-radius: 3px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display:inline-block;
+}
 
+.event-detail-image {
+    min-width: 300px;
+    margin-left: -50px;
+    margin-right: -50px;
+}
 
 .gal-event {
     border-left: solid 2px white;
@@ -122,14 +139,32 @@ td strong {
 }
 
 /*About us styles*/
+.return-button {
+    position: absolute;
+        top: 10px;
+        right: 20px;
+}
 
 .teacher-box {
-    position: absolute;
-    display: inline-block;
-    float: none;
-    white-space: normal;
+        position: absolute;
+        display: inline-block;
+        float: none;
+        white-space: normal;
+        border: 1px solid #ddd;
+        padding: 10px 5px 10px 5px;
+        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+              box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+        margin-left: 15px;
+        margin-right: 15px;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.3);
+        width: 15%;
+    }
+
+.teacher-detail {
+
     border: 1px solid #ddd;
-    padding: 10px 5px 10px 5px;
+    padding: 15px 5px 15px 5px;
     -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
           box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
     margin-left: 15px;
@@ -169,9 +204,12 @@ td strong {
 }
 
 .teacherFrame {
-    position: relative;
-    min-height: 610px;
-}
+        position: relative;
+        min-height: 610px;
+        min-width: 170%;
+        margin-left: -35%;
+        margin-right: -35%;
+    }
 
 .teacher-text {
     overflow: hidden;
@@ -199,8 +237,7 @@ td strong {
 }
 
 .left-scr, .right-scr {
-    
-    border: solid 3px white;
+    border: 0px;
     text-align: center;
     line-height: 290px;
     font-size: 300%;
@@ -500,6 +537,13 @@ td strong {
 
 /*for smallest screens*/
 @media (max-width: 400px) {
+    .teacher-detail {
+        overflow-x: scroll;
+    } 
+
+    
+    
+    
     #english .panel-title a, 
     #german .panel-title a
 {
@@ -539,6 +583,15 @@ td strong {
 
 /*Medium screens*/
 @media (max-width: 768px) {
+    .teacher-box a, .teacher-box h3,
+    .teacher-box h4, .teacher-box p {
+        font-size: 100%;
+    }
+    
+    .teacher-text {
+        max-height: 270px;
+    }
+    
     #english .panel-title a, 
     #german .panel-title a
 {
@@ -546,9 +599,7 @@ td strong {
 }
     
    
-    .left-scr-sm, .right-scr-sm {
-        display: inline-block;
-    }        
+            
     
      #footer
     {
@@ -741,81 +792,82 @@ td strong {
     
 }
 
+@media (max-width:600px) {
+    .left-scr-sm, .right-scr-sm {
+        display: inline-block;
+    }
+    
+    /*    Teachers styles*/
+        .teacher-box {
+        display: none;
+    }
+    
+    .teacher-text {
+        max-height: 260px;
+    }
+
+    .teacherMinus {
+        display: none
+    }
+
+    .teacherOne {
+        top: 140px;
+        left: 0%;
+        bottom: 140px;
+    }
+
+    .teacherTwo {
+        top: 140px;
+        left: 46%;
+        bottom: 140px;
+    }
+
+    .teacherThree {
+        top: 140px;
+        left: 90%;
+        bottom: 140px;
+    }
+
+    .teacherPlus {
+        display: none;
+    }
+
+    .teacherFrame {
+        position: relative;
+        min-height: 610px;
+        min-width: 190%;
+        margin-left: -30%;
+        margin-right: -30%;
+    }
+}
+
 
 @media (max-width:1000px) {
-     .left-scr, .right-scr {
-        line-height: 400px;
-    }
+     
+
+
+         .news-odd, .news-even {
+            height: 285px;
+            }
+
+    
+/*   End of teachers styles */
+    
+    
+  
     #teacher-left,
     #teacher-right {
-    line-height: 700px;
+    line-height: 500px;
     }
     
 }
 
-@media (min-width: 1000px) {
-            .teacher-box {
-            position: absolute;
-            display: inline-block;
-            float: none;
-            min-width: 170px;
-            white-space: normal;
-            border: 1px solid #ddd;
-            padding: 10px 5px 10px 5px;
-            -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-                  box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-            margin-left: 5px;
-            margin-right: 5px;
-            border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.3)
-        }
-
-        .teacherMinus {
-            top: 70px;
-            left: 15px;
-            bottom: 50px;
-        }
-
-        .teacherOne {
-            top: 70px;
-            left: 265px;
-            bottom: 50px;
-        }
-
-        .teacherTwo {
-            top: 70px;
-            left: 515px;
-            bottom: 50px;
-        }
-
-        .teacherThree {
-            top: 70px;
-            left: 765px;
-            bottom: 50px;
-        }
-
-        .teacherPlus {
-            top: 70px;
-            left: 1010px;
-            bottom: 50px;
-        }
-
-        .teacherFrame {
-            position: relative;
-            min-height: 550px;
-        }
-            .teacher-text {
-            overflow: hidden;
-
-           max-height: 180px;
-        }
-}
-
-
-
-
-@media (min-width: 1200px) {
-        .teacher-box {
+@media (min-width: 600px) {
+    .xs-teacher-box{
+        display: none;
+    }
+    
+         .teacher-box {
         position: absolute;
         display: inline-block;
         float: none;
@@ -827,7 +879,8 @@ td strong {
         margin-left: 15px;
         margin-right: 15px;
         border-radius: 10px;
-        background-color: rgba(255, 255, 255, 0.3)
+        background-color: rgba(255, 255, 255, 0.3);
+        width: 15%;
     }
     
     teacher-text {
@@ -836,36 +889,43 @@ td strong {
 
     .teacherMinus {
         top: 70px;
-        left: 15px;
+        left: 0%;
         bottom: 70px;
     }
 
     .teacherOne {
         top: 70px;
-        left: 240px;
+        left: 22%;
         bottom: 70px;
     }
 
     .teacherTwo {
         top: 70px;
-        left: 500px;
+        left: 42%;
         bottom: 70px;
     }
 
     .teacherThree {
         top: 70px;
-        left: 760px;
+        left: 62%;
         bottom: 70px;
     }
 
     .teacherPlus {
         top: 70px;
-        left: 1010px;
+        left: 80%;
         bottom: 70px;
     }
 
     .teacherFrame {
         position: relative;
         min-height: 610px;
+        min-width: 170%;
+        margin-left: -35%;
+        margin-right: -35%;
     }
 }
+
+
+
+

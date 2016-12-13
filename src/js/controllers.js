@@ -1,4 +1,11 @@
-angular.module('kiddsApp.controllers', [])
+angular.module('kiddsapp.controllers', [])
+.controller('indexController', ['$scope', 'stateChange', '$state', function($scope, stateChange, $state){
+    console.log('Index controller loaded...');
+    $scope.stateChange = stateChange;
+    $scope.changeStateTo = function(newState) {
+        $state.go(newState);
+    }
+}])
 .controller('newsController', ['$scope', 'newsFactory', function($scope, newsFactory){
     
     $scope.news = newsFactory.news;    
@@ -12,6 +19,8 @@ angular.module('kiddsApp.controllers', [])
         photo: 'assets/news/blank.png',
         text: '',
     }
+    
+
     
     $scope.scrollNext = function(){
         console.log('scrollNext clicked');
@@ -70,78 +79,125 @@ angular.module('kiddsApp.controllers', [])
     
 }])
 
-.controller('teachersController', ['$scope', 'teachersFactory', '$timeout', function($scope, teachersFactory, $timeout){
-    $scope.teachers = teachersFactory;
-    $scope.current = 0;
-    $scope.teacherOne = $scope.teachers[0];
-    $scope.teacherTwo = $scope.teachers[1];
-    $scope.teacherThree = $scope.teachers[2];
-    $scope.moveLeft = false;
-    $scope.moveRight = false;
+.controller('teachersController', ['$scope', 'teachersFactory', '$timeout', '$state', '$window', function($scope, teachersFactory, $timeout, $state, $window){
+//    $state.go('aboutus.teachers');
+    console.log('Teachers controller loaded!!!');
+    var teachers = teachersFactory.teachers;
+    var blocks = ['minus', 'one', 'two', 'three', 'plus'];
+    var teacherDisplay = [];
+    var counter = 0;
+    var leftCounter = 0;
+    var smCounter = 0;
+    $scope.teacherMinus = {};
+    $scope.teacherPlus = {};
+    $scope.teacherOne = {};
+    $scope.teacherTwo = {};
+    $scope.teacherThree = {};
+    $scope.teacherCur = teachers[smCounter];
+    populate();
+    
+    
+    
+    function incrementCur(){
+        if (smCounter == teachers.length-1) smCounter = 0;
+        else smCounter++;
+        $scope.teacherCur = teachers[smCounter];
+    }
+    
+    function decrementCur(){
+        if (smCounter == 0) smCounter = teachers.length-1;
+        else smCounter--;
+        $scope.teacherCur = teachers[smCounter];
+    }
+    
+    function populate(){
+        for (var i = 0; i < 5; i++){
+            teacherDisplay[i] = teachers[counter];
+            incrementCounter();
+        }
+        console.log('Counter:');
+        console.log(counter);
+        $scope.teacherMinus = teacherDisplay[blocks.indexOf('minus')];
+        $scope.teacherOne = teacherDisplay[blocks.indexOf('one')];
+        $scope.teacherTwo = teacherDisplay[blocks.indexOf('two')];
+        $scope.teacherThree = teacherDisplay[blocks.indexOf('three')];
+        $scope.teacherPlus = teacherDisplay[blocks.indexOf('plus')];
+        
+    }
+    
+    function populateTeacherByAlias(alias) {
+        if (alias == 'minus') $scope.teacherMinus = teacherDisplay[blocks.indexOf('minus')];                   
+        if (alias == 'one') $scope.teacherOne = teacherDisplay[blocks.indexOf('one')];
+        if (alias == 'two')  $scope.teacherTwo = teacherDisplay[blocks.indexOf('two')];
+        if (alias == 'three') $scope.teacherThree = teacherDisplay[blocks.indexOf('three')];
+        if (alias == 'plus') $scope.teacherPlus = teacherDisplay[blocks.indexOf('plus')];
+    }
+    
+    
+    
+    function incrementCounter(){
+        if (counter + 1 < teachers.length) counter++;
+        else counter = 0;
+    }
+    
+    function incrementLeftCounter(){
+        if (leftCounter + 1 < teachers.length) leftCounter++;
+        else leftCounter = 0;
+    }
+    
+    function decrementLeftCounter(){
+        if (leftCounter == 0) leftCounter = teachers.length - 1;
+        else --leftCounter;
+        console.log('Left counter: '+leftCounter);
+    }
     
     $scope.scrollTeacherNext = function(){
-        $scope.moveRight = true;
-        var noOfTeachers = $scope.teachers.length;
-       if($scope.current - 1 < 0) {
-           $scope.current = noOfTeachers -1;
-           $scope.teacherOne = $scope.teachers[$scope.current];
-       } else {
-          $scope.teacherOne = $scope.teachers[--$scope.current]; 
-       }
-      console.log('Teacher 1 '+$scope.teacherOne.lastName);
-       if ($scope.current + 1 >= noOfTeachers) {
-           $scope.teacherTwo = $scope.teachers[0];
-           $scope.teacherThree = $scope.teachers[1];
-           
-           $scope.moveRight = false;
-            return;
-        } else {
-           $scope.teacherTwo = $scope.teachers[$scope.current + 1];
-        }
-        console.log('Teacher 2 '+$scope.teacherTwo.lastName);
-        if ($scope.current + 2 >= noOfTeachers) {
-           $scope.teacherThree = $scope.teachers[0]; 
-        } else {
-           $scope.teacherThree = $scope.teachers[$scope.current + 2];
-        }
-       console.log('Teacher 3 '+$scope.teacherThree.lastName);
-        console.log('Current: '+$scope.current);
-        $scope.moveRight = false;
-       
-        
+       incrementCur();       
+       console.log('---------------Next scroll triggered------------')
+       blocks.push(blocks.shift());
+       console.log('Blocks:');
+       console.log(blocks);
+       teacherDisplay.shift();
+       teacherDisplay.push(teachers[counter]);
+       incrementLeftCounter();
+       incrementCounter();
+       console.log('Teacher display:');
+       console.log(teacherDisplay);
+       populateTeacherByAlias(blocks[blocks.length-1]);
     }
     
     
   $scope.scrollTeacherPrevious = function(){
-      $scope.moveLeft = true;
-      var noOfTeachers = $scope.teachers.length;
-        if (($scope.current + 1) >= noOfTeachers) {
-            $scope.current = 0;
-            $scope.teacherOne = $scope.teachers[$scope.current];
-        } else {
-            $scope.teacherOne = $scope.teachers[++$scope.current];
-        }
-         console.log('Teacher 1 '+$scope.teacherOne.lastName);
-        if ($scope.current + 1 >= noOfTeachers) {
-           $scope.teacherTwo = $scope.teachers[0];
-           $scope.teacherThree = $scope.teachers[1];
-            setTimeout(function(){
-            $scope.moveLeft = false;
-            }, 600);
-            return;
-        } else {
-           $scope.teacherTwo = $scope.teachers[$scope.current + 1];
-        }
-        console.log('Teacher 2 '+$scope.teacherTwo.lastName);
-        if ($scope.current + 2 >= noOfTeachers) {
-           $scope.teacherThree = $scope.teachers[0]; 
-        } else {
-           $scope.teacherThree = $scope.teachers[$scope.current + 2];
-        }
-        console.log('Teacher 3 '+$scope.teacherThree.lastName);
-        console.log('Current: '+$scope.current);
-      setTimeout(function(){
-            $scope.moveLeft = false;
-        }, 600);
+      decrementCur(); 
+      console.log('---------------Previous scroll triggered------------')
+      blocks.unshift(blocks.pop());
+      console.log('Blocks:');
+      console.log(blocks);
+      decrementLeftCounter();
+      teacherDisplay.pop();
+      teacherDisplay.unshift(teachers[leftCounter]);
+      populateTeacherByAlias(blocks[0]);
   }
+  
+  
+}])
+.controller('teacherDetailController',  ['$scope', 'teacher', function($scope, teacher){
+    $scope.teacher = teacher;
+    
+}])
+.controller('galleryController',  ['$scope', '$state', 'galleryFactory', function($scope, $state, galleryFactory){
+    $scope.gallery = galleryFactory.getGallery();
+}])
+
+.controller('eventDetailController',  ['$scope', 'event', function($scope, event){
+    $scope.event = event;
+    var photos = event.photos;
+    var middle = Math.ceil(photos.length/2);
+    $scope.upperPortion = photos.slice(0, middle);
+    $scope.lowerPortion = photos.slice(middle, photos.length);
+    
+}])
+
+.controller('aboutusController', ['$state', function($state){
+    $state.go('aboutus');
 }])
