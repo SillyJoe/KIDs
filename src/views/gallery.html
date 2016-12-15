@@ -3,7 +3,7 @@
     <div class="gal-event" ng-repeat="event in gallery">
         <div class="gal-description">
             <a ui-sref="event({eventId: event.id})"><h4>{{event.name}} <br><small>{{event.date}}</small></h4></a>
-            <button class="btn btn-danger btn-xs">Редагувати</button>
+            <button class="btn btn-danger btn-xs" ng-if="isAdmin()">Редагувати</button>
         </div><br>
         <div class="gal-photo" ng-repeat="photo in event.photos">
             <a href="#"><img ng-src="{{photo.ref}}" class="gal-thumbnail"></a>

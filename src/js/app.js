@@ -1,6 +1,6 @@
 
 //'use strict'
-angular.module('kiddsapp', ['kiddsapp.controllers', 'kiddsapp.services', 'ui.router'])
+angular.module('kiddsapp', ['kiddsapp.controllers', 'kiddsapp.services', 'ui.router', 'ui.bootstrap'])
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
     $stateProvider
     
@@ -60,6 +60,7 @@ angular.module('kiddsapp', ['kiddsapp.controllers', 'kiddsapp.services', 'ui.rou
             }]
         }
     })
+    
     
     
     

@@ -263,3 +263,142 @@ angular.module('kiddsapp.services', [])
         }
     }
 }])
+.factory('userFactory', ['$window', '$localStorage', function($window, $localStorage){
+    var currentUser = {};
+    var adminCode = 'KIDS'
+    var users = [
+        {
+            id: 0,
+            username: 'Roman',
+            email: 'petrodzher@gmail.com',
+            password: 'roma',
+            admin: true
+        },
+        {
+            id: 1,
+            username: 'Kate',
+            email: 'kate_ivasenko5@i.ua',
+            password: 'kate',
+            admin: true
+        },
+        {
+            id: 2,
+            username: 'John',
+            email: '',
+            password: 'john',
+            admin: false
+        }
+        
+    ]
+    
+    
+    
+    
+    
+    return {
+        addUser: function(username, password, admin) {
+            var id = users.length > 0 ? users[users.length].id+1 : 0;
+            users.push({
+                id: id,
+                username: username,
+                password: password,
+                admin: admin
+            })
+            
+        },
+        userNameExists: function(username){
+            for(var i = 0; i<users.length; i++) {
+                if (username == users[i].username) return true;
+            }
+            return false;
+        },
+        checkAdminCode: function(code){
+            if (code == adminCode) return true
+            else return false;
+        },
+        getUserById: function(userId) {
+            for(var i = 0; i<users.length; i++) {
+                if (userId == users[i].id) return users[i];
+            }
+            return false;
+        },
+        loginUser: function(user){
+            var input = user.input;
+            var password = user.password;
+            if(input.indexOf('@') > 0) {
+                for(var i = 0; i < users.length; i++){
+                    if (input == users[i].email) {
+                        if (password == users[i].password) {
+                            currentUser.username = users[i].username;
+                            currentUser.email = users[i].email;
+                            currentUser.admin = users[i].admin;
+                            $localStorage.storeObject('currentUser', currentUser);
+                            return {status: 'Успішно', loggedIn: true}
+                        } else {
+                            return {status: 'Неправильний пароль!', loggedIn: false}
+                        }
+                    }
+                }
+                return {status: 'Користувач із такою поштою не існує', loggedIn: false}
+            } else {
+                for(var i = 0; i < users.length; i++){
+                    if (input == users[i].username) {
+                        if (password == users[i].password) {
+                            currentUser.username = users[i].username;
+                            currentUser.email = users[i].email;
+                            currentUser.admin = users[i].admin;
+                            $localStorage.storeObject('currentUser', currentUser);
+                            return {status: 'Успішно', loggedIn: true}
+                        } else {
+                            return {status: 'Неправильний пароль!', loggedIn: false}
+                        }
+                    }
+                }
+                return {status: 'Користувач із таким іменем не існує', loggedIn: false}
+            }
+        },
+        updateCurrentUser: function(){
+            var storedUser = $localStorage.getObject('currentUser', '{}');
+            currentUser.username = storedUser.username;
+            currentUser.email = storedUser.email;
+            currentUser.admin = storedUser.admin;
+        },
+        currentUser: currentUser,
+        logoutUser: function(){
+            currentUser.username = '',
+                currentUser.email = '',
+                currentUser.admin = false;
+            $localStorage.replaceObject('currentUser', currentUser);
+        },
+        printCurrentUser: function(){
+            console.log('Current user:');
+            console.log(currentUser);
+        }
+    }
+    
+}])
+
+.factory('$localStorage', ['$window', function($window){
+            return {
+                store: function(key, value){
+                    $window.localStorage[key] = value;
+                },
+                
+                get: function(key, defaultValue){
+                    return $window.localStorage[key] || defaultValue;
+                },
+                
+                storeObject: function(key, value) {
+                    $window.localStorage[key] = JSON.stringify(value);
+                },
+                
+                getObject: function(key, defaultValue){
+                    return JSON.parse($window.localStorage[key] || defaultValue);
+                },
+                
+                replaceObject: function (key, newObject){
+                    $window.localStorage.setItem(key, JSON.stringify(newObject));
+                }
+                
+            }
+        }])

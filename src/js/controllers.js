@@ -1,11 +1,50 @@
 angular.module('kiddsapp.controllers', [])
-.controller('indexController', ['$scope', function($scope){
-    console.log('Index controller loaded...');
-    
+.controller('menubarController', ['$scope', '$uibModal', 'userFactory', function($scope, $uibModal, userFactory){
+    userFactory.updateCurrentUser();
+    var modalInstance;  
+    $scope.openLoginModal = function(){
+       
+        modalInstance = $uibModal.open({
+              animation: true,
+              ariaLabelledBy: 'modal-title',
+              ariaDescribedBy: 'modal-body',
+              templateUrl: 'views/login.html',
+              controller: 'loginModalController'
+        })
+    }
+   
+    $scope.currentUser = function(){
+        return userFactory.currentUser;
+    }
+    $scope.doLogOut = function () {
+        userFactory.logoutUser();
+    }
     
 }])
-.controller('newsController', ['$scope', 'newsFactory', function($scope, newsFactory){
-    
+
+.controller('indexController', ['$scope', '$state', '$uibModal', 'userFactory', '$localStorage', function($scope, $state, $uibModal, userFactory){
+    console.log('Index controller loaded...');
+    $scope.currentUser = function(){
+        return $localStorage.getObject('currentUser', {username:'', admin:false});
+    }
+       
+}])
+
+.controller('loginModalController', ['$scope', '$uibModalInstance', 'userFactory', function($scope, $uibModalInstance, userFactory){
+    $scope.closeModal = function(){
+        $uibModalInstance.dismiss('cancel');
+    }
+    $scope.user = {input:'', password: ''}
+    $scope.doLogIn = function(){
+        console.log($scope.user);
+        var result = userFactory.loginUser($scope.user);
+        console.log('Logged In: '+result.loggedIn+'; '+'Status: '+result.status);
+        userFactory.printCurrentUser();
+    }
+}])
+
+.controller('newsController', ['$scope', 'newsFactory', 'userFactory', '$localStorage', function($scope, newsFactory, userFactory, $localStorage){
+    userFactory.updateCurrentUser();
     $scope.news = newsFactory.news;    
     $scope.current = 0;
     $scope.newsOne = $scope.news[$scope.current];
@@ -17,7 +56,13 @@ angular.module('kiddsapp.controllers', [])
         photo: 'assets/news/blank.png',
         text: '',
     }
+    $scope.currentUser = function(){
+        return userFactory.currentUser;
+    }
     
+    $scope.isAdmin = function(){
+        return userFactory.currentUser.admin;
+    }
 
     
     $scope.scrollNext = function(){
@@ -196,6 +241,26 @@ angular.module('kiddsapp.controllers', [])
     
 }])
 
-.controller('aboutusController', ['$state', function($state){
+.controller('aboutusController', ['$state', 'userFactory', '$scope', function($state, userFactory, $scope){
+    userFactory.updateCurrentUser();
     $state.go('aboutus');
+    $scope.currentUser = function(){
+        return userFactory.currentUser;
+    }
+    $scope.isAdmin = function(){
+        return userFactory.currentUser.admin;
+    }
+}])
+
+.controller('loginController', [function(){
+    
+}])
+.controller('servicesController', ['$state', 'userFactory', '$scope', function($state, userFactory, $scope){
+    
+}])
+.controller('passTestController', ['$state', 'userFactory', '$scope', function($state, userFactory, $scope){
+    
+}])
+.controller('contactusController', ['$state', 'userFactory', '$scope', function($state, userFactory, $scope){
+    
 }])

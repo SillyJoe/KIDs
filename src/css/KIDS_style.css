@@ -1,5 +1,12 @@
 
 
+/*Menu bar styles*/
+#user-label a {
+    font-family: sans-serif;
+    font-size: 120%;
+}
+
+
 /*Contact us styles*/
 .address-panel {
     border: 1px solid #ddd;
