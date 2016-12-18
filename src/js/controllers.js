@@ -34,13 +34,63 @@ angular.module('kiddsapp.controllers', [])
     $scope.closeModal = function(){
         $uibModalInstance.dismiss('cancel');
     }
+    $scope.loginError = false;
+    $scope.loginErrorText = '';
+    $scope.signInError = false;
+    $scope.signInErrorText = '';
+    $scope.adminCode = {textCode:''};
+    $scope.newUser = {username:'', email:'', password:'', admin:'false'};
     $scope.user = {input:'', password: ''}
+    
     $scope.doLogIn = function(){
-        console.log($scope.user);
-        var result = userFactory.loginUser($scope.user);
+        $scope.loginError = false;
+        var result;
+        if ($scope.user != '' && $scope.user.password != '') {
+            result = userFactory.loginUser($scope.user);
+        }
+        if (!result.loggedIn) {
+            $scope.loginError = true;
+            $scope.loginErrorText = result.status;
+        } else {
+            $scope.closeModal();
+        }
         console.log('Logged In: '+result.loggedIn+'; '+'Status: '+result.status);
         userFactory.printCurrentUser();
     }
+    $scope.doSignIn = function(){
+        $scope.signInError = false;
+        if ($scope.newUser.username != '' && $scope.newUser.password != '' && $scope.newUser.email != '') {
+            if (userFactory.userNameExists($scope.newUser.username)) {
+                $scope.signInError = true;
+                $scope.signInErrorText = 'Користувач із таким іменем у нас вже є';
+                console.log('Duplicate username');
+                return;
+            }
+            if ($scope.adminCode.textCode != "") {
+                console.log('Admin code: '+$scope.adminCode.textCode)
+                if (!userFactory.checkAdminCode($scope.adminCode.textCode)) {
+                    $scope.signInError = true;
+                    $scope.signInErrorText = 'Ви вказали неправильний код для отримання прав адміністратора';
+                    console.log('Invalid admincode');
+                    return;
+                } else {
+                    $scope.newUser.admin = true;
+                    userFactory.addUser($scope.newUser);
+                    console.log('New admin user successfully registered!');
+                    console.log($scope.newUser);
+                    userFactory.printAllUsers();
+                    return;
+                }
+            }
+            console.log('Admin code: '+$scope.adminCode)
+            userFactory.addUser($scope.newUser);
+            console.log('New user successfully registered!');
+            console.log($scope.newUser);
+            userFactory.printAllUsers();
+            
+        }
+    }
+    
 }])
 
 .controller('newsController', ['$scope', 'newsFactory', 'userFactory', '$localStorage', function($scope, newsFactory, userFactory, $localStorage){

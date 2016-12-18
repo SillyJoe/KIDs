@@ -265,7 +265,8 @@ angular.module('kiddsapp.services', [])
 }])
 .factory('userFactory', ['$window', '$localStorage', function($window, $localStorage){
     var currentUser = {};
-    var adminCode = 'KIDS'
+    var adminCode = 'KIDS';
+    var isLogged = false;
     var users = [
         {
             id: 0,
@@ -289,22 +290,18 @@ angular.module('kiddsapp.services', [])
             admin: false
         }
         
-    ]
+    ];
+    
     
     
     
     
     
     return {
-        addUser: function(username, password, admin) {
-            var id = users.length > 0 ? users[users.length].id+1 : 0;
-            users.push({
-                id: id,
-                username: username,
-                password: password,
-                admin: admin
-            })
-            
+        addUser: function(newUser) {
+            var id = users.length > 0 ? users[users.length-1].id+1 : 0;
+            newUser.id = id;
+            users.push(newUser);  
         },
         userNameExists: function(username){
             for(var i = 0; i<users.length; i++) {
@@ -329,6 +326,7 @@ angular.module('kiddsapp.services', [])
                 for(var i = 0; i < users.length; i++){
                     if (input == users[i].email) {
                         if (password == users[i].password) {
+                            isLogged = true;
                             currentUser.username = users[i].username;
                             currentUser.email = users[i].email;
                             currentUser.admin = users[i].admin;
@@ -344,6 +342,7 @@ angular.module('kiddsapp.services', [])
                 for(var i = 0; i < users.length; i++){
                     if (input == users[i].username) {
                         if (password == users[i].password) {
+                            isLogged = true;
                             currentUser.username = users[i].username;
                             currentUser.email = users[i].email;
                             currentUser.admin = users[i].admin;
@@ -359,12 +358,17 @@ angular.module('kiddsapp.services', [])
         },
         updateCurrentUser: function(){
             var storedUser = $localStorage.getObject('currentUser', '{}');
-            currentUser.username = storedUser.username;
-            currentUser.email = storedUser.email;
-            currentUser.admin = storedUser.admin;
+            if (storedUser.username != '') {
+                isLogged = true;
+                currentUser.username = storedUser.username;
+                currentUser.email = storedUser.email;
+                currentUser.admin = storedUser.admin; 
+            }
+            
         },
         currentUser: currentUser,
         logoutUser: function(){
+            isLogged = false;
             currentUser.username = '',
                 currentUser.email = '',
                 currentUser.admin = false;
@@ -373,6 +377,12 @@ angular.module('kiddsapp.services', [])
         printCurrentUser: function(){
             console.log('Current user:');
             console.log(currentUser);
+        },
+        isLogged: isLogged,
+        printAllUsers: function() {
+            for(var i = 0; i < users.length; i++){
+                console.log(users[i]);
+            }
         }
     }
     

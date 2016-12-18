@@ -1,4 +1,13 @@
 
+/*General styles*/
+
+.form-error-message {
+    color: firebrick;
+}
+
+.form-warning-message {
+    color: #CC6600;
+}
 
 /*Menu bar styles*/
 #user-label a {
