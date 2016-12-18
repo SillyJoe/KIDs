@@ -22,10 +22,15 @@ angular.module('kiddsapp.controllers', [])
     
 }])
 
-.controller('indexController', ['$scope', '$state', '$uibModal', 'userFactory', '$localStorage', function($scope, $state, $uibModal, userFactory){
+.controller('indexController', ['$scope', '$state', '$uibModal', 'userFactory', '$anchorScroll', '$location', function($scope, $state, $uibModal, userFactory, $anchorScroll, $location){
     console.log('Index controller loaded...');
     $scope.currentUser = function(){
         return $localStorage.getObject('currentUser', {username:'', admin:false});
+    }
+    
+    $scope.scrollToAnchor = function(anchor){
+        $location.hash(anchor);
+        $anchorScroll();
     }
        
 }])
