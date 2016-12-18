@@ -412,6 +412,7 @@ td strong {
 .news_text {
         max-height: 195px;
         overflow: hidden;
+        margin-bottom: 10px;
     }
 
 

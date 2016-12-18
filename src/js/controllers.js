@@ -66,6 +66,12 @@ angular.module('kiddsapp.controllers', [])
                 console.log('Duplicate username');
                 return;
             }
+            if (userFactory.emailExists($scope.newUser.email)) {
+                $scope.signInError = true;
+                $scope.signInErrorText = 'Користувач із такою поштою у нас вже є';
+                console.log('Duplicate email');
+                return;
+            }
             if ($scope.adminCode.textCode != "") {
                 console.log('Admin code: '+$scope.adminCode.textCode)
                 if (!userFactory.checkAdminCode($scope.adminCode.textCode)) {
@@ -93,9 +99,9 @@ angular.module('kiddsapp.controllers', [])
     
 }])
 
-.controller('newsController', ['$scope', 'newsFactory', 'userFactory', '$localStorage', function($scope, newsFactory, userFactory, $localStorage){
+.controller('newsController', ['$scope', 'newsFactory', 'userFactory', '$localStorage', '$uibModal', function($scope, newsFactory, userFactory, $localStorage, $uibModal){
     userFactory.updateCurrentUser();
-    $scope.news = newsFactory.news;    
+    $scope.news = newsFactory.news;  
     $scope.current = 0;
     $scope.newsOne = $scope.news[$scope.current];
     $scope.newsTwo = $scope.news[$scope.current+1];
@@ -106,6 +112,47 @@ angular.module('kiddsapp.controllers', [])
         photo: 'assets/news/blank.png',
         text: '',
     }
+    $scope.detailedIndex = 0;
+    $scope.detailedNews = {};
+    var newsAddModalInstance;
+    
+    $scope.openNewsAddModal = function(){
+       var newsAddModalInstance = $uibModal.open({
+              animation: true,
+              templateUrl: 'views/addnews.html',
+              controller: 'newsAddModalController'
+        });
+        newsAddModalInstance.result.then(function(newsToAdd){
+            console.log('Adding news:');
+            console.log(newsToAdd);
+            newsFactory.addNews(newsToAdd);
+        }, function(message){
+            console.log(message);
+        })
+    }
+    
+    
+    
+    $scope.showDetailed = function(index){
+        if (index == 1) {
+            $scope.detailedNews = $scope.newsOne;
+            $scope.detailedIndex = 1;
+        }
+        if (index == 2) {
+            $scope.detailedNews = $scope.newsTwo;
+            $scope.detailedIndex = 2;
+        }
+        if (index == 3) {
+            $scope.detailedNews = $scope.newsThree;
+            $scope.detailedIndex = 3;
+        }
+    }
+    $scope.resetDetailed = function(){
+         $scope.detailedIndex = 0;
+         $scope.detailedNews = {};
+    }
+    
+    
     $scope.currentUser = function(){
         return userFactory.currentUser;
     }
@@ -170,6 +217,16 @@ angular.module('kiddsapp.controllers', [])
         
     }
     
+}])
+
+.controller('newsAddModalController', ['$scope', '$uibModalInstance', function($scope, $uibModalInstance){
+    $scope.newsToAdd = {title:'', author:'', position: '', date: '', photo:'', text:''};
+    $scope.closeModal = function(){
+        $uibModalInstance.dismiss('Dismissed by user');
+    }
+    $scope.saveNews = function(){
+        $uibModalInstance.close($scope.newsToAdd);
+    }
 }])
 
 .controller('teachersController', ['$scope', 'teachersFactory', '$timeout', '$state', '$window', function($scope, teachersFactory, $timeout, $state, $window){
