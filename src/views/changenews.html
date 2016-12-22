@@ -1,0 +1,54 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h3 class="modal-title">Редагувати новину <button type="button" class="close" data-dismiss="modal" ng-click="dismissChanges()" aria-label="Close"><span aria-hidden="true">&times;</span></button></h3>
+    </div>
+    <div class="modal-body">
+<!--                  News add form-->
+
+                  <form novalidate name="newsAddForm">
+                    <div class="form-group row">
+                      <label for="title" class="col-xs-2 col-form-label">Заголовок:</label>
+                      <div class="col-xs-10">
+                        <input class="form-control" type="text" id="title" name="title" required ng-model="newsToChange.title">
+                      </div>
+                    </div>
+                      <div class="form-group row">
+                      <label for="title" class="col-xs-2 col-form-label">Фото:</label>
+                      <div class="col-xs-10">
+                        <input type="file" id="photo" name="photo" required ng-model="newsToChange.photo">
+                      </div>
+                    </div>
+                      <div class="form-group row">
+                      <label for="title" class="col-xs-2 col-form-label">Автор:</label>
+                      <div class="col-xs-10">
+                        <input class="form-control" type="text" id="author" name="author" required ng-model="newsToChange.author">
+                      </div>
+                    </div>
+                      <div class="form-group row">
+                      <label for="title" class="col-xs-2 col-form-label">Посада автора:</label>
+                      <div class="col-xs-10">
+                        <input class="form-control" type="text" id="position" name="position" ng-model="newsToChange.position">
+                      </div>
+                    </div>
+                      <div class="form-group row">
+                      <label for="title" class="col-xs-2 col-form-label">Дата:</label>
+                      <div class="col-xs-10">
+                        <input class="form-control" type="text" id="date" name="date" ng-model="newsToChange.date">
+                      </div>
+                    </div>
+                      <div class="form-group row">
+                        <label for="text" class="col-xs-2 col-form-label">Новина</label>
+                          <div class="col-xs-10">
+                            <textarea class="form-control" id="text" rows="15" ng-model="newsToChange.text"></textarea>
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-xs-offset-4 col-xs-6">
+                          <button type="submit" class="btn btn-primary" ng-click="saveChanges()">Зберегти</button>
+                            <button type="button" class="btn btn-danger" ng-click="deleteNews()">Видалити новину</button>
+                        </div>
+                      </div>
+                  </form>
+<!--                  End of news add form-->
+    </div>
+</div>

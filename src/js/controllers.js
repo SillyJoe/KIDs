@@ -106,17 +106,22 @@ angular.module('kiddsapp.controllers', [])
 
 .controller('newsController', ['$scope', 'newsFactory', 'userFactory', '$localStorage', '$uibModal', function($scope, newsFactory, userFactory, $localStorage, $uibModal){
     userFactory.updateCurrentUser();
-    $scope.news = newsFactory.news;  
-    $scope.current = 0;
-    $scope.newsOne = $scope.news[$scope.current];
-    $scope.newsTwo = $scope.news[$scope.current+1];
-    $scope.newsThree = $scope.news[$scope.current+2];
     $scope.blankNews = {
         title: '',
         date: '',
         photo: 'assets/news/blank.png',
         text: '',
     }
+    $scope.current = 0;
+    $scope.initialize = function(){
+        $scope.news = newsFactory.news;  
+        $scope.newsOne = $scope.news[$scope.current] || $scope.blankNews;
+        $scope.newsTwo = $scope.news[$scope.current+1] || $scope.blankNews;
+        $scope.newsThree = $scope.news[$scope.current+2] || $scope.blankNews;
+        if ($scope.detailedIndex > 0) $scope.detailedNews = newsFactory.getNewsById($scope.detailedNews.id);
+    }
+    
+    $scope.initialize();    
     $scope.detailedIndex = 0;
     $scope.detailedNews = {};
     var newsAddModalInstance;
@@ -131,9 +136,48 @@ angular.module('kiddsapp.controllers', [])
             console.log('Adding news:');
             console.log(newsToAdd);
             newsFactory.addNews(newsToAdd);
+            
         }, function(message){
             console.log(message);
         })
+    }
+    
+    $scope.openNewsChangeModal = function(newsId) {
+        var newsChangeModalInstance = $uibModal.open(
+            {
+                animation: true,
+                templateUrl: 'views/changenews.html',
+                controller: 'newsChangeModalController',
+                resolve: {
+                    newsToChange: ['newsFactory', function(newsFactory){
+                        var nt = newsFactory.getNewsById(newsId);
+                        var newsToChange = {};
+                        newsToChange.id = nt.id;
+                         newsToChange.title = nt.title;
+                        newsToChange.author = nt.author;
+                        newsToChange.date = nt.date;
+                        newsToChange.position = nt.position;
+                        newsToChange.text = nt.text;
+                         newsToChange.photo = nt.photo;
+                        return newsToChange;
+                    }]
+                }
+            });
+    
+        newsChangeModalInstance.result.then(function(newNews){
+            if (newNews.delete) {
+                 console.log('Deleting news with id: '+newNews.id);
+                newsFactory.deleteNews(newNews.id);
+                $scope.initialize();
+                return;
+            }
+            console.log('Changing news with id: '+newNews.id);
+            newsFactory.changeNews(newNews.id, newNews);
+            $scope.initialize();
+        }, function(message){
+            console.log(message);
+        })
+        
     }
     
     
@@ -169,29 +213,19 @@ angular.module('kiddsapp.controllers', [])
     
     $scope.scrollNext = function(){
         console.log('scrollNext clicked');
+        console.log('News one title: '+$scope.newsOne.title);
         var newsSize = $scope.news.length;
         console.log('News length: '+$scope.news.length);
         
         if ($scope.current + 3 >= newsSize) {
             $scope.current = 0;
-            $scope.newsOne = $scope.news[$scope.current];
+            $scope.newsOne = $scope.news[$scope.current] || $scope.blankNews;
         } else {
             $scope.current += 3;
-            $scope.newsOne = $scope.news[$scope.current];
+            $scope.newsOne = $scope.news[$scope.current] || $scope.blankNews;
         }
-        
-        if ($scope.current + 1 >= newsSize) {
-            $scope.newsTwo =  $scope.blankNews;
-        } else {
-            $scope.newsTwo = $scope.news[$scope.current+1];
-        }
-        
-        if ($scope.current + 2 >= newsSize) {
-            $scope.newsThree =  $scope.blankNews;
-        } else {
-            $scope.newsThree = $scope.news[$scope.current+2];
-        }
-        
+        $scope.newsTwo = $scope.news[$scope.current+1] || $scope.blankNews;
+        $scope.newsThree = $scope.news[$scope.current+2] || $scope.blankNews;  
     }
     
     $scope.scrollPrevious = function(){
@@ -200,27 +234,18 @@ angular.module('kiddsapp.controllers', [])
         
         if ($scope.current - 3 <= 0) {
             $scope.current = 0;
-            $scope.newsOne = $scope.news[$scope.current];
+            $scope.newsOne = $scope.news[$scope.current] || $scope.blankNews;
         } else {
             $scope.current -= 3;
-            $scope.newsOne = $scope.news[$scope.current];
+            $scope.newsOne = $scope.news[$scope.current] || $scope.blankNews;
         }
         console.log('current: '+$scope.current);
         console.log('current title: '+$scope.news[$scope.current].title);
-        
-        
-            $scope.newsTwo = $scope.news[$scope.current+1];
-        
-            $scope.newsThree = $scope.news[$scope.current+2];
+            $scope.newsTwo = $scope.news[$scope.current+1] || $scope.blankNews;
+            $scope.newsThree = $scope.news[$scope.current+2] || $scope.blankNews;
         
     }
     
-    $scope.initialize = function(){
-        
-        console.log('Loaded news:');
-        console.log($scope.newsOne.title); 
-        
-    }
     
 }])
 
@@ -234,8 +259,28 @@ angular.module('kiddsapp.controllers', [])
     }
 }])
 
+.controller('newsChangeModalController', ['$scope', '$uibModalInstance', 'newsToChange', function($scope, $uibModalInstance, newsToChange){
+    $scope.newsToChange = newsToChange;
+    $scope.oldNews = newsToChange;
+    console.log($scope.newsToChange);
+    $scope.saveChanges = function(){
+        $uibModalInstance.close($scope.newsToChange);
+    }
+    $scope.dismissChanges = function(){
+        $scope.newsToChange.title = $scope.oldNews.title;
+        $scope.newsToChange.author = $scope.oldNews.author;
+        $uibModalInstance.dismiss('Dismissed changes by user');
+    }
+    $scope.deleteNews = function() {
+        $scope.newsToChange.delete = true;
+        $uibModalInstance.close($scope.newsToChange);
+    }
+}])
+
 .controller('teachersController', ['$scope', 'teachersFactory', '$timeout', '$state', '$window', function($scope, teachersFactory, $timeout, $state, $window){
 //    $state.go('aboutus.teachers');
+    
+//    Teacher scroll functionality 
     console.log('Teachers controller loaded!!!');
     var teachers = teachersFactory.teachers;
     var blocks = ['minus', 'one', 'two', 'three', 'plus'];
@@ -333,7 +378,16 @@ angular.module('kiddsapp.controllers', [])
       teacherDisplay.unshift(teachers[leftCounter]);
       populateTeacherByAlias(blocks[0]);
   }
+  //    End of teacher scroll functionality 
   
+  
+  
+//  Edit teachers functionality
+    $scope.teachers = teachersFactory.teachers;
+    $scope.deleteTeacher = function(teacherId) {
+        teachersFactory.deleteTeacher(teacherId);
+    }
+//  End of edit teachers functionality
   
 }])
 .controller('teacherDetailController',  ['$scope', 'teacher', function($scope, teacher){

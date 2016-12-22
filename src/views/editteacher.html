@@ -1,0 +1,31 @@
+<!--                  Edit teachers modal-->
+<div class="modal-content" ng-controller="teachersController">
+    <div class="modal-header">
+        <h3 class="modal-title">Редагувати вчителів <button type="button" class="close" data-dismiss="modal" ng-click="closeModal()" aria-label="Close"><span aria-hidden="true">&times;</span></button></h3>
+    </div>
+    <div class="modal-body" ng-repeat="teacher in teachers">
+        <div class="media">
+          <a class="media-left" href="#">
+            <img class="media-object" style="max-width: 150px" ng-src="{{teacher.photo}}" alt="teacher's photo">
+          </a>
+          <div class="media-body">
+                <h4 class="media-heading">{{teacher.lastName+' '+teacher.firstName}}, <small>{{teacher.position}}</small></h4>
+                {{teacher.description}} <br>
+                <button type="button" class="btn btn-danger" ng-click="deleteTeacher(teacher.id)">Видалити</button>
+                <button type="button" class="btn btn-default">Редагувати</button>
+          </div>
+             
+        </div>
+
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+        <div class="col-xs-offset-5 col-xs-4">
+            <button type="button" class="btn btn-primary">Додати вчителя</button>
+        </div>
+    </div>
+    </div>
+    
+</div>
+                  
+<!--                  End of Edit teachers modal-->

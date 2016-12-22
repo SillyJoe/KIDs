@@ -142,6 +142,8 @@ td strong {
 
 /*End of gallery styles*/
 
+
+
 #logo {
     max-width: 100%;
     margin-bottom: 3%;
@@ -155,6 +157,10 @@ td strong {
 }
 
 /*About us styles*/
+.button-row {
+    min-height: 50px;
+}
+
 .return-button {
     position: absolute;
         top: 10px;

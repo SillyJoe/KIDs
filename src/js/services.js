@@ -45,16 +45,25 @@ angular.module('kiddsapp.services', [])
     
     return {
         news : news,
+        getNewsById: function(newsId){
+            for (var i = 0; i < news.length; i++){
+                if (news[i].id == newsId) return news[i];
+            }
+        },
         deleteNews: function(id) {
-            news.splice(id, 1);
+            for (var i = 0; i < news.length; i++){
+                if (news[i].id == id) news.splice(i, 1);
+            }
         },
         addNews: function(newsToAdd){
-            var id = news[0].id+1;
+            var id = news.length > 0 ? news[0].id+1 : 0;
             newsToAdd.id = id;
             news.unshift(newsToAdd);
         },
         changeNews: function(id, newNews) {
-            news.splice(id, 1, newNews)
+            for (var i = 0; i < news.length; i++){
+                if (news[i].id == id) {news.splice(i, 1, newNews); return}
+            }
         },
         logNews : function(){
             console.log(news);
@@ -95,6 +104,13 @@ angular.module('kiddsapp.services', [])
             for (var i = 0; i < teachers.length; i++) {
                 if (teachers[i].id == teacherId) {
                     return teachers[i];
+                }
+            }
+        },
+        deleteTeacher: function(teacherId){
+            for (var i = 0; i < teachers.length; i++) {
+                if (teachers[i].id == teacherId) {
+                    teachers.splice(i, 1);
                 }
             }
         }

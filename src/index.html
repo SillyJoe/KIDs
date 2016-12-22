@@ -115,7 +115,7 @@
             <i class="fa fa-angle-double-left"></i>
         </div>
         </div>
-        <div class="col-xs-12 col-md-10 news-block" ng-init="initialize()">
+        <div class="col-xs-12 col-md-10 news-block">
 <!--            Detailed news-->
          <div class="row" ng-if="detailedIndex != 0">
              <div class="news-detail-image">
@@ -125,6 +125,7 @@
               <h4><small><date>{{detailedNews.date}}</date></small></h4>
               <h5 style="color:#a24d47">Автор: {{detailedNews.author}}, <small>{{detailedNews.position}}</small></h5>
               <p>{{detailedNews.text}}</p>
+              <button class="btn btn-danger" ng-if="isAdmin()" ng-click="openNewsChangeModal(detailedNews.id)">Редагувати</button>
               <button class="btn btn-primary" ng-click="resetDetailed()">Назад до новин</button>
          </div>
 <!--            End of detailed news-->
@@ -138,7 +139,7 @@
                     <p>{{newsOne.text}}</p>
                   </div>
                   <div ng-if="newsOne.text != ''">
-                    <button class="btn btn-primary" ng-click="showDetailed(1)">Більше...</button><button class="btn btn-danger" ng-if="isAdmin()">Редагувати</button>
+                    <button class="btn btn-primary" ng-click="showDetailed(1)">Більше...</button><button class="btn btn-danger" ng-if="isAdmin()" ng-click="openNewsChangeModal(newsOne.id)">Редагувати</button>
                   </div>
               </div>
               <div class="col-md-6 col-xs-12 news_image" ng-show="newsOne.photo !=''">
@@ -157,7 +158,7 @@
                     <p>{{newsTwo.text}}</p>
                   </div>
                     <div ng-if="newsTwo.text != ''">
-                    <button class="btn btn-primary" ng-click="showDetailed(2)">Більше...</button><button class="btn btn-danger" ng-if="isAdmin()">Редагувати</button>
+                    <button class="btn btn-primary" ng-click="showDetailed(2)">Більше...</button><button class="btn btn-danger" ng-if="isAdmin()" ng-click="openNewsChangeModal(newsTwo.id)">Редагувати</button>
                   </div>
               </div> 
           </div>
@@ -170,7 +171,7 @@
                     <p>{{newsThree.text}}</p>
                  </div>
                     <div ng-if="newsThree.text != ''">
-                    <button class="btn btn-primary" ng-click="showDetailed(3)">Більше...</button><button class="btn btn-danger" ng-if="isAdmin()">Редагувати</button>
+                    <button class="btn btn-primary" ng-click="showDetailed(3)">Більше...</button><button class="btn btn-danger" ng-if="isAdmin()" ng-click="openNewsChangeModal(newsThree.id)">Редагувати</button>
                   </div>
               </div>
               <div class="col-md-6 col-xs-12 news_image" ng-show="newsThree.photo !=''">
