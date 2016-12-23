@@ -277,12 +277,13 @@ angular.module('kiddsapp.controllers', [])
     }
 }])
 
-.controller('teachersController', ['$scope', 'teachersFactory', '$timeout', '$state', '$window', function($scope, teachersFactory, $timeout, $state, $window){
+.controller('teachersController', ['$scope', 'teachersFactory', '$timeout', '$state', '$window', '$uibModal', function($scope, teachersFactory, $timeout, $state, $window, $uibModal){
 //    $state.go('aboutus.teachers');
     
 //    Teacher scroll functionality 
+    
     console.log('Teachers controller loaded!!!');
-    var teachers = teachersFactory.teachers;
+    var teachers = [];
     var blocks = ['minus', 'one', 'two', 'three', 'plus'];
     var teacherDisplay = [];
     var counter = 0;
@@ -294,8 +295,18 @@ angular.module('kiddsapp.controllers', [])
     $scope.teacherTwo = {};
     $scope.teacherThree = {};
     $scope.teacherCur = teachers[smCounter];
-    populate();
+    initialize()
     
+    
+   function initialize() {
+        counter = 0;
+        leftCounter = 0;
+        smCounter = 0;
+        teachers = teachersFactory.teachers;
+        $scope.teacherCur = teachers[smCounter];
+        teacherDisplay = [];
+        populate();
+    }
     
     
     function incrementCur(){
@@ -383,13 +394,59 @@ angular.module('kiddsapp.controllers', [])
   
   
 //  Edit teachers functionality
-    $scope.teachers = teachersFactory.teachers;
-    $scope.deleteTeacher = function(teacherId) {
-        teachersFactory.deleteTeacher(teacherId);
+    $scope.openTeacherEditModal = function(){
+        var teacherEditModalIstance = $uibModal.open({
+            templateUrl: 'views/editteacher.html',
+            controller: 'teacherEditModalController',
+            resolve: {
+                teachers: ['teachersFactory', function(teachersFactory){
+                    var teacherSnapShot = teachersFactory.teachers.slice(0, teachersFactory.teachers.length);
+                    return teacherSnapShot;
+                }]
+            }
+        });
+        teacherEditModalIstance.result.then(function(newTeachers){
+            console.log('Replacing teachers with:');
+            console.log(newTeachers);
+            teachersFactory.replaceTeachers(newTeachers);
+            console.log(teachersFactory.teachers);
+            initialize();
+        }, function(message){
+            console.log(message);
+        });
     }
 //  End of edit teachers functionality
   
 }])
+
+.controller('teacherEditModalController', ['teachers', '$uibModalInstance', '$scope', function(teachers, $uibModalInstance, $scope){
+    $scope.teachers = teachers;
+    $scope.editedTeacher = {};
+    $scope.editIndex = -1;
+    
+    $scope.closeModal = function(){
+        $uibModalInstance.dismiss('Teacher edit dismissed by user');
+    }
+    $scope.deleteTeacher = function(teacherId){
+        for(var i = 0; i < $scope.teachers.length; i++){
+           if ($scope.teachers[i].id == teacherId) $scope.teachers.splice(i, 1);
+        }
+    }
+    $scope.saveTeacherChangesById = function(teacherId, newTeacher){
+        for(var i = 0; i < $scope.teachers.length; i++){
+           if ($scope.teachers[i].id == teacherId) $scope.teachers.splice(i, 1, newTeacher);
+        }
+    }
+    $scope.addNewTeacher = function(newTeacher){
+        var id = $scope.teachers.length > 0 ? $scope.teachers[$scope.teachers.length-1].id + 1 : 0;
+        newTeacher.id = id;
+        $scope.teachers.push(newTeacher);
+    }
+    $scope.saveChanges = function() {
+        $uibModalInstance.close($scope.teachers);
+    }
+}])
+
 .controller('teacherDetailController',  ['$scope', 'teacher', function($scope, teacher){
     $scope.teacher = teacher;
     

@@ -1,10 +1,10 @@
 <!--                  Edit teachers modal-->
-<div class="modal-content" ng-controller="teachersController">
+<div class="modal-content">
     <div class="modal-header">
         <h3 class="modal-title">Редагувати вчителів <button type="button" class="close" data-dismiss="modal" ng-click="closeModal()" aria-label="Close"><span aria-hidden="true">&times;</span></button></h3>
     </div>
     <div class="modal-body" ng-repeat="teacher in teachers">
-        <div class="media">
+        <div class="media" ng-if="editIndex != teacher.id">
           <a class="media-left" href="#">
             <img class="media-object" style="max-width: 150px" ng-src="{{teacher.photo}}" alt="teacher's photo">
           </a>
@@ -16,12 +16,36 @@
           </div>
              
         </div>
+<!--        Teacher edit form-->
+        <div ng-if="editIndex == teacher.id">
+        <form name="teacherEditForm" novalidate>
+        <div class="form-group row">
+          <label for="title" class="col-xs-2 col-form-label">Заголовок:</label>
+          <div class="col-xs-10">
+            <input class="form-control" type="text" id="title" name="title" required ng-model="newsToChange.title">
+          </div>
+        </div>
+      <div class="form-group row">
+          <label for="title" class="col-xs-2 col-form-label">Фото:</label>
+          <div class="col-xs-10">
+            <input type="file" id="photo" name="photo" required ng-model="newsToChange.photo">
+          </div>
+        </div>
+        </form>
+        </div>
+<!--        End of teacher form-->
 
+    </div>
+    <div class="row" style="margin-top: 10px; margin-bottom: 25px;">
+        <div class="col-xs-4">
+            <button type="button" class="btn btn-success btn-sm">Додати вчителя</button>
+        </div>
     </div>
     <div class="panel-footer">
         <div class="row">
-        <div class="col-xs-offset-5 col-xs-4">
-            <button type="button" class="btn btn-primary">Додати вчителя</button>
+        <div class="col-xs-offset-3 col-xs-6">
+            <button type="button" class="btn btn-primary" ng-click="saveChanges()">Зберегти зміни</button>
+            <button type="button" class="btn btn-primary">Скасувати</button>
         </div>
     </div>
     </div>

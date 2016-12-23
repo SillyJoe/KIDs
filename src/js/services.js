@@ -100,6 +100,15 @@ angular.module('kiddsapp.services', [])
     ]
     return {
         teachers: teachers,
+        replaceTeachers: function(newTeachers) {
+            var l = teachers.length;
+            for (var i = 0; i <= l; i++) {
+                teachers.pop();
+            }
+            for (var i = 0; i < newTeachers.length; i++) {
+                teachers.push(newTeachers[i]);
+            }
+        },
         getTeacherById: function(teacherId){
             for (var i = 0; i < teachers.length; i++) {
                 if (teachers[i].id == teacherId) {
