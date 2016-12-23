@@ -422,7 +422,68 @@ angular.module('kiddsapp.controllers', [])
 .controller('teacherEditModalController', ['teachers', '$uibModalInstance', '$scope', function(teachers, $uibModalInstance, $scope){
     $scope.teachers = teachers;
     $scope.editedTeacher = {};
+    $scope.teacherForAdd = {firstName: '', lastName: '', position: '', photo: '', description: ''};
+    $scope.showAddTeacherForm = false;
     $scope.editIndex = -1;
+    
+    $scope.openAddTeacherForm = function(){
+        $scope.showAddTeacherForm = true;
+    }
+    
+    $scope.addTeacher = function(){
+        var id = $scope.teachers.length > 0 ? $scope.teachers[$scope.teachers.length-1] + 1 : 0;
+         $scope.teacherForAdd.id = id;
+         $scope.teachers.push($scope.teacherForAdd);
+         $scope.teacherForAdd = {firstName: '', lastName: '', position: '', photo: '', description: ''};
+         $scope.showAddTeacherForm = false;
+    }
+    
+    $scope.cancelTeacherAdd = function(){
+        $scope.showAddTeacherForm = false;
+        $scope.teacherForAdd = {firstName: '', lastName: '', position: '', photo: '', description: ''};
+    }
+    
+    $scope.openTeacherEditForm  = function(teacherId) {
+        
+        $scope.editIndex = teacherId;
+         for(var i = 0; i < $scope.teachers.length; i++){
+             
+           if ($scope.teachers[i].id == teacherId) {
+               console.log('Preparing teacher information...');
+               $scope.editedTeacher.id = $scope.teachers[i].id;
+               $scope.editedTeacher.firstName = $scope.teachers[i].firstName;
+               $scope.editedTeacher.lastName = $scope.teachers[i].lastName;
+               $scope.editedTeacher.photo = $scope.teachers[i].photo;
+               $scope.editedTeacher.position = $scope.teachers[i].position;
+               $scope.editedTeacher.description = $scope.teachers[i].description;
+               return;
+           }
+             console.log('Opened teacher editing form for:');
+             console.log($scope.editedTeacher);
+            
+        }
+    }
+    
+    $scope.saveTeacherChanges = function(teacherId){
+         for(var i = 0; i < $scope.teachers.length; i++){
+           if ($scope.teachers[i].id == teacherId) {
+               $scope.teachers[i].firstName = $scope.editedTeacher.firstName;
+               $scope.teachers[i].lastName = $scope.editedTeacher.lastName;
+               $scope.teachers[i].photo = $scope.editedTeacher.photo;
+               $scope.teachers[i].position = $scope.editedTeacher.position;
+               $scope.teachers[i].description = $scope.editedTeacher.description;
+               console.log('Information about teacher updated. New teacher:');
+               console.log($scope.teachers[i]);
+           }
+        }
+        $scope.editedTeacher = {};
+        $scope.editIndex = -1;
+    }
+    
+    $scope.cancelTeacherChanges = function(teacherId){
+        $scope.editedTeacher = {};
+        $scope.editIndex = -1;
+    }
     
     $scope.closeModal = function(){
         $uibModalInstance.dismiss('Teacher edit dismissed by user');
@@ -437,11 +498,7 @@ angular.module('kiddsapp.controllers', [])
            if ($scope.teachers[i].id == teacherId) $scope.teachers.splice(i, 1, newTeacher);
         }
     }
-    $scope.addNewTeacher = function(newTeacher){
-        var id = $scope.teachers.length > 0 ? $scope.teachers[$scope.teachers.length-1].id + 1 : 0;
-        newTeacher.id = id;
-        $scope.teachers.push(newTeacher);
-    }
+    
     $scope.saveChanges = function() {
         $uibModalInstance.close($scope.teachers);
     }
