@@ -1,7 +1,7 @@
 <!--                  Edit teachers modal-->
 <div class="modal-content">
     <div class="modal-header">
-        <h3 class="modal-title">Edit teachers <button type="button" class="close" data-dismiss="modal" ng-click="closeModal()" aria-label="Close"><span aria-hidden="true">&times;</span></button></h3>
+        <h3 class="modal-title">Редагувати вчителів <button type="button" class="close" data-dismiss="modal" ng-click="closeModal()" aria-label="Close"><span aria-hidden="true">&times;</span></button></h3>
     </div>
     <div class="modal-body" ng-repeat="teacher in teachers">
         <div class="media" ng-if="editIndex != teacher.id">
@@ -11,8 +11,8 @@
           <div class="media-body">
                 <h4 class="media-heading">{{teacher.lastName+' '+teacher.firstName}}, <small>{{teacher.position}}</small></h4>
                 {{teacher.description}} <br>
-                <button type="button" class="btn btn-danger btn-xs" ng-click="deleteTeacher(teacher.id)">Delete</button>
-                <button type="button" class="btn btn-default btn-xs" ng-click="openTeacherEditForm(teacher.id)">Edit</button>
+                <button type="button" class="btn btn-danger btn-xs" ng-click="deleteTeacher(teacher.id)">Видалити</button>
+                <button type="button" class="btn btn-default btn-xs" ng-click="openTeacherEditForm(teacher.id)">Редагувати</button>
           </div>
              
         </div>
@@ -20,7 +20,7 @@
         <div ng-if="editIndex == teacher.id" style="background-color: rgba(127, 127, 128, 0.3); padding: 15px;">
         <form name="teacherEditForm" novalidate>
         <div class="form-group row">
-          <label for="title" class="col-xs-2 col-form-label">Last name:</label>
+          <label for="title" class="col-xs-2 col-form-label">Прізвище:</label>
           <div class="col-xs-10">
             <input class="form-control" type="text" id="title" name="title" required ng-model="editedTeacher.lastName">
           </div>
@@ -32,27 +32,27 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="title" class="col-xs-2 col-form-label">Position:</label>
+          <label for="title" class="col-xs-2 col-form-label">Посада:</label>
           <div class="col-xs-10">
             <input class="form-control" type="text" id="title" name="title" required ng-model="editedTeacher.position">
           </div>
         </div>
       <div class="form-group row">
-          <label for="title" class="col-xs-2 col-form-label">Photo:</label>
+          <label for="title" class="col-xs-2 col-form-label">Фото:</label>
           <div class="col-xs-10">
             <input type="file" id="photo" name="photo" required ng-model="editedTeacher.photo">
           </div>
         </div>
             <div class="form-group row">
-                <label for="text" class="col-xs-2 col-form-label">Short info: </label>
+                <label for="text" class="col-xs-2 col-form-label">Коротка інформація: </label>
                   <div class="col-xs-10">
                     <textarea class="form-control" id="text" rows="4" ng-model="editedTeacher.description"></textarea>
                   </div>
               </div>
             <div class="row">
                 <div class="col-xs-offset-3 col-xs-6">
-                    <button type="button" class="btn btn-primary btn-xs" ng-click="saveTeacherChanges(teacher.id)">Save changes</button>
-                    <button type="button" class="btn btn-info btn-xs" ng-click="cancelTeacherChanges()">Cancel</button>
+                    <button type="button" class="btn btn-primary btn-xs" ng-click="saveTeacherChanges(teacher.id)">Зберегти зміни</button>
+                    <button type="button" class="btn btn-info btn-xs" ng-click="cancelTeacherChanges()">Скасувати</button>
                 </div>
             </div>
         </form>
@@ -62,7 +62,7 @@
     </div>
     <div class="row" style="margin-top: 10px; margin-bottom: 25px;">
         <div class="col-xs-4">
-            <button type="button" class="btn btn-success btn-xs" ng-click="openAddTeacherForm()">Add teacher</button>
+            <button type="button" class="btn btn-success btn-xs" ng-click="openAddTeacherForm()">Додати вчителя</button>
         </div>
     </div>
     <div class="row">
@@ -70,7 +70,7 @@
         <div ng-if="showAddTeacherForm" style="background-color: rgba(127, 127, 128, 0.3); padding: 15px;">
         <form name="teacherAddForm" novalidate>
         <div class="form-group row">
-          <label for="title" class="col-xs-2 col-form-label">Last name:</label>
+          <label for="title" class="col-xs-2 col-form-label">Прізвище:</label>
           <div class="col-xs-10">
             <input class="form-control" type="text" id="title" name="title" required ng-model="teacherForAdd.lastName">
           </div>
@@ -82,27 +82,27 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="title" class="col-xs-2 col-form-label">Position:</label>
+          <label for="title" class="col-xs-2 col-form-label">Посада:</label>
           <div class="col-xs-10">
             <input class="form-control" type="text" id="title" name="title" required ng-model="teacherForAdd.position">
           </div>
         </div>
       <div class="form-group row">
-          <label for="title" class="col-xs-2 col-form-label">Photo:</label>
+          <label for="title" class="col-xs-2 col-form-label">Фото:</label>
           <div class="col-xs-10">
             <input type="file" id="photo" name="photo" required ng-model="teacherForAdd.photo">
           </div>
         </div>
             <div class="form-group row">
-                <label for="text" class="col-xs-2 col-form-label">Short info: </label>
+                <label for="text" class="col-xs-2 col-form-label">Коротка інформація: </label>
                   <div class="col-xs-10">
                     <textarea class="form-control" id="text" rows="4" ng-model="teacherForAdd.description"></textarea>
                   </div>
               </div>
             <div class="row">
                 <div class="col-xs-offset-4 col-xs-6">
-                    <button type="button" class="btn btn-primary btn-xs" ng-click="addTeacher()">Add</button>
-                    <button type="button" class="btn btn-info btn-xs" ng-click="cancelTeacherAdd()">Cancel</button>
+                    <button type="button" class="btn btn-primary btn-xs" ng-click="addTeacher()">Додати</button>
+                    <button type="button" class="btn btn-info btn-xs" ng-click="cancelTeacherAdd()">Скасувати</button>
                 </div>
             </div>
         </form>    
@@ -113,8 +113,8 @@
     <div class="panel-footer">
         <div class="row">
         <div class="col-xs-offset-3 col-xs-6">
-            <button type="button" class="btn btn-primary" ng-click="saveChanges()">Save changes</button>
-            <button type="button" class="btn btn-info" ng-click="closeModal()">Cancel</button>
+            <button type="button" class="btn btn-primary" ng-click="saveChanges()">Зберегти зміни</button>
+            <button type="button" class="btn btn-info" ng-click="closeModal()">Скасувати</button>
         </div>
     </div>
     </div>
