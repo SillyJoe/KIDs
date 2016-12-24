@@ -134,10 +134,43 @@ td strong {
     position: relative;
 }
 
+@-webkit-keyframes swell {
+    0%   {min-width: 70px;}
+    100% {min-width: 150px;}
+}
+
+/* Standard syntax */
+@keyframes swell {
+    0%   {min-width: 70px;}
+    100% {min-width: 150px;}
+}
+
 .gal-thumbnail {
     max-width: 70px;
     position: absolute;
     bottom:2px;
+}
+
+.gal-photo:hover {
+    animation: swell 1s;
+    -webkit-animation: swell 1s;
+        -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+    animation-fill-mode: forwards;
+}
+
+.gal-photo:hover .gal-thumbnail {
+    animation: swell 1s;
+    -webkit-animation: swell 1s;
+        -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+    animation-fill-mode: forwards;
+}
+
+.photo-detail-div {
+    min-height: 500px;
+}
+
+.photo-detail-photo {
+    
 }
 
 /*End of gallery styles*/

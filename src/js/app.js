@@ -61,6 +61,28 @@ angular.module('kiddsapp', ['kiddsapp.controllers', 'kiddsapp.services', 'ui.rou
         }
     })
     
+    .state('photo', {
+        url: '/gallery/:eventId/:photoId',
+         onEnter: ['$uibModal', 'galleryFactory', '$state', '$stateParams', function($uibModal, galleryFactory, $state, $stateParams){
+             var eventId = parseInt($stateParams.eventId, 10);
+             var photoId = parseInt($stateParams.photoId, 10);
+             $uibModal.open({
+                 animation: true,
+                 size: 'lg',
+                 templateUrl: 'views/photo-detail.html',
+                 controller: 'photoDetailController', 
+                 resolve: {
+                     photoInfo: ['galleryFactory', function(galleryFactory){
+                         return galleryFactory.getPhotoInfo(eventId, photoId);
+                     }]
+                 }
+             }).result.finally(function(){
+                 $state.go('aboutus');
+             })
+         }]
+        
+    })
+    
     
     
     

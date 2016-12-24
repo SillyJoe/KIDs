@@ -6,6 +6,6 @@
             <button class="btn btn-danger btn-xs" ng-if="isAdmin()">Редагувати</button>
         </div><br>
         <div class="gal-photo" ng-repeat="photo in event.photos">
-            <a href="#"><img ng-src="{{photo.ref}}" class="gal-thumbnail"></a>
+            <a ui-sref="photo({eventId: event.id, photoId: photo.id})"><img ng-src="{{photo.ref}}" class="gal-thumbnail"></a>
         </div>                                 
     </div>

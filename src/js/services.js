@@ -299,6 +299,24 @@ angular.module('kiddsapp.services', [])
                 }
             }
             return {};
+        },
+        getPhotoInfo: function(eventId, photoId){
+            for(var i = 0; i < gallery.length; i++){
+                if (gallery[i].id == eventId) {
+                    var event = gallery[i];
+                    for (var j = 0; j < event.photos.length; j++) {
+                        if (event.photos[j].id == photoId)
+                            return {
+                            currentPhoto: event.photos[j],
+                            currentEvent: event,
+                            photoIndex: j,
+                            eventIndex: i  
+                        }
+                        
+                    }
+                }
+            }
+            return false;
         }
     }
 }])

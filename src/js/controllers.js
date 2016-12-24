@@ -532,6 +532,58 @@ angular.module('kiddsapp.controllers', [])
     }
 }])
 
+.controller('photoDetailController', ['photoInfo', '$scope', 'galleryFactory', '$uibModalInstance', function(photoInfo, $scope, galleryFactory, $uibModalInstance){
+    $scope.currentPhoto = photoInfo.currentPhoto;
+    $scope.currentEvent = photoInfo.currentEvent;
+    console.log(photoInfo);
+    console.log($scope.currentPhoto);
+    $scope.closeModal = function() {
+        $uibModalInstance.dismiss();
+    }
+//     Photo scroll functionality
+    var eventIndex = photoInfo.eventIndex;
+    var photoIndex = photoInfo.photoIndex;
+    
+    
+    function incrementEventIndex() {
+        eventIndex = eventIndex >= galleryFactory.getGallery().length - 1 ? 0 : ++eventIndex;
+        console.log('Incremented event index: '+eventIndex);
+    };
+    
+    function decrementEventIndex() {
+        eventIndex = eventIndex == 0 ? galleryFactory.getGallery().length-1 : --eventIndex;
+        console.log('Decremented event index: '+eventIndex);
+    };
+    
+    $scope.nextPhoto = function() {
+        var photosInCurrentEvent = $scope.currentEvent.photos.length;
+        if (photoIndex >= photosInCurrentEvent-1) {
+            incrementEventIndex();
+            $scope.currentEvent = galleryFactory.getGallery()[eventIndex];
+            photoIndex = 0;
+            $scope.currentPhoto = $scope.currentEvent.photos[photoIndex];
+        } else {
+            photoIndex++;
+            $scope.currentPhoto = $scope.currentEvent.photos[photoIndex];
+        }
+    };
+    
+    
+    $scope.previousPhoto = function(){
+        if (photoIndex == 0) {
+           decrementEventIndex();
+           $scope.currentEvent = galleryFactory.getGallery()[eventIndex];
+            photoIndex = $scope.currentEvent.photos.length - 1;
+            $scope.currentPhoto = $scope.currentEvent.photos[photoIndex]; 
+        } else {
+            photoIndex--;
+            $scope.currentPhoto = $scope.currentEvent.photos[photoIndex];
+        }
+    };
+    
+//    End of Photo scroll functionality
+}])
+
 .controller('loginController', [function(){
     
 }])
