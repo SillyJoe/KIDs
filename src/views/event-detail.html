@@ -11,14 +11,14 @@
         <div class="row" style="white-space:nowrap">
             <div class="col-xs-12">
                 <div class="event-detail-div" ng-repeat="photo in upperPortion">
-                    <img ng-src="{{photo.ref}}" class="img img-responsive event-detail-image" style="max-width: 400px">
+                    <a ui-sref="detail({eventId: event.id, photoId:photo.id})"><img ng-src="{{photo.ref}}" class="img img-responsive event-detail-image" style="max-width: 400px"></a>
                 </div>
             </div>
         </div>
         <div class="row" style="white-space:nowrap">
             <div class="col-xs-12">
                 <div class="event-detail-div" ng-repeat="photo in lowerPortion">
-                    <img ng-src="{{photo.ref}}" class="img img-responsive event-detail-image" style="max-width: 200px">
+                    <a ui-sref="detail({eventId: event.id, photoId:photo.id})"><img ng-src="{{photo.ref}}" class="img img-responsive event-detail-image" style="max-width: 200px"></a>
                 </div>
             </div>
         </div>

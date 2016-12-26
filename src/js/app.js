@@ -67,7 +67,7 @@ angular.module('kiddsapp', ['kiddsapp.controllers', 'kiddsapp.services', 'ui.rou
             eventId: null,
             photoId: null
         },
-         onEnter: ['$uibModal', 'galleryFactory', '$state', '$stateParams', function($uibModal, galleryFactory, $state, $stateParams){
+         onEnter: ['$uibModal', 'galleryFactory', '$state', '$stateParams', 'previousState', function($uibModal, galleryFactory, $state, $stateParams, previousState){
              var eventId = parseInt($stateParams.eventId, 10);
              var photoId = parseInt($stateParams.photoId, 10);
              $uibModal.open({
@@ -81,9 +81,20 @@ angular.module('kiddsapp', ['kiddsapp.controllers', 'kiddsapp.services', 'ui.rou
                      }]
                  }
              }).result.finally(function(){
-                 $state.go('aboutus');
+                 if (previousState.name == "") $state.go('aboutus'); 
+                 if (previousState.name == "event") $state.go('event', {eventId: eventId});
              })
-         }]
+         }],
+        resolve: {
+            previousState: ['$state', function($state){
+                var currentStateData = {
+                            name: $state.current.name,
+                            params: $state.params,
+                            URL: $state.href($state.current.name, $state.params)
+                        };
+                return currentStateData;
+            }]
+        }
         
     })
     
