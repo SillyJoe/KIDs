@@ -81,8 +81,7 @@ angular.module('kiddsapp', ['kiddsapp.controllers', 'kiddsapp.services', 'ui.rou
                      }]
                  }
              }).result.finally(function(){
-                 if (previousState.name == "") $state.go('aboutus'); 
-                 if (previousState.name == "event") $state.go('event', {eventId: eventId});
+                 if (previousState.name == "event") $state.go('event', {eventId: eventId}); else $state.go('aboutus');
              })
          }],
         resolve: {
