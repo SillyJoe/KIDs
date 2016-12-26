@@ -532,7 +532,9 @@ angular.module('kiddsapp.controllers', [])
     }
 }])
 
-.controller('photoDetailController', ['photoInfo', '$scope', 'galleryFactory', '$uibModalInstance', function(photoInfo, $scope, galleryFactory, $uibModalInstance){
+.controller('photoFrameController', ['photoInfo', '$scope', 'galleryFactory', '$uibModalInstance', '$state', function(photoInfo, $scope, galleryFactory, $uibModalInstance, $state){
+//    if (!$state.is('aboutus.photo.detail'))
+    $state.go('detail', {eventId: photoInfo.currentEvent.id, photoId: photoInfo.currentPhoto.id});
     $scope.currentPhoto = photoInfo.currentPhoto;
     $scope.currentEvent = photoInfo.currentEvent;
     console.log(photoInfo);
@@ -562,9 +564,11 @@ angular.module('kiddsapp.controllers', [])
             $scope.currentEvent = galleryFactory.getGallery()[eventIndex];
             photoIndex = 0;
             $scope.currentPhoto = $scope.currentEvent.photos[photoIndex];
+            $state.go('detail', {eventId:$scope.currentEvent.id, photoId: $scope.currentPhoto.id});
         } else {
             photoIndex++;
             $scope.currentPhoto = $scope.currentEvent.photos[photoIndex];
+            $state.go('detail', {eventId: $scope.currentEvent.id, photoId: $scope.currentPhoto.id});
         }
     };
     
@@ -574,15 +578,18 @@ angular.module('kiddsapp.controllers', [])
            decrementEventIndex();
            $scope.currentEvent = galleryFactory.getGallery()[eventIndex];
             photoIndex = $scope.currentEvent.photos.length - 1;
-            $scope.currentPhoto = $scope.currentEvent.photos[photoIndex]; 
+            $scope.currentPhoto = $scope.currentEvent.photos[photoIndex];
+            $state.go('detail', {eventId:$scope.currentEvent.id, photoId: $scope.currentPhoto.id});
         } else {
             photoIndex--;
             $scope.currentPhoto = $scope.currentEvent.photos[photoIndex];
+            $state.go('detail', {eventId:$scope.currentEvent.id, photoId: $scope.currentPhoto.id});
         }
     };
     
 //    End of Photo scroll functionality
 }])
+
 
 .controller('loginController', [function(){
     

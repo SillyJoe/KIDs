@@ -62,15 +62,19 @@ angular.module('kiddsapp', ['kiddsapp.controllers', 'kiddsapp.services', 'ui.rou
     })
     
     .state('photo', {
-        url: '/gallery/:eventId/:photoId',
+        url: '/',
+        params: {
+            eventId: null,
+            photoId: null
+        },
          onEnter: ['$uibModal', 'galleryFactory', '$state', '$stateParams', function($uibModal, galleryFactory, $state, $stateParams){
              var eventId = parseInt($stateParams.eventId, 10);
              var photoId = parseInt($stateParams.photoId, 10);
              $uibModal.open({
                  animation: true,
                  size: 'lg',
-                 templateUrl: 'views/photo-detail.html',
-                 controller: 'photoDetailController', 
+                 templateUrl: 'views/photo-frame.html',
+                 controller: 'photoFrameController', 
                  resolve: {
                      photoInfo: ['galleryFactory', function(galleryFactory){
                          return galleryFactory.getPhotoInfo(eventId, photoId);
@@ -82,6 +86,36 @@ angular.module('kiddsapp', ['kiddsapp.controllers', 'kiddsapp.services', 'ui.rou
          }]
         
     })
+    
+    .state('detail', {
+       url: '/gallery/:eventId/:photoId',
+        onEnter: ['previousState', '$state', 'photoInfo', function(previousState, $state, photoInfo){
+            console.log('This is previous state:')
+            console.log(previousState);
+            if (previousState.name != 'photo' && previousState.name != 'detail') $state.go('photo', {
+                eventId: photoInfo.currentEvent.id,
+                photoId: photoInfo.currentPhoto.id
+            })
+            
+            
+        }],
+        resolve: {
+            photoInfo: ['galleryFactory', '$stateParams',  function(galleryFactory, $stateParams){
+                var eventId = parseInt($stateParams.eventId, 10);
+                var photoId = parseInt($stateParams.photoId, 10);
+                return galleryFactory.getPhotoInfo(eventId, photoId);
+            }],
+            previousState: ['$state', function($state){
+                var currentStateData = {
+                            name: $state.current.name,
+                            params: $state.params,
+                            URL: $state.href($state.current.name, $state.params)
+                        };
+                return currentStateData;
+            }]
+        }
+    })
+    
     
     
     
