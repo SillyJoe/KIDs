@@ -43,6 +43,7 @@
       <script src="js/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
       <script src="js/angular-ui-bootstrap/dist/ui-bootstrap-csp.css"></script>
       <script src="js/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+      <script src="js/angular-animate/angular-animate.js"></script>
 
       <!--          My javascript-->
           <script src="js/app.js"></script>
@@ -89,7 +90,7 @@
                   <ul class="dropdown-menu">
                     <li><a class="drop_item" href="services.html#english"><img class="img menu_flag" src="assets/flag_gb.png"> Англійська</a></li>
                     <li><a class="drop_item" href="services.html#german"><img class="img menu_flag" src="assets/flag_ger.png"> Німецька</a></li>
-                      <li><a class="drop_item" href="services.html#other">Інші послуги</a></li>
+                     <li><a class="drop_item" href="services.html#other"><img class="img menu_flag" src="assets/star.png">Інше</a></li>
                   </ul>
                 </li>
                 <li><a href="passtest.html">Пройти тест <span class="sr-only">Test yourself</span></a></li>
@@ -122,33 +123,142 @@
                 <div class="col-md-10 col-xs-12">
                  
                   <div class="row row-eq-height">
-                      <div class="col-md-1 hidden-xs left-scr">
-                          <a href="#"><i class="fa fa-caret-left"></i></a>
-                      </div>
-                      <div class="col-xs-12 col-md-10">
-                          <div class="panel panel-default info-panel" style="min-height:300px; background-color: rgba(255, 255, 255, 0.3)">
+                      <div uib-carousel active="active" interval="5000" no-wrap="noWrapSlides" template-url="views/kids-carousel.html">
+                          
+<!--                          Carousel slide-->
+                      <div uib-slide index="0">
+                          <div class="panel panel-default info-panel" style="min-height:310px; background-color: rgba(255, 255, 255, 0.3); text-align: left">
                             <div class="panel-body">
                                 <div class="col-md-6 col-xs-12">
                                   <a href="#">
-                                    <img class="img img-responsive" src="assets/whoWeAre.png" alt="who we are">
+                                    <img class="img img-responsive" src="assets/promo1.png" alt="who we are">
                                   </a>
                                   </div>
                                   <div class="col-md-6 col-xs-12">
                                     <h3 class="media-heading">Хто ми</h4>
                                     "KIDS" - це товариство викладачів іноземних мов, які пропонують ефективне вивчення англійської та німецької мов шляхом всебічного їх опанування (а саме: граматики, говоріння, письма, читання, сприйняття мови на слух та обов'язково вимови) та "повного занурення" (адже 90% заняття викладається на іноземній мові).
                                   </div>
-                                    <div class="left-scr-sm">
-                                        <i class="fa fa-caret-left"></i>
-                                    </div>
-                                    <div class="right-scr-sm">
-                                        <i class="fa fa-caret-right"></i>
-                                    </div>
                               </div>
                           </div>
                       </div>
-                      <div class="col-md-1 hidden-xs right-scr">
-                          <a href="#"><i class="fa fa-caret-right"></i></a>
+<!--                          End of carousel slide-->
+                          
+<!--                          Carousel slide-->
+                      <div uib-slide index="1">
+                          <div class="panel panel-default info-panel" style="min-height:310px; background-color: rgba(255, 255, 255, 0.3); text-align: left">
+                            <div class="panel-body">
+                                <div class="col-md-6 col-xs-12">
+                                  <a href="#">
+                                    <img class="img img-responsive" src="assets/promo2.jpg" alt="promo1-why you should choose us">
+                                  </a>
+                                  </div>
+                                  <div class="col-md-6 col-xs-12">
+                                    <h3 class="media-heading">Чому саме ми?</h4>
+                                        <ul>
+                                            <li>
+                                                Ігрова форма навчання
+                                            </li>
+                                            <li>
+                                                Комплексний підхід
+                                            </li>
+                                            <li>
+                                                Інтерактивне викладання
+                                            </li>
+                                            <li>
+                                               Перегляд фільмів в оригіналі
+                                            </li>
+                                            <li>
+                                                Поглиблене вивчення мови
+                                            </li>
+                                            <li>
+                                                Використання сучасних технологій у вивченні іноземних мов
+                                            </li>
+                                            <li>
+                                                Професійні викладачі
+                                            </li>
+                                            
+                                      </ul>
+                                  </div>
+                              </div>
+                          </div>
                       </div>
+<!--                          End of carousel slide-->
+                          
+                          
+                          <!--                          Carousel slide-->
+                      <div uib-slide index="2">
+                          <div class="panel panel-default info-panel" style="min-height:310px; background-color: rgba(255, 255, 255, 0.3); text-align: left">
+                            <div class="panel-body">
+                                <div class="col-md-6 col-xs-12">
+                                  <a href="#">
+                                    <img class="img img-responsive" src="assets/promo3.jpg" alt="promo3-why you should choose us">
+                                  </a>
+                                  </div>
+                                  <div class="col-md-6 col-xs-12">
+                                    <h3 class="media-heading">Ми пропонуємо</h4>
+                                        <ul>
+                                            <li>
+                                                Групові заняття для дітей від 4-х років та дорослих
+                                            </li>
+                                            <li>
+                                                Індивідуальні заняття
+                                            </li>
+                                            <li>
+                                                Дистанційне навчання по Skype та Viber
+                                            </li>
+                                            <li>
+                                               Підготовку до ЗНО та ДПА, TOEFEL та IELTS
+                                            </li>
+                                            <li>
+                                                Корпоративне викладання (із виїздом)
+                                            </li>   
+                                      </ul>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+<!--                          End of carousel slide-->
+                          
+    
+                          
+                          
+                          <!--                          Carousel slide-->
+                      <div uib-slide index="3">
+                          <div class="panel panel-default info-panel" style="min-height:310px; background-color: rgba(255, 255, 255, 0.3); text-align: left">
+                            <div class="panel-body">
+                                <div class="col-md-6 col-xs-12">
+                                  <a href="#">
+                                    <img class="img img-responsive" src="assets/promo4.jpg" alt="promo3-why you should choose us">
+                                  </a>
+                                  </div>
+                                  <div class="col-md-6 col-xs-12">
+                                    <h3 class="media-heading">В нас весело!</h4>
+                                  </div>
+                         
+                              </div>
+                          </div>
+                      </div>
+<!--                          End of carousel slide-->
+                          
+                            <!--                          Carousel slide-->
+                      <div uib-slide index="4">
+                          <div class="panel panel-default info-panel" style="min-height:310px; background-color: rgba(255, 255, 255, 0.3); text-align: left">
+                            <div class="panel-body">
+                                <div class="col-md-6 col-xs-12">
+                                  <a href="#">
+                                    <img style="height: 210px" class="img img-responsive" src="assets/promo5.jpg" alt="promo3-why you should choose us">
+                                  </a>
+                                  </div>
+                                  <div class="col-md-6 col-xs-12">
+                                    <h3 class="media-heading">Запрошуємо вас!</h4>
+                                      Наші випускники успішно складають ЗНО, чудово опановують мову, стають переможцями різних мовних конкурсів та олімпіад, а також вступають до найпрестижніших вищих навчальних закладів України та Європи
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+<!--                          End of carousel slide-->
+                          
+                    </div>
                   </div>
                     <!--end of about us block-->
                     </div>
