@@ -126,9 +126,65 @@ angular.module('kiddsapp', ['kiddsapp.controllers', 'kiddsapp.services', 'ui.rou
         }
     })
     
+    .state('passtest_initial', {
+        url: '/passtest',
+        views: {
+           'passTest' : {
+               templateUrl: 'views/passtest-initial.html',
+               controller: 'passTestInitialController'  
+           }
+        },
+        resolve: {
+            tests: ['passTestFactory', function(passTestFactory){
+                return passTestFactory.getTests();
+            }]
+        }
+    })
     
+    .state('passtest_test', {
+        url: '/:alias',
+        params: {
+            testDetails: null
+        },
+        views: {
+           'passTest' : {
+               templateUrl: 'views/passtest-test.html',
+               controller: 'passTestTestController'  
+           }
+        },
+        resolve: {
+            testDetails: ['$stateParams', function($stateParams, passTestFactory){
+                return $stateParams.testDetails;
+            }],
+            test: ['$stateParams', 'passTestFactory', function($stateParams, passTestFactory){
+                var tests = passTestFactory.getTests();
+                for (var i = 0; i < tests.length; i++) {
+                    if (tests[i].alias == $stateParams.alias) {
+                        return tests[i];
+                    }
+                }
+                
+            }]
+        }
+    })
     
-    
+    .state('passtest_result', {
+        url: '/results/:resultCode',
+        params: {
+            testDetails: null
+        },
+        views: {
+            'passTest' : {
+                templateUrl: 'views/passtest-result.html',
+                controller: 'passTestResultController'
+            }
+        },
+        resolve: {
+            testDetails: ['$stateParams', function($stateParams){
+               return $stateParams.testDetails; 
+            }]
+        }
+    })
     
     
 }])

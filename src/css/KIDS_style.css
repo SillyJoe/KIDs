@@ -276,6 +276,10 @@ td strong {
     line-height: 400px;
 }
 
+.match-highlight {
+    color: orangered;
+}
+
  .news-odd, .news-even {
     height: 285px;
     }
