@@ -798,54 +798,6 @@ angular.module('kiddsapp.controllers', [])
     
     
     //test Match question
-    $scope.matchQuestion = {
-        id: 120,
-        type: 'match',
-        task: 'Match words in left column with their antonyms in the right column',
-        left: [
-            'pretty',
-            'tall',
-            'kind',
-            'smooth',
-            'good'
-        ],
-        right: [
-            'evil',
-            'rough',
-            'bad',
-            'ugly',
-            'short'
-        ],
-        checkedLeft: function(item) {
-            return this.userInput[0].indexOf(item) != -1
-        },
-        checkedRight: function(item) {
-            return this.userInput[1].indexOf(item) != -1
-        },
-        c: [
-            [
-               'good',
-                'pretty',
-                'kind',
-                'tall',
-                'smooth'
-            ],
-            [
-               'bad',
-                'ugly',
-                'evil',
-                'short',
-                'rough'
-            ]
-        ],
-        userInput: [
-            [],
-            []
-        ],
-        result: []
-    }
-    
-    
     var lookingForRightCounterPart = false;
     var lookingForLeftCounterPart = false;
     $scope.highlight = '';
@@ -935,69 +887,7 @@ angular.module('kiddsapp.controllers', [])
     }
     //end of test MatchQuestion
     
-    //text TrueOrFalseQuestion
-    $scope.textTrueOrFalseQuestion = {
-        id: 143,
-        type: 'textTrueOrFalse',
-        task: 'Read the text and mark the statements below that are TRUE.',
-        text: 'Brian sat down for dinner. He sat down in the chair. He sat down at the table. He looked at his white plate. He looked at his silver fork. He looked at his silver spoon. His dad said, "Pass me your plate, Brian." His dad put white rice on the plate. His dad put yellow corn on the plate. His dad put green peas on the plate. He gave the plate back to Brian. "This looks delicious," Brian said. "It is delicious," his dad said. Brian wondered why corn was yellow. He wondered why peas were green. He wondered if there were yellow peas and green corn.',
-        q: [
-            {id: 0, statement: 'Brian uses a spoon, a knife and a fork for eating.', add: false},
-            {id: 1, statement: 'Brian didn\'t like his food.', add: false},
-            {id: 2, statement: 'Brian wasn\'t going to eat alone.', add: false},
-            {id: 3, statement: 'Brian\'s spoon was made of the same metal as his fork.', add: false},
-            {id: 4, statement: 'Brian is most likely an adult.', add: false},
-           ],
-        c: [2, 3],
-        a: [],
-        result: 0
-    }
-    
-    //End of text TrueOrFalseQuestion
-    
-    //Odd word out question
-    $scope.oddWordOutQuestion = {
-        id: 167,
-        type: 'oddWordOut',
-        task: 'Select the word that doesn\'t fit with the other words.',
-        wordlist: [
-            'dog',
-            'cat',
-            'squirrel',
-            'rat',
-            'wolf',
-            'spaghetti'
-        ],
-        odd: 'spaghetti',
-        a: '',
-        result: false
-    }
-    
-    $scope.printOdd = function(){
-        console.log($scope.oddWordOutQuestion.a);
-    }
-    //End of odd word out question
-    
-    
-    //Listening question
-    $scope.listeningTrueOrFalseQuestion = {
-        id:352,
-        type: 'listeningTrueOrFalse',
-        task: 'Listen to the audio and mark only TRUE statements below.',
-        audio: 'assets/audio/test.mp3',
-        q: [
-            {id: 0, statement: 'This might be a conversation between a father and a daughter.', add: false},
-            {id: 1, statement: 'The girl went to the cinema last night.', add: false},
-            {id: 2, statement: 'The girl was about to go to school, when the conversation happened.', add: false},
-            {id: 3, statement: 'The man asked the girl, if she wanted anything to eat.', add: false},
-            {id: 4, statement: 'The girl didn\'t want any coffee as of the moment of the conversation.', add: false}
-            
-        ],
-        c: [0, 2, 3, 4],
-        a: [],
-        result: 0
-    }
-    //End of listening question
+
     
     $scope.processTrueOrFalseClick = function(question, option){
         if(option.add == true) {

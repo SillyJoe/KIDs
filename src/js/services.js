@@ -1184,7 +1184,7 @@ angular.module('kiddsapp.services', [])
                 
                             oddWordOutQuestions: [
                 {
-                    id: 1,
+                    id: 0,
                     type: 'oddWordOut',
                     target: 'Lexis',
                     task: 'Select the word that doesn\'t fit with the other words.',
@@ -1197,6 +1197,23 @@ angular.module('kiddsapp.services', [])
                         'spaghetti'
                     ],
                     odd: 'spaghetti',
+                    a: '',
+                    result: 0
+                },
+                {
+                    id: 1,
+                    type: 'oddWordOut',
+                    target: 'Lexis',
+                    task: 'Select the word that doesn\'t fit with the other words.',
+                    wordlist: [
+                        'banana',
+                        'apple',
+                        'pencil',
+                        'orange',
+                        'pine apple',
+                        'prune'
+                    ],
+                    odd: 'pencil',
                     a: '',
                     result: 0
                 }
