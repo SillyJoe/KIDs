@@ -942,7 +942,6 @@ angular.module('kiddsapp.controllers', [])
         if (result < 0) result = 0;
         question.result = result;
         $scope.saveAndNext();
-        $scope.printResult();
      }
     
     $scope.checkOddWordOutQuestion = function(question){
