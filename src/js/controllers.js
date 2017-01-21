@@ -828,24 +828,29 @@ angular.module('kiddsapp.controllers', [])
     $scope.handleLeftClick = function(item){
         var leftAnswers = $scope.currentQuestion.userInput[0];
         var rightAnswers = $scope.currentQuestion.userInput[1];
-        var index = leftAnswers.indexOf(item);
+        var index = leftAnswers.indexOf(item.id);
         if (!lookingForRightCounterPart) {
             if (index == -1) {
-                leftAnswers.push(item);
+                leftAnswers.push(item.id);
                 if (!lookingForLeftCounterPart) lookingForRightCounterPart = true;
             }
             else {
                 leftAnswers.splice(index, 1);
-                if (index < rightAnswers.length) rightAnswers.splice(index, 1);
+                if (index < rightAnswers.length) {
+                    $scope.currentQuestion.right[rightAnswers[index]].add = false;
+                    rightAnswers.splice(index, 1); }
             }
             lookingForLeftCounterPart = false;
         } else {
             if (index == -1) {
-                leftAnswers.pop();
-                leftAnswers.push(item);
+                $scope.currentQuestion.left[leftAnswers.pop()].add = false;
+                leftAnswers.push(item.id);
             } else {
-                leftAnswers.splice(index, 1);
-                if (index < rightAnswers.length) rightAnswers.splice(index, 1);
+                leftAnswers.splice(index, 1); item.add = false
+                if (index < rightAnswers.length) { 
+                    $scope.currentQuestion.right[rightAnswers[index]].add = false;
+                    rightAnswers.splice(index, 1);
+                }
             }
             
         }
@@ -855,26 +860,31 @@ angular.module('kiddsapp.controllers', [])
     $scope.handleRightClick = function(item){
         var leftAnswers = $scope.currentQuestion.userInput[0];
         var rightAnswers = $scope.currentQuestion.userInput[1];
-        var index = rightAnswers.indexOf(item);
+        var index = rightAnswers.indexOf(item.id);
         
          if (!lookingForLeftCounterPart)   {
                 if (index == -1) {
-                    rightAnswers.push(item);
+                    rightAnswers.push(item.id);
                     if (!lookingForRightCounterPart) lookingForLeftCounterPart = true;
                 }
                 else {
                     rightAnswers.splice(index, 1);
-                    if (index < leftAnswers.length) leftAnswers.splice(index, 1);
+                    if (index < leftAnswers.length) { 
+                        $scope.currentQuestion.left[leftAnswers[index]].add = false; 
+                        leftAnswers.splice(index, 1);}
                 }
                 lookingForRightCounterPart = false;
                 
             } else {
                 if (index == -1) {
-                    rightAnswers.pop();
-                    rightAnswers.push(item);
+                    $scope.currentQuestion.right[rightAnswers.pop()].add = false;
+                    rightAnswers.push(item.id);
                 } else {
-                    rightAnswers.splice(index, 1);
-                    if (index < leftAnswers.length) leftAnswers.splice(index, 1);
+                    rightAnswers.splice(index, 1); item.add = false
+                    if (index < leftAnswers.length) {
+                        $scope.currentQuestion.left[leftAnswers[index]].add = false; 
+                        leftAnswers.splice(index, 1); 
+                    }
                 }
             }
         
@@ -932,6 +942,7 @@ angular.module('kiddsapp.controllers', [])
         if (result < 0) result = 0;
         question.result = result;
         $scope.saveAndNext();
+        $scope.printResult();
      }
     
     $scope.checkOddWordOutQuestion = function(question){

@@ -42,20 +42,20 @@
                 <div class="col-xs-6">
                     <div class="row" ng-repeat="left in currentQuestion.left">
                         <div class="col-xs-6" style="padding-top:10px">
-                            <label for="{{left+currentQuestion.id}}" ng-style="{color: getColorLeft(left)}">{{left}}</label>
+                            <label for="{{left.word}}" ng-style="{color: getColorLeft(left.id)}">{{left.word}}</label>
                         </div>
                         <div class="col-xs-1" style="text-align: right; padding-right: 3px;">
-                            <input type="checkbox" class="form-control" id="{{left+currentQuestion.id}}" ng-model="checkedLeft(left)" ng-click="handleLeftClick(left)">
+                            <input type="checkbox" class="form-control" id="{{left.word}}" ng-model="left.add" ng-click="handleLeftClick(left)">
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-6">
                     <div class="row" ng-repeat="right in currentQuestion.right">
                         <div class="col-xs-1" style="text-align: right; padding-right: 3px;">
-                            <input type="checkbox" class="form-control" id="{{right+currentQuestion.id}}" ng-model="checkedRight(right)" ng-click="handleRightClick(right)">
+                            <input type="checkbox" class="form-control" id="{{right.word}}" ng-model="right.add" ng-click="handleRightClick(right)">
                         </div>
                         <div class="col-xs-6" style="padding-top:10px">
-                            <label for="{{right+currentQuestion.id}}" ng-style="{color: getColorRight(right)}">{{right}}</label>
+                            <label for="{{right.word}}" ng-style="{color: getColorRight(right.id)}">{{right.word}}</label>
                         </div>
                     </div>
                 </div>

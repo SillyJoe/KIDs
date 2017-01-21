@@ -1063,33 +1063,33 @@ angular.module('kiddsapp.services', [])
                     target: 'Lexis',
                     task: 'Match words in left column with their antonyms in the right column',
                     left: [
-                        'pretty',
-                        'tall',
-                        'kind',
-                        'smooth',
-                        'good'
+                        {id: 0, word: 'pretty', add: false},
+                        {id: 1, word: 'tall', add: false},
+                        {id: 2, word: 'kind', add: false},
+                        {id: 3, word: 'smooth', add: false},
+                        {id: 4, word: 'good', add: false}
                     ],
                     right: [
-                        'evil',
-                        'rough',
-                        'bad',
-                        'ugly',
-                        'short'
+                        {id: 0, word: 'evil', add: false},
+                        {id: 1, word: 'rough', add: false},
+                        {id: 2, word: 'bad', add: false},
+                        {id: 3, word: 'ugly', add: false},
+                        {id: 4, word: 'short', add: false}
                     ],
                     c: [
                         [
-                           'good',
-                            'pretty',
-                            'kind',
-                            'tall',
-                            'smooth'
+                           4,
+                            0,
+                            2,
+                            1,
+                            3
                         ],
                         [
-                           'bad',
-                            'ugly',
-                            'evil',
-                            'short',
-                            'rough'
+                           2,
+                            3,
+                            0,
+                            4,
+                            1
                         ]
                     ],
                     userInput: [
@@ -1104,33 +1104,33 @@ angular.module('kiddsapp.services', [])
                     target: 'Lexis',
                     task: 'Match words in left column with their antonyms in the right column',
                     left: [
-                        'cold',
-                        'high',
-                        'wide',
-                        'close',
-                        'strong'
+                        {id: 0, word: 'cold', add: false},
+                        {id: 1, word: 'high', add: false},
+                        {id: 2, word: 'wide', add: false},
+                        {id: 3, word: 'close', add: false},
+                        {id: 4, word: 'strong', add: false}
                     ],
                     right: [
-                        'narrow',
-                        'warm',
-                        'weak',
-                        'far',
-                        'low'
+                        {id: 0, word: 'narrow', add: false},
+                        {id: 1, word: 'warm', add: false},
+                        {id: 2, word: 'weak', add: false},
+                        {id: 3, word: 'far', add: false},
+                        {id: 4, word: 'low', add: false}
                     ],
                     c: [
                         [
-                           'cold',
-                            'high',
-                            'wide',
-                            'close',
-                            'strong'
+                           0,
+                            1,
+                            2,
+                            3,
+                            4
                         ],
                         [
-                           'warm',
-                            'low',
-                            'narrow',
-                            'far',
-                            'weak'
+                           1,
+                            4,
+                            0,
+                            3,
+                            2
                         ]
                     ],
                     userInput: [
