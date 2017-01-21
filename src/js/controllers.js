@@ -671,14 +671,12 @@ angular.module('kiddsapp.controllers', [])
             $scope.testDetails.listening.scored += $scope.currentQuestion.result;
         }
         assignQuestion();
-       
-        
-        //debug
-        console.log($scope.currentQuestion);
     }
     
     function assignQuestion(){
-        console.log('Current overall level:');
+//        for debug
+//        $scope.currentQuestion = test.levels[$scope.testDetails.level].matchQuestions[0];
+        console.log('Current overall result:');
         calculateStatistics();
         console.log($scope.testDetails.overallRating);
         if (currentLevelEmpty()) {
@@ -686,10 +684,14 @@ angular.module('kiddsapp.controllers', [])
             $scope.printResult();
             return;
         }
-        do {
-            pickAQuestion();
-            questionCycleCounter++;
-        } while ($scope.currentQuestion == null)
+            do {
+                pickAQuestion();
+                //debug
+                console.log($scope.currentQuestion);
+                questionCycleCounter++;
+            } while ($scope.currentQuestion == null)
+                
+            
         if ($scope.currentQuestion.type == 'oddWordOut')
              $scope.currentQuestion.a = ''
         else
@@ -724,32 +726,30 @@ angular.module('kiddsapp.controllers', [])
             questionCycleCounter = 0;
             if (shouldCheckLevel) {$scope.printResult();}
             else checkLevel();
+            assignQuestion();
         }
          console.log(questionCycleCounter);
+        
     }
     
     //testing and debugging
     assignQuestion();
-    console.log($scope.currentQuestion);
     
     function checkLevel(){
         console.log('Checking level...');
-        if (eligibleForNextLevel && $scope.testDetails.level == 2) {
+        var eligible = eligibleForNextLevel();
+        if (eligible && $scope.testDetails.level == 2) {
             $scope.testDetails.level = 3;
             $scope.printResult();
             return;
         }
-        if (eligibleForNextLevel()) {
-           $scope.testDetails.level++;
+        if (eligible) {
+            $scope.testDetails.level++;
             questionCycleCounter = 0;
             shouldCheckLevel = false;
-            assignQuestion();
             
-        } else if (shouldCheckLevel){
-            
-        } else {
+        }  else if (!shouldCheckLevel) {
             shouldCheckLevel = true;
-            assignQuestion();
         }
         
     }

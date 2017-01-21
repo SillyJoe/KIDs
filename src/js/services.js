@@ -1242,8 +1242,11 @@ angular.module('kiddsapp.services', [])
                                         ref: [
                                             'http://www.ef.com/english-resources/english-grammar/comparative-and-superlative/'
                                         ]
-                                    },
-                                    {
+                                    }
+                                    
+                                ],
+                                [
+                                   {
                                         id: 1,
                                         type: 'multipleChoiceGrammar',
                                         target: 'Grammar',
@@ -1260,11 +1263,49 @@ angular.module('kiddsapp.services', [])
                                         ref: [
                                             'http://www.grammar.cl/Basic/Adverbs_Frequency.htm'
                                         ]
-                                    }
+                                    } 
+                                ],
+                                [
+                                    {
+                                        id: 2,
+                                        type: 'multipleChoiceGrammar',
+                                        target: 'Grammar',
+                                        task: 'Choose correct options to insert in the sentence.',
+                                        sentence: 'I always go skateboarding _______ Thursdays.',
+                                        q: [
+                                            {id: 0, statement: 'every', add: false},
+                                            {id: 1, statement: 'on', add: false},
+                                            {id: 2, statement: 'at', add: false},
+                                            {id: 3, statement: 'in', add: false},
+                                            {id: 4, statement: 'each', add: false}
+                                        ],
+                                        c: [1],
+                                        ref: [
+                                            'http://www.grammar.cl/Basic/Adverbs_Frequency.htm'
+                                        ]
+                                    },
+                                    {
+                                        id: 3,
+                                        type: 'multipleChoiceGrammar',
+                                        target: 'Grammar',
+                                        task: 'Choose correct options to insert in the sentence.',
+                                        sentence: 'I have a birthday _______ spring.',
+                                        q: [
+                                            {id: 0, statement: 'on', add: false},
+                                            {id: 1, statement: 'at', add: false},
+                                            {id: 2, statement: 'in', add: false},
+                                        ],
+                                        c: [2],
+                                        ref: [
+                                            'http://www.grammar.cl/Basic/Adverbs_Frequency.htm'
+                                        ]
+                                    },
                                 ]
                             ], //end of grammar
                             grammar_Topics : [
-                                
+                               'Comparative and Superlative forms',
+                                'Frequency words',
+                                'Time prepositions'
                             ],
                             matchQuestions: [],//end of match
                             textTrueOrFalseQuestions: [],//end of textTrueOrFalse
