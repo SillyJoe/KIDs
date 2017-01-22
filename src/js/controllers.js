@@ -933,7 +933,7 @@ angular.module('kiddsapp.controllers', [])
         var result = 0;
         for(var i = 0; i < question.q.length; i++) {
             var id = question.q[i].id;
-            if (question.c.indexOf(id) == -1 && question.a.indexOf(id) == -1) {continue} 
+            if (question.c.indexOf(id) == -1 && question.a.indexOf(id) == -1) {result += incr; continue;} 
             else {
                 if (question.c.indexOf(id) != -1 && question.a.indexOf(id) != -1) {
                     result += incr;
