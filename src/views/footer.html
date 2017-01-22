@@ -3,20 +3,21 @@
               <div class="row footer-row">
                 <div class="col-xs-12 col-sm-4 left-col">
                     <ul class="list-unstyled">
-                        <li><a href="index.html#news">Що нового</a></li>
-                        <li><a href="aboutus.html">Наша школа</a></li>
+                        <li><a ui-sref="app({scrollTo:'news'})">Що нового</a></li>
+                        <li><a ui-sref="app.aboutus({scrollTo:'we'})">Наша школа</a></li>
                         <li><ul>
-                            <li><a href="aboutus.html#we">Про нас</a></li>
-                            <li><a href="aboutus.html#teachers">Вчителі</a></li>
-                            <li><a href="aboutus.html#gallery">Галерея</a></li>
+                            <li><a ui-sref="app.aboutus({scrollTo:'we'})">Про нас</a></li>
+                            <li><a ui-sref="app.aboutus({scrollTo:'teachers'})">Вчителі</a></li>
+                            <li><a ui-sref="app.aboutus({scrollTo:'gallery'})">Галерея</a></li>
                             </ul></li>
-                        <li><a href="services.html">Послуги</a></li>
+                        <li><a ui-sref="app.services({scrollTo:'english'})">Послуги</a></li>
                         <li><ul>
-                            <li><a href="services.html#english">Англійська мова</a></li>
-                            <li><a href="services.html#german">Німецька мова</a></li>
+                            <li><a ui-sref="app.services({scrollTo:'english'})">Англійська мова</a></li>
+                            <li><a ui-sref="app.services({scrollTo:'german'})">Німецька мова</a></li>
+                            <li><a ui-sref="app.services({scrollTo:'other'})">Інші</a></li>
                             </ul></li>
-                        <li><a href="passtest.html">Пройти тест</a></li>
-                        <li><a href="contactus.html">Контакти</a></li>
+                        <li><a ui-sref="app.passtest_initial">Пройти тест</a></li>
+                        <li><a ui-sref="app.contactus">Контакти</a></li>
                     </ul>
                 </div>
                 <div class="col-xs-12 col-sm-4 left-col">
