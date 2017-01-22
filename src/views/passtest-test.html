@@ -1,3 +1,5 @@
+<div style="background-color:#88d6fa">
+    <div class="container">
 <div class="row">
     <div class="col-sm-12">
         <h2>{{testDetails.test_name}}</h2>
@@ -5,7 +7,7 @@
         <p ng-if="userTest.remember">Код для отримання результату <small>(Збережіть його, щоб потім можна було відшукати Ваш результат):</small> <span style="color:red">{{testDetails.result_code}}</span></p>
     </div>
 </div>
-<div class="form-group" ng-if="currentQuestion.type == 'multipleChoiceGrammar'">
+<div class="form-group question" ng-if="currentQuestion.type == 'multipleChoiceGrammar'">
     <div class="row">
         <div class="col-sm-12">
             <h5><strong>{{currentQuestion.task}}</strong></h5>
@@ -32,7 +34,7 @@
     </div>
 </div>
 <!--        Match question-->
-        <div class="form-group" ng-if="currentQuestion.type == 'match'">
+        <div class="form-group question" ng-if="currentQuestion.type == 'match'">
             <div class="row">
                 <div class="col-xs-12">
                     <h5><strong>{{currentQuestion.task}}</strong></h5>
@@ -69,7 +71,7 @@
 <!--        End of match question--> 
         
 <!--        Text true or false question-->
-        <div class="form-group" ng-if="currentQuestion.type == 'textTrueOrFalse'">
+        <div class="form-group question" ng-if="currentQuestion.type == 'textTrueOrFalse'">
             <div class="row">
                 <div class="col-xs-12">
                     <h5><strong>{{currentQuestion.task}}</strong></h5>
@@ -102,7 +104,7 @@
  <!--        End of text true or false question-->
         
 <!-- Odd word out question        -->
-        <div class="form-group" ng-if="currentQuestion.type == 'oddWordOut'">
+        <div class="form-group question" ng-if="currentQuestion.type == 'oddWordOut'">
             <div class="row">
                 <div class="col-xs-12">
                     <h5><strong>{{currentQuestion.task}}</strong></h5>
@@ -123,7 +125,7 @@
 <!--        End of odd word out question-->
 
 <!--        listeningQuestion-->
-        <div class="form-group" ng-if="currentQuestion.type == 'listeningTrueOrFalse'">
+        <div class="form-group question" ng-if="currentQuestion.type == 'listeningTrueOrFalse'">
             <div class="row">
                 <div class="col-xs-12">
                      <h5><strong>{{currentQuestion.task}}</strong></h5>
@@ -159,4 +161,6 @@
         
         
     </div>
+</div>
+</div>
 </div>

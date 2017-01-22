@@ -1,94 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>KIDS - школа іноземних мов - Хмельницький</title>
-
-    <!-- Bootstrap -->
-    <link href="./css/bootstrap.css" rel="stylesheet">
-      
-<!--    <link href="./css/bootstrap-theme.css" rel="stylesheet">-->
-    <link href="./css/font-awesome.css" rel="stylesheet">
-    <link href="./css/KIDS_style.css" rel="stylesheet">
-      
-
-      <!--          Angular-->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
-      <script src="js/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
-      <script src="js/angular-ui-router.js"></script>
-      <script src="js/angular-ui-bootstrap/dist/ui-bootstrap-csp.css"></script>
-      <script src="js/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
-      <script src="js/angular-animate/angular-animate.js"></script>
-              
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body style="background-color:#88d6fa" ng-app="kiddsapp">
-    
-      <div class="row" style="padding-top: 5%;">
-<!--          logo-->
-          <div class="col-xs-4 hidden-lg"></div>
-          <div class="col-xs-4 col-lg-3" >
-            <a href="index.html"><img id="logo" src="assets/logo.png" class="img-responsive"></a>
-          </div>
-          
-          <!--Menu div -->
-                  <div class="col-xs-12 col-lg-9 container-menu" ng-controller="menubarController">
-                      <nav class="navbar navbar-default">
-          <div class="container-fluid no_left_pad">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse no_left_pad" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav">
-                <li><a href="index.html#news">Що нового? <span class="sr-only">What's up?</span></a></li>
-                <li class="dropdown">
-                  <a href="aboutus.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Наша школа <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                      <li><a class="drop_item" href="aboutus.html#we"><i id="menu_icon" class="fa fa-mortar-board menu_icon"></i> Про нас</a></li>
-                    <li><a class="drop_item" href="aboutus.html#teachers"><i id="menu_icon" class="fa fa-book menu_icon"></i> Вчителі</a></li>
-                    <li><a class="drop_item" href="aboutus.html#gallery"><i id="menu_icon" class="fa fa-camera menu_icon"></i> Галерея</a></li>
-                  </ul>
-                </li>
-                  <li class="dropdown active">
-                  <a href="services.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Послуги <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a class="drop_item" href="services.html#english"><img class="img menu_flag" src="assets/flag_gb.png"> Англійська</a></li>
-                    <li><a class="drop_item" href="services.html#german"><img class="img menu_flag" src="assets/flag_ger.png"> Німецька</a></li>
-                      <li><a class="drop_item" href="services.html#other"><img class="img menu_flag" src="assets/star.png">Інше</a></li>
-                  </ul>
-                </li>
-                <li><a href="passtest.html">Пройти тест <span class="sr-only">Test yourself</span></a></li>
-                  <li><a href="contactus.html">Контакти <span class="sr-only">Contact us</span></a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                  <li id="user-label" ng-click="doLogOut()"><a href="#">{{currentUser().username}}</a></li>
-                  <li><a href="#" ng-click="openLoginModal()"><i class="fa fa-sign-in fa-lg"></i></a></li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-          </div><!-- /.container-fluid -->
-        </nav>
-          </div> <!-- End of menu div-->
-         
-          
-      </div> <!-- row -->
-              
-          <div class="container">
+<div style="background-color:#88d6fa">
+<div>
           <!--               ----------------------------------English language services block--------------------------------------->
                 <div id="english" class="container" style="padding-top:10%;">
                     <div class="row" style="border-top: solid 2px white; padding-top:2%">
@@ -98,16 +9,8 @@
 
     <!--                    English container-->
                         <div class="col-md-10 col-xs-12">
-                            <div class="panel-group" id="accordion-eng" role="tablist" aria-multiselectable="true">
-                              <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="indiv-eng-panel">
-                                  <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-eng" href="#indiv-eng-collapse" aria-expanded="true" aria-controls="collapseOne">
-                                    В групі 6-14 чоловік
-                                    </a>
-                                  </h4>
-                                </div>
-                                <div id="indiv-eng-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="indiv-eng-panel">
+                        <uib-accordion close-others="true"> 
+                            <div uib-accordion-group class="panel-default" heading="В групі 6-14 чоловік" is-open="false" is-disabled="false">
                                   <div class="panel-body">
                                     <table class="table">
                                         <tbody>
@@ -140,17 +43,11 @@
                                         </tbody>
                                       </table>
                                   </div>
-                                </div>
-                              </div>
-                              <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="group-eng-panel">
-                                  <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-eng" href="#group-eng-collapse" aria-expanded="false" aria-controls="collapseTwo">
-                                     В групі 2-5 чоловік
-                                    </a>
-                                  </h4>
-                                </div>
-                                <div id="group-eng-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                               
+                            </div>
+                                
+                                
+                               <div uib-accordion-group class="panel-default" heading="В групі 2-5 чоловік" is-open="false" is-disabled="false"> 
                                   <div class="panel-body">
                                     <table class="table">
                                         <tbody>
@@ -179,18 +76,11 @@
                                             </tr>
                                         </tbody>
                                       </table>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="toefl-panel">
-                                  <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-eng" href="#toefl-collapse" aria-expanded="false" aria-controls="collapseThree">
-                                    Індивідуальні заняття
-                                    </a>
-                                  </h4>
-                                </div>
-                                <div id="toefl-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                  </div>                              
+                            </div>  
+                                
+                                
+                               <div uib-accordion-group class="panel-default" heading="Індивідуальні заняття" is-open="false" is-disabled="false"> 
                                   <div class="panel-body">
                                     <table class="table">
                                         <tbody>
@@ -227,10 +117,11 @@
                                         </tbody>
                                       </table>
                                   </div>
-                                </div>
-                              </div>
-                        </div>
-
+                                </div>  
+                                
+                                
+                        
+                    </uib-accordion>
                         </div>
                   </div>
                 </div>
@@ -245,16 +136,12 @@
 
     <!--                    German container-->
                         <div class="col-md-10 col-xs-12">
+                            
+                            <uib-accordion close-others="true">
                             <div class="panel-group" id="accordion-ger" role="tablist" aria-multiselectable="true">
-                              <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingOne">
-                                  <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-ger" href="#indiv-ger-collapse" aria-expanded="true" aria-controls="collapseOne">
-                                     В групі 6-14 чоловік
-                                    </a>
-                                  </h4>
-                                </div>
-                                <div id="indiv-ger-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                
+                                
+                              <div uib-accordion-group class="panel-default" heading="В групі 6-14 чоловік" is-open="false" is-disabled="false">
                                   <div class="panel-body">
                                     <table class="table">
                                         <tbody>
@@ -287,17 +174,10 @@
                                         </tbody>
                                       </table>
                                   </div>
-                                </div>
                               </div>
-                              <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingTwo">
-                                  <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-ger" href="#group-ger-collapse" aria-expanded="false" aria-controls="collapseTwo">
-                                     В групі 2-5 чоловік
-                                    </a>
-                                  </h4>
-                                </div>
-                                <div id="group-ger-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                
+                                
+                              <div uib-accordion-group class="panel-default" heading="В групі 2-5 чоловік" is-open="false" is-disabled="false">  
                                   <div class="panel-body">
                                     <table class="table">
                                         <tbody>
@@ -327,17 +207,9 @@
                                         </tbody>
                                       </table>
                                   </div>
-                                </div>
                               </div>
-                                <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingTwo">
-                                  <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-ger" href="#individ-ger-collapse" aria-expanded="false" aria-controls="collapseTwo">
-                                     Індивідуальні заняття
-                                    </a>
-                                  </h4>
-                                </div>
-                                <div id="individ-ger-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                
+                               <div uib-accordion-group class="panel-default" heading="Індивідуальні заняття" is-open="false" is-disabled="false">  
                                   <div class="panel-body">
                                     <table class="table">
                                         <tbody>
@@ -374,10 +246,15 @@
                                         </tbody>
                                       </table>
                                   </div>
-                                </div>
                               </div>
+                                
+                                
+                                
                         </div>
-
+                            </uib-accordion>
+                            
+                            
+                            
                         </div>
                   </div>
                 </div>
@@ -419,119 +296,6 @@
                 </div>
               </div>
                 </div>
+</div>
                <!--end of about us block-->
 <!--          ------------------------------------------End of other services---------------------------------------->
-          
-          <div class="row">
-            <div id="footer">
-              <div class="row footer-row">
-                <div class="col-xs-12 col-sm-4 left-col">
-                    <ul class="list-unstyled">
-                        <li><a href="index.html#news">Що нового</a></li>
-                        <li><a href="aboutus.html">Наша школа</a></li>
-                        <li><ul>
-                            <li><a href="aboutus.html#we">Про нас</a></li>
-                            <li><a href="aboutus.html#teachers">Вчителі</a></li>
-                            <li><a href="aboutus.html#gallery">Галерея</a></li>
-                            </ul></li>
-                        <li><a href="services.html">Послуги</a></li>
-                        <li><ul>
-                            <li><a href="services.html#english">Англійська мова</a></li>
-                            <li><a href="services.html#german">Німецька мова</a></li>
-                            </ul></li>
-                        <li><a href="passtest.html">Пройти тест</a></li>
-                        <li><a href="contactus.html">Контакти</a></li>
-                    </ul>
-                </div>
-                <div class="col-xs-12 col-sm-4 left-col">
-                    <address>
-                        <h4>KIDS</h4>
-                        <p>Товариство об'єднаних репетиторів<br>
-                           м. Хмельницький,<br>
-                           мкрн Ракове,
-                           вулиця Народної Волі, 1а, корп. 1 
-                        </p>
-                        <i class="fa fa-phone"></i> +380631773311<br>
-		              <i class="fa fa-envelope"></i> <a href="mailto:confusion@food.net"> kate_ivasenko5@i.ua</a>
-                    </address>
-                  </div>
-                <div class="col-xs-12 col-sm-4 edge-col">
-                      <p class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><br>
-                      <a href="https://vk.com/kids_khm"><i class="fa fa-vk"></i></a></p>
-                </div>
-            </div>
-                <div class="row">
-                    <div class="col-xs-offset-3 col-xs-6 col-sm-offset-5 col-sm-4">
-                        <p>Created by <a href="mailto:petrodzher@gmail.com">off-sky</a></p>
-                    </div>
-                </div>
-            </div>
-          </div>
-          
-<!--          Back to top button-->
-<a href="#" class="back-to-top">
-    <i class="fa fa-chevron-circle-up"></i>
-          </a>
-      
-        
-   
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/core/bootstrap.min.js"></script>
-     <!-- My javascript-->
-          <script src="js/app.js"></script>
-          <script src="js/controllers.js"></script>
-          <script src="js/services.js"></script>
-    <script>
-      $(document).ready(function(){
-          console.log('fooo');
-          var duration = 300;
-          var offset = 750;
-          if($(window).width() < 768) offset = 10;
-          if($(this).scrollTop()>offset) {
-                  $('.back-to-top').fadeIn(duration);
-
-              } else {
-                  $('.back-to-top').fadeOut(duration);
- 
-              }
-              
-          
-          $(window).scroll(function(){
-              
-              if($(this).scrollTop()>offset) {
-                  $('.back-to-top').fadeIn(duration);
-                  console.log('Showing button');
-              } else {
-                  $('.back-to-top').fadeOut(duration);
-                  console.log('Hiding button');
-              }
-          });
-          $(".drop_item").hover(function(){
-              console.log('bar');
-              $(this).find(".menu_icon").animate({
-                  fontSize: '+25px'
-              })
-              $(this).find(".menu_flag").animate({
-                  height: '+25px'
-              })
-          })
-          
-           $(".drop_item").mouseout(function(){
-                $(this).find(".menu_icon").animate({
-                  fontSize: '14px'
-              }, 'fast')
-                $(this).find(".menu_flag").animate({
-                  height: '18px'
-              }, 'fast')
-                
-           })
-                                       
-          
-      });
-      
-    </script>
-  </body>
-</html

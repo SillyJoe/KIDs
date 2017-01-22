@@ -1,0 +1,87 @@
+<div id="news" class="container">
+        <div class="page-header">
+            <div class="row">
+              <div class="col-md-10 col-xs-12"><h1>Що в нас нового?</h1></div>
+              <div id="add_news_button" class="col-md-2 col-xs-12"><button class="btn btn-danger btn-lg add_news_button" ng-if="isAdmin()" ng-click="openNewsAddModal()">Додати...</button></div>
+         </div>
+          </div>
+        <div id="news_section" class="row" >
+        <div class="hidden-xs hidden-sm col-md-1" style="padding-left:0px; padding-right:0px;">
+        <div class="btn-news-left" ng-click="scrollPrevious()">
+            <i class="fa fa-angle-double-left"></i>
+        </div>
+        </div>
+        <div class="col-xs-12 col-md-10 news-block">
+<!--            Detailed news-->
+         <div class="row" ng-if="detailedIndex != 0">
+             <div class="news-detail-image">
+                <img ng-src="{{detailedNews.photo}}" class="img-responsive thumbnail">
+             </div>
+              <h2>{{detailedNews.title}}</h2>
+              <h4><small><date>{{detailedNews.date}}</date></small></h4>
+              <h5 style="color:#a24d47">Автор: {{detailedNews.author}}, <small>{{detailedNews.position}}</small></h5>
+              <p>{{detailedNews.text}}</p>
+              <button class="btn btn-danger" ng-if="isAdmin()" ng-click="openNewsChangeModal(detailedNews.id)">Редагувати</button>
+              <button class="btn btn-primary" ng-click="resetDetailed()">Назад до новин</button>
+         </div>
+<!--            End of detailed news-->
+            
+          <div class="row content-row news-row" ng-if="(newsOne.title != '') && detailedIndex == 0">
+              <div class="col-md-6 col-xs-12 news-odd">
+                  <div class="news_text">
+                      <h2><a href="#" ng-click="showDetailed(1)">{{newsOne.title}}</a></h2>
+                    <h4><small><date>{{newsOne.date}}</date></small></h4>
+                      <h5 style="color:#a24d47">Автор: {{newsOne.author}}, <small>{{newsOne.position}}</small></h5>
+                    <p>{{newsOne.text}}</p>
+                  </div>
+                  <div ng-if="newsOne.text != ''">
+                    <button class="btn btn-primary" ng-click="showDetailed(1)">Більше...</button><button class="btn btn-danger" ng-if="isAdmin()" ng-click="openNewsChangeModal(newsOne.id)">Редагувати</button>
+                  </div>
+              </div>
+              <div class="col-md-6 col-xs-12 news_image" ng-show="newsOne.photo !=''">
+                <img ng-src="{{newsOne.photo}}" class="img-responsive thumbnail">
+              </div>
+          </div>
+          <div class="row content-row news-row" ng-if="newsTwo.title != '' && detailedIndex == 0">
+              <div class="col-md-6 col-xs-12 news_image" ng-show="newsTwo.photo !=''">
+                <img ng-src="{{newsTwo.photo}}" class="img-responsive thumbnail">
+              </div>
+              <div class="col-md-6 col-xs-12 news-even">
+                  <div class="news_text">
+                    <h2><a href="#" ng-click="showDetailed(2)">{{newsTwo.title}}</a></h2>
+                    <h4><small><date>{{newsTwo.date}}</date></small></h4>
+                      <h5 style="color:#a24d47">Автор: {{newsTwo.author}}, <small>{{newsTwo.position}}</small></h5>
+                    <p>{{newsTwo.text}}</p>
+                  </div>
+                    <div ng-if="newsTwo.text != ''">
+                    <button class="btn btn-primary" ng-click="showDetailed(2)">Більше...</button><button class="btn btn-danger" ng-if="isAdmin()" ng-click="openNewsChangeModal(newsTwo.id)">Редагувати</button>
+                  </div>
+              </div> 
+          </div>
+          <div class="row content-row news-row" ng-if="newsThree.title != '' && detailedIndex == 0" style="border-bottom:0px">
+              <div class="col-md-6 col-xs-12 news-odd">
+                  <div class="news_text">
+                      <h2><a href="#" ng-click="showDetailed(3)">{{newsThree.title}}</a></h2>
+                    <h4><small><date>{{newsThree.date}}</date></small></h4>
+                      <h5 style="color:#a24d47">Автор: {{newsThree.author}}, <small>{{newsThree.position}}</small></h5>
+                    <p>{{newsThree.text}}</p>
+                 </div>
+                    <div ng-if="newsThree.text != ''">
+                    <button class="btn btn-primary" ng-click="showDetailed(3)">Більше...</button><button class="btn btn-danger" ng-if="isAdmin()" ng-click="openNewsChangeModal(newsThree.id)">Редагувати</button>
+                  </div>
+              </div>
+              <div class="col-md-6 col-xs-12 news_image" ng-show="newsThree.photo !=''">
+                <img ng-src="{{newsThree.photo}}" class="img-responsive thumbnail">
+              </div>
+      </div>
+      </div>
+      <div class="hidden-xs hidden-sm col-md-1 btn-news-right" ng-click="scrollNext()">
+          <i class="fa fa-angle-double-right"></i>
+      </div>
+      </div>
+          <div class="row">
+            <div class="col-xs-12 hidden-md hidden-lg btn-news-down" ng-click="scrollNext()">
+                <i class="fa fa-angle-double-down"></i>
+            </div>
+          </div>
+          </div>

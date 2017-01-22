@@ -22,17 +22,22 @@ angular.module('kiddsapp.controllers', [])
     
 }])
 
-.controller('indexController', ['$scope', '$state', '$uibModal', 'userFactory', '$anchorScroll', '$location', function($scope, $state, $uibModal, userFactory, $anchorScroll, $location){
+.controller('indexController', ['$scope', '$state', '$uibModal', 'userFactory', '$anchorScroll', '$location', 'scrollTo', function($scope, $state, $uibModal, userFactory, $anchorScroll, $location, scrollTo){
+    
+    
+    
     console.log('Index controller loaded...');
     $scope.currentUser = function(){
         return $localStorage.getObject('currentUser', {username:'', admin:false});
     }
     
     $scope.scrollToAnchor = function(anchor){
+        console.log('Scrolling to '+anchor);
         $location.hash(anchor);
         $anchorScroll();
     }
-       
+    if (scrollTo == 'news') $scope.scrollToAnchor('news');
+    
 }])
 
 .controller('loginModalController', ['$scope', '$uibModalInstance', 'userFactory', function($scope, $uibModalInstance, userFactory){
@@ -104,7 +109,7 @@ angular.module('kiddsapp.controllers', [])
     
 }])
 
-.controller('newsController', ['$scope', 'newsFactory', 'userFactory', '$localStorage', '$uibModal', function($scope, newsFactory, userFactory, $localStorage, $uibModal){
+.controller('newsController', ['$scope', 'newsFactory', 'userFactory', '$localStorage', '$uibModal', '$anchorScroll', '$location', function($scope, newsFactory, userFactory, $localStorage, $uibModal, $anchorScroll, $location){
     userFactory.updateCurrentUser();
     $scope.blankNews = {
         title: '',
@@ -112,6 +117,16 @@ angular.module('kiddsapp.controllers', [])
         photo: 'assets/news/blank.png',
         text: '',
     }
+//    console.log('Scroll to news value is: '+scrollToNews);
+    
+//    if (scrollToNews) $scope.scrollToAnchor('news');
+    
+    $scope.scrollToAnchor = function(anchor){
+        console.log('Scrolling to '+anchor);
+        $location.hash(anchor);
+        $anchorScroll();
+    }
+    
     $scope.current = 0;
     $scope.initialize = function(){
         $scope.news = newsFactory.news;  
@@ -277,9 +292,9 @@ angular.module('kiddsapp.controllers', [])
     }
 }])
 
-.controller('teachersController', ['$scope', 'teachersFactory', '$timeout', '$state', '$window', '$uibModal', function($scope, teachersFactory, $timeout, $state, $window, $uibModal){
+.controller('teachersController', ['$scope', 'teachersFactory', '$timeout', '$state', '$window', '$uibModal', '$anchorScroll', '$location', function($scope, teachersFactory, $timeout, $state, $window, $uibModal, $anchorScroll, $location){
     
-    
+
 //    Teacher scroll functionality 
     
     console.log('Teachers controller loaded!!!');
@@ -521,10 +536,9 @@ angular.module('kiddsapp.controllers', [])
     
 }])
 
-.controller('aboutusController', ['$state', 'userFactory', '$scope', function($state, userFactory, $scope){
+.controller('aboutusController', ['$state', 'userFactory', '$scope', '$anchorScroll', '$location', 'scrollTo', function($state, userFactory, $scope, $anchorScroll, $location, scrollTo){
+    $state.go('app.aboutus.general', {scrollTo: scrollTo});
     userFactory.updateCurrentUser();
-    console.log('Transferring to aboutus');
-    $state.go('aboutus');
     console.log('Current state: '+$state.current.name+'.');
     $scope.currentUser = function(){
         return userFactory.currentUser;
@@ -536,7 +550,7 @@ angular.module('kiddsapp.controllers', [])
 
 .controller('photoFrameController', ['photoInfo', '$scope', 'galleryFactory', '$uibModalInstance', '$state', function(photoInfo, $scope, galleryFactory, $uibModalInstance, $state){
 //    if (!$state.is('aboutus.photo.detail'))
-    $state.go('detail', {eventId: photoInfo.currentEvent.id, photoId: photoInfo.currentPhoto.id});
+    $state.go('app.aboutus.detail', {eventId: photoInfo.currentEvent.id, photoId: photoInfo.currentPhoto.id});
     $scope.currentPhoto = photoInfo.currentPhoto;
     $scope.currentEvent = photoInfo.currentEvent;
     console.log(photoInfo);
@@ -566,11 +580,11 @@ angular.module('kiddsapp.controllers', [])
             $scope.currentEvent = galleryFactory.getGallery()[eventIndex];
             photoIndex = 0;
             $scope.currentPhoto = $scope.currentEvent.photos[photoIndex];
-            $state.go('detail', {eventId:$scope.currentEvent.id, photoId: $scope.currentPhoto.id});
+            $state.go('app.aboutus.detail', {eventId:$scope.currentEvent.id, photoId: $scope.currentPhoto.id});
         } else {
             photoIndex++;
             $scope.currentPhoto = $scope.currentEvent.photos[photoIndex];
-            $state.go('detail', {eventId: $scope.currentEvent.id, photoId: $scope.currentPhoto.id});
+            $state.go('app.aboutus.detail', {eventId: $scope.currentEvent.id, photoId: $scope.currentPhoto.id});
         }
     };
     
@@ -581,11 +595,11 @@ angular.module('kiddsapp.controllers', [])
            $scope.currentEvent = galleryFactory.getGallery()[eventIndex];
             photoIndex = $scope.currentEvent.photos.length - 1;
             $scope.currentPhoto = $scope.currentEvent.photos[photoIndex];
-            $state.go('detail', {eventId:$scope.currentEvent.id, photoId: $scope.currentPhoto.id});
+            $state.go('app.aboutus.detail', {eventId:$scope.currentEvent.id, photoId: $scope.currentPhoto.id});
         } else {
             photoIndex--;
             $scope.currentPhoto = $scope.currentEvent.photos[photoIndex];
-            $state.go('detail', {eventId:$scope.currentEvent.id, photoId: $scope.currentPhoto.id});
+            $state.go('app.aboutus.detail', {eventId:$scope.currentEvent.id, photoId: $scope.currentPhoto.id});
         }
     };
     
@@ -596,7 +610,11 @@ angular.module('kiddsapp.controllers', [])
 .controller('loginController', [function(){
     
 }])
-.controller('servicesController', ['$state', 'userFactory', '$scope', function($state, userFactory, $scope){
+.controller('servicesController', ['$anchorScroll', '$location', 'scrollTo', 'userFactory', '$scope', function($anchorScroll, $location, scrollTo, $state, userFactory, $scope){
+    if (scrollTo != '') {
+        $location.hash(scrollTo);
+        $anchorScroll();
+    }
     
 }])
 .controller('passTestController', ['$state', 'userFactory', '$scope', function($state, userFactory, $scope){
@@ -632,7 +650,7 @@ angular.module('kiddsapp.controllers', [])
     $scope.generateTest = function(alias, testname){
         $scope.testDetails.test_name = testname;
         $scope.testDetails.result_code = generateTestResultCode();
-        $state.go('passtest_test', {alias: alias, testDetails: $scope.testDetails}); 
+        $state.go('app.passtest_test', {alias: alias, testDetails: $scope.testDetails}); 
     }
     
     
@@ -893,7 +911,7 @@ angular.module('kiddsapp.controllers', [])
     $scope.printResult = function(){
         calculateStatistics();
         console.log($scope.testDetails);
-        $state.go('passtest_result', {testDetails: $scope.testDetails});  
+        $state.go('app.passtest_result', {testDetails: $scope.testDetails});  
     }
     //end of test MatchQuestion
     
@@ -915,7 +933,7 @@ angular.module('kiddsapp.controllers', [])
         var result = 0;
         for(var i = 0; i < question.q.length; i++) {
             var id = question.q[i].id;
-            if (question.c.indexOf(id) == -1 && question.a.indexOf(id) == -1) {result += incr; continue} 
+            if (question.c.indexOf(id) == -1 && question.a.indexOf(id) == -1) {continue} 
             else {
                 if (question.c.indexOf(id) != -1 && question.a.indexOf(id) != -1) {
                     result += incr;

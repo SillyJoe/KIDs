@@ -13,7 +13,15 @@
 <!--    <link href="./css/bootstrap-theme.css" rel="stylesheet">-->
     <link href="css/font-awesome.css" rel="stylesheet">
     <link href="./css/KIDS_style.css" rel="stylesheet">
+      
 
+         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      
+       <!--      Transit library-->
+      <script src="js/jquery.transit.js"></script>
+     
+      
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,6 +36,8 @@
       <script src="js/angular-ui-bootstrap/dist/ui-bootstrap-csp.css"></script>
       <script src="js/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
       <script src="js/angular-animate/angular-animate.js"></script>
+      
+      
 
 <!--
 	  <script src="https://github.com/off-sky/KIDs/blob/master/src/js/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
@@ -36,218 +46,20 @@
 -->
       
   </head>
-  <body ng-app="kiddsapp" ng-controller="indexController">
-      <div class="upper_row">
-    <div class="row">
-        <div class="col-xs-offset-4 col-xs-4 hidden-sm hidden-md hidden-lg" style="margin-bottom: 3%; margin-top: 3%;">
-            <a href="index.html"><img src="assets/logo.png" class="img img-responsive" alt="логотип мовної школи KIDs"></a>
-        </div>
-    </div>
-      <div class="row">
-          <div class="col-lg-3 hidden-xs">
-           
-          </div>
-          
-          <!--Menu div -->
-                  <div class="col-xs-12 col-lg-9 container-menu" ng-controller="menubarController">
-                      <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse no_left_pad" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav">
-                <li><a href="" ng-click="scrollToAnchor('news')">Що нового? <span class="sr-only">What's up?</span></a></li>
-                <li class="dropdown">
-                  <a href="aboutus.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Наша школа <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                      <li><a class="drop_item" href="aboutus.html#we"><i id="menu_icon" class="fa fa-mortar-board menu_icon"></i> Про нас</a></li>
-                    <li><a class="drop_item" href="aboutus.html#teachers"><i id="menu_icon" class="fa fa-book menu_icon"></i> Вчителі</a></li>
-                    <li><a class="drop_item" href="aboutus.html#gallery"><i id="menu_icon" class="fa fa-camera menu_icon"></i> Галерея</a></li>
-                  </ul>
-                </li>
-                  <li class="dropdown">
-                  <a href="services.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Послуги <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a class="drop_item" href="services.html#english"><img class="img menu_flag" src="assets/flag_gb.png"> Англійська</a></li>
-                    <li><a class="drop_item" href="services.html#german"><img class="img menu_flag" src="assets/flag_ger.png"> Німецька</a></li>
-                      <li><a class="drop_item" href="services.html#other"><img class="img menu_flag" src="assets/star.png">Інше</a></li>
-                  </ul>
-                </li>
-                <li><a href="passtest.html">Пройти тест <span class="sr-only">Test yourself</span></a></li>
-                  <li><a href="contactus.html">Контакти <span class="sr-only">Contact us</span></a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                  <li id="user-label" ng-click="doLogOut()"><a href="#">{{currentUser().username}}</a></li>
-                  <li><a ng-click="openLoginModal()"><i class="fa fa-sign-in fa-lg"></i></a></li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-          </div><!-- /.container-fluid -->
-        </nav>
-          </div> <!-- End of menu div-->
-         
-          
-      </div> <!-- row -->
-          
-            <div ui-view="login"></div>
-
-          
-          <a id="down_button" href="#news"><img id="downImage" src="assets/down_btn.png" class="img-responsive"></a>
-              
-    </div> <!--upper row -->
-          
-      <div id="news" class="container" ng-controller="newsController">
-        <div class="page-header">
-            <div class="row">
-              <div class="col-md-10 col-xs-12"><h1>Що в нас нового?</h1></div>
-              <div id="add_news_button" class="col-md-2 col-xs-12"><button class="btn btn-danger btn-lg add_news_button" ng-if="isAdmin()" ng-click="openNewsAddModal()">Додати...</button></div>
-         </div>
-          </div>
-        <div id="news_section" class="row" >
-        <div class="hidden-xs hidden-sm col-md-1" style="padding-left:0px; padding-right:0px;">
-        <div class="btn-news-left" ng-click="scrollPrevious()">
-            <i class="fa fa-angle-double-left"></i>
-        </div>
-        </div>
-        <div class="col-xs-12 col-md-10 news-block">
-<!--            Detailed news-->
-         <div class="row" ng-if="detailedIndex != 0">
-             <div class="news-detail-image">
-                <img ng-src="{{detailedNews.photo}}" class="img-responsive thumbnail">
-             </div>
-              <h2>{{detailedNews.title}}</h2>
-              <h4><small><date>{{detailedNews.date}}</date></small></h4>
-              <h5 style="color:#a24d47">Автор: {{detailedNews.author}}, <small>{{detailedNews.position}}</small></h5>
-              <p>{{detailedNews.text}}</p>
-              <button class="btn btn-danger" ng-if="isAdmin()" ng-click="openNewsChangeModal(detailedNews.id)">Редагувати</button>
-              <button class="btn btn-primary" ng-click="resetDetailed()">Назад до новин</button>
-         </div>
-<!--            End of detailed news-->
-            
-          <div class="row content-row news-row" ng-if="(newsOne.title != '') && detailedIndex == 0">
-              <div class="col-md-6 col-xs-12 news-odd">
-                  <div class="news_text">
-                      <h2><a href="#" ng-click="showDetailed(1)">{{newsOne.title}}</a></h2>
-                    <h4><small><date>{{newsOne.date}}</date></small></h4>
-                      <h5 style="color:#a24d47">Автор: {{newsOne.author}}, <small>{{newsOne.position}}</small></h5>
-                    <p>{{newsOne.text}}</p>
-                  </div>
-                  <div ng-if="newsOne.text != ''">
-                    <button class="btn btn-primary" ng-click="showDetailed(1)">Більше...</button><button class="btn btn-danger" ng-if="isAdmin()" ng-click="openNewsChangeModal(newsOne.id)">Редагувати</button>
-                  </div>
-              </div>
-              <div class="col-md-6 col-xs-12 news_image" ng-show="newsOne.photo !=''">
-                <img ng-src="{{newsOne.photo}}" class="img-responsive thumbnail">
-              </div>
-          </div>
-          <div class="row content-row news-row" ng-if="newsTwo.title != '' && detailedIndex == 0">
-              <div class="col-md-6 col-xs-12 news_image" ng-show="newsTwo.photo !=''">
-                <img ng-src="{{newsTwo.photo}}" class="img-responsive thumbnail">
-              </div>
-              <div class="col-md-6 col-xs-12 news-even">
-                  <div class="news_text">
-                    <h2><a href="#" ng-click="showDetailed(2)">{{newsTwo.title}}</a></h2>
-                    <h4><small><date>{{newsTwo.date}}</date></small></h4>
-                      <h5 style="color:#a24d47">Автор: {{newsTwo.author}}, <small>{{newsTwo.position}}</small></h5>
-                    <p>{{newsTwo.text}}</p>
-                  </div>
-                    <div ng-if="newsTwo.text != ''">
-                    <button class="btn btn-primary" ng-click="showDetailed(2)">Більше...</button><button class="btn btn-danger" ng-if="isAdmin()" ng-click="openNewsChangeModal(newsTwo.id)">Редагувати</button>
-                  </div>
-              </div> 
-          </div>
-          <div class="row content-row news-row" ng-if="newsThree.title != '' && detailedIndex == 0" style="border-bottom:0px">
-              <div class="col-md-6 col-xs-12 news-odd">
-                  <div class="news_text">
-                      <h2><a href="#" ng-click="showDetailed(3)">{{newsThree.title}}</a></h2>
-                    <h4><small><date>{{newsThree.date}}</date></small></h4>
-                      <h5 style="color:#a24d47">Автор: {{newsThree.author}}, <small>{{newsThree.position}}</small></h5>
-                    <p>{{newsThree.text}}</p>
-                 </div>
-                    <div ng-if="newsThree.text != ''">
-                    <button class="btn btn-primary" ng-click="showDetailed(3)">Більше...</button><button class="btn btn-danger" ng-if="isAdmin()" ng-click="openNewsChangeModal(newsThree.id)">Редагувати</button>
-                  </div>
-              </div>
-              <div class="col-md-6 col-xs-12 news_image" ng-show="newsThree.photo !=''">
-                <img ng-src="{{newsThree.photo}}" class="img-responsive thumbnail">
-              </div>
-      </div>
-      </div>
-      <div class="hidden-xs hidden-sm col-md-1 btn-news-right" ng-click="scrollNext()">
-          <i class="fa fa-angle-double-right"></i>
-      </div>
-      </div>
-          <div class="row">
-            <div class="col-xs-12 hidden-md hidden-lg btn-news-down" ng-click="scrollNext()">
-                <i class="fa fa-angle-double-down"></i>
-            </div>
-          </div>
-          
-          </div>
-          <div class="row">
-            <div id="footer">
-              <div class="row footer-row">
-                <div class="col-xs-12 col-sm-4 left-col">
-                    <ul class="list-unstyled">
-                        <li><a href="index.html#news">Що нового</a></li>
-                        <li><a href="aboutus.html">Наша школа</a></li>
-                        <li><ul>
-                            <li><a href="aboutus.html#we">Про нас</a></li>
-                            <li><a href="aboutus.html#teachers">Вчителі</a></li>
-                            <li><a href="aboutus.html#gallery">Галерея</a></li>
-                            </ul></li>
-                        <li><a href="services.html">Послуги</a></li>
-                        <li><ul>
-                            <li><a href="services.html#english">Англійська мова</a></li>
-                            <li><a href="services.html#german">Німецька мова</a></li>
-                            </ul></li>
-                        <li><a href="passtest.html">Пройти тест</a></li>
-                        <li><a href="contactus.html">Контакти</a></li>
-                    </ul>
-                </div>
-                <div class="col-xs-12 col-sm-4 left-col">
-                    <address>
-                        <h4>KIDS</h4>
-                        <p>Товариство об'єднаних репетиторів<br>
-                           м. Хмельницький,<br>
-                           мкрн Ракове,
-                           вулиця Народної Волі, 1а, корп. 1 
-                        </p>
-                        <i class="fa fa-phone"></i> +380631773311<br>
-		              <i class="fa fa-envelope"></i> <a href="mailto:confusion@food.net"> kate_ivasenko5@i.ua</a>
-                    </address>
-                  </div>
-                <div class="col-xs-12 col-sm-4 edge-col">
-                      <p class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><br>
-                      <a href="https://vk.com/kids_khm"><i class="fa fa-vk"></i></a></p>
-                </div>
-            </div>
-                <div class="row">
-                    <div class="col-xs-offset-3 col-xs-6 col-sm-offset-5 col-sm-4">
-                        <p>Created by <a href="mailto:petrodzher@gmail.com">off-sky</a></p>
-                    </div>
-                </div>
-            </div>
-          </div>
-          
+  <body ng-app="kiddsapp">
+     <div ui-view="header"></div>
+      <div ui-view="mainContent"></div>
+      <div ui-view="footer"></div>
+      
 <!--          Back to top button-->
-<a href="#" class="back-to-top">
+<div class="back-to-top">
     <i class="fa fa-chevron-circle-up"></i>
-          </a>
+ </div>
       
         
    
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
+ 
           
           
 <!--          My javascript-->
@@ -257,11 +69,12 @@
           
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/core/bootstrap.min.js"></script>
+      
     <script>
       $(document).ready(function(){
           console.log('fooo');
           var duration = 300;
-          var offset = 750;
+          var offset = 400;
           if($(window).width() < 768) offset = 10;
           var showbutton = 900;
           if($(this).scrollTop()>offset) {
@@ -278,6 +91,9 @@
                   $('.back-to-top').fadeOut(duration);
  
               }
+               $('.back-to-top').click(function(){
+                   $(document).scrollTop(20);
+               });
               
               if ($('.btn-news-left').css('display') == 'none') {
                   if($(this).scrollTop()>showbutton) {

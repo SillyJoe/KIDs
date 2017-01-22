@@ -5,8 +5,18 @@
     color: firebrick;
 }
 
+.back-to-top, .btn-news-left, .btn-news-right, .left-scr, .right-scr {
+    cursor: pointer;
+}
+
+
+
 .form-warning-message {
     color: #CC6600;
+}
+
+i {
+    cursor: pointer;
 }
 
 /*Menu bar styles*/
@@ -27,7 +37,13 @@
 
 
 
+/*Passtest styles*/
 
+.question {
+    min-height: 200px;
+}
+
+/*End of pass test styles*/
 
 
 /*Services styles*/
@@ -309,7 +325,7 @@ td strong {
     background-color: white;
 }
 
-.left-scr:hover a, .right-scr:hover a {
+.left-scr:hover i, .right-scr:hover i {
     
     color: #b3e7ff;
 }

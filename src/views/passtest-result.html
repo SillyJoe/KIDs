@@ -1,21 +1,26 @@
-<h2>Результати тесту: {{testDetails.test_name}}</h2>
-<h4>{{testDetails.username}}</h4>
-<h4>Код результату: {{testDetails.result_code}}</h4>
-<h4>Дата: {{testDetails.date.getDate()+'.'+(testDetails.date.getMonth()+1)+'.'+testDetails.date.getFullYear()}}</h4>
-<br><br><br>
-<h2>Ваш рівень:</h2>
-<h1>{{getTextLevel(testDetails.level)}}</h1>
+<div style="background-color:#88d6fa;">
+    <div class="container">
+        <h2>Результати тесту: {{testDetails.test_name}}</h2>
+        <h4>{{testDetails.username}}</h4>
+        <h4>Код результату: {{testDetails.result_code}}</h4>
+        <h4>Дата: {{testDetails.date.getDate()+'.'+(testDetails.date.getMonth()+1)+'.'+testDetails.date.getFullYear()}}</h4>
+        <br><br><br>
+        <h2>Ваш рівень:</h2>
+        <h1>{{getTextLevel(testDetails.level)}}</h1>
 
-<br><br><br>
+        <br><br><br>
 
-<h2>Загальний результат:</h2>
-<h1>{{testDetails.overallRating}}%</h1>
+        <h2>Загальний результат:</h2>
+        <h1>{{testDetails.overallRating}}%</h1>
 
-<br><br><br>
+        <br><br><br>
 
-<h2>Результати за аспектами:</h2>
+        <h2>Результати за аспектами:</h2>
 
-<h3>Граматика: {{testDetails.grammar.rating}}%</h3>
-<h3>Лексика: {{testDetails.lexis.rating}}%</h3>
-<h3>Читання: {{testDetails.reading.rating}}%</h3>
-<h3>Слухання: {{testDetails.listening.rating}}%</h3>
+        <h3>Граматика: {{testDetails.grammar.rating}}%</h3>
+        <h3>Лексика: {{testDetails.lexis.rating}}%</h3>
+        <h3>Читання: {{testDetails.reading.rating}}%</h3>
+        <h3>Слухання: {{testDetails.listening.rating}}%</h3>
+        </div>
+
+</div>
