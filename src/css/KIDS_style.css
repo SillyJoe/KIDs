@@ -5,7 +5,7 @@
     color: firebrick;
 }
 
-.back-to-top, .btn-news-left, .btn-news-right, .left-scr, .right-scr {
+.back-to-top, .btn-news-left, .btn-news-right, .left-scr, .right-scr, #map {
     cursor: pointer;
 }
 

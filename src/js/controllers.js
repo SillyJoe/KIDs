@@ -998,5 +998,18 @@ angular.module('kiddsapp.controllers', [])
 }])
 
 .controller('contactusController', ['$state', 'userFactory', '$scope', function($state, userFactory, $scope){
-    
+    $scope.mapUrl = 'assets/Map.png';
+    $scope.showLarge = false;
+    $scope.mapText = 'Натисніть на карту, щоб збільшити.'
+    $scope.toggleMap = function() {
+        if (!$scope.showLarge) {
+            $scope.mapUrl = 'assets/Map_ex.png';
+            $scope.mapText = 'Натисніть на карту, щоб зменшити.'
+        }
+        else {
+            $scope.mapUrl = 'assets/Map.png';
+             $scope.mapText = 'Натисніть на карту, щоб збільшити.'
+        }
+         $scope.showLarge = ! $scope.showLarge;
+    }
 }])

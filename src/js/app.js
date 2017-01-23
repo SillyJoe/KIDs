@@ -154,7 +154,7 @@ angular.module('kiddsapp', ['kiddsapp.controllers', 'kiddsapp.services', 'ui.rou
                  }
              }).result.finally(function(){
                  if (previousState.name == "app.aboutus.event") $state.go('app.aboutus.event', {eventId: eventId});
-                 else $state.go('app.aboutus.general');
+                 else $state.go('app.aboutus.general', {scrollTo:'gallery'});
              })
          }],
         resolve: {

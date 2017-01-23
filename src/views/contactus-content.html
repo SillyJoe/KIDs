@@ -33,10 +33,10 @@
                             <div class="panel panel-default address-panel">
                               <div class="panel-body">
                                   
-                                     <a id="map" href="#map-img"><img id="map-img" src="assets/Map.png" alt="map" class="img img-thumbnail"></a>
+                                     <div id="map" ng-click="toggleMap()"><img id="map-img" ng-src="{{mapUrl}}" alt="map" class="img img-thumbnail"></div>
                                     <br>
                                   
-                                    <p>Натисніть на карту, щоб збільшити</p>
+                                    <p>{{mapText}}</p>
                                   
                               </div>
                             </div>
