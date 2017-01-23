@@ -480,7 +480,7 @@ angular.module('kiddsapp.services', [])
             name: 'Визначення рівня англійської мови - комплексний текст',
             alias: 'placement_English',
             levels: [
-                        {
+                        { //first level
                         grammar: [
                     [
                         {
@@ -1167,7 +1167,7 @@ angular.module('kiddsapp.services', [])
                     type: 'listeningTrueOrFalse',
                     target: 'Listening',
                     task: 'Listen to the audio and mark only TRUE statements below.',
-                    audio: 'assets/audio/test.mp3',
+                    audio: 'assets/audio/test-1-1.mp3',
                     q: [
                         {id: 0, statement: 'This might be a conversation between a father and a daughter.', add: false},
                         {id: 1, statement: 'The girl went to the cinema last night.', add: false},
@@ -1242,12 +1242,30 @@ angular.module('kiddsapp.services', [])
                                         ref: [
                                             'http://www.ef.com/english-resources/english-grammar/comparative-and-superlative/'
                                         ]
+                                    },
+                                    {
+                                        id: 1,
+                                        type: 'multipleChoiceGrammar',
+                                        target: 'Grammar',
+                                        task: 'Choose correct options to insert in the sentence.',
+                                        sentence: 'A plane goes faster _______ a plane.',
+                                        q: [
+                                            {id: 0, statement: 'as', add: false},
+                                            {id: 1, statement: 'then', add: false},
+                                            {id: 2, statement: 'so as', add: false},
+                                            {id: 3, statement: 'than', add: false},
+                                            {id: 4, statement: 'Nothing should be inserted', add: false}
+                                        ],
+                                        c: [3],
+                                        ref: [
+                                            'http://www.ef.com/english-resources/english-grammar/comparative-and-superlative/'
+                                        ]
                                     }
                                     
                                 ],
                                 [
                                    {
-                                        id: 1,
+                                        id: 2,
                                         type: 'multipleChoiceGrammar',
                                         target: 'Grammar',
                                         task: 'Choose correct options to insert in the sentence.',
@@ -1267,7 +1285,7 @@ angular.module('kiddsapp.services', [])
                                 ],
                                 [
                                     {
-                                        id: 2,
+                                        id: 3,
                                         type: 'multipleChoiceGrammar',
                                         target: 'Grammar',
                                         task: 'Choose correct options to insert in the sentence.',
@@ -1285,7 +1303,7 @@ angular.module('kiddsapp.services', [])
                                         ]
                                     },
                                     {
-                                        id: 3,
+                                        id: 4,
                                         type: 'multipleChoiceGrammar',
                                         target: 'Grammar',
                                         task: 'Choose correct options to insert in the sentence.',
@@ -1300,17 +1318,147 @@ angular.module('kiddsapp.services', [])
                                             'http://www.grammar.cl/Basic/Adverbs_Frequency.htm'
                                         ]
                                     },
+                                ],
+                                [
+                                   {
+                                        id: 5,
+                                        type: 'multipleChoiceGrammar',
+                                        target: 'Grammar',
+                                        task: 'Choose correct options to insert in the sentence.',
+                                        sentence: 'She is seeing a doctor _______.',
+                                        q: [
+                                            {id: 0, statement: 'an hour ago', add: false},
+                                            {id: 1, statement: 'tomorrow', add: false},
+                                            {id: 2, statement: 'yesterday', add: false},
+                                            {id: 3, statement: 'in a minute', add: false},
+                                            {id: 4, statement: 'soon', add: false},
+                                        ],
+                                        c: [1, 3, 4],
+                                        ref: [
+                                            'http://www.ef.com/english-resources/english-grammar/present-continuous/'
+                                        ]
+                                    },
+                                    {
+                                        id: 6,
+                                        type: 'multipleChoiceGrammar',
+                                        target: 'Grammar',
+                                        task: 'Is this sentence GRAMMATICALLY correct?',
+                                        sentence: 'I\'m thinking that beauty rules the world.',
+                                        q: [
+                                            {id: 0, statement: 'Yes', add: false},
+                                            {id: 1, statement: 'No', add: false},
+                                            
+                                        ],
+                                        c: [1],
+                                        ref: [
+                                            'http://www.ef.com/english-resources/english-grammar/present-continuous/'
+                                        ]
+                                    }
+                                ],
+                                [
+                                    {
+                                        id: 10,
+                                        type: 'multipleChoiceGrammar',
+                                        target: 'Grammar',
+                                        task: 'Choose correct options to insert in the sentence.',
+                                        sentence: 'I haven\'t seen him _______.',
+                                        q: [
+                                            {id: 0, statement: 'lately', add: false},
+                                            {id: 1, statement: 'yesterday', add: false},
+                                            {id: 2, statement: 'two days ago', add: false},
+                                            {id: 3, statement: 'today', add: false},
+                                            {id: 4, statement: 'recently', add: false}
+                                        ],
+                                        c: [0, 3, 4],
+                                        ref: [
+                                            'http://www.ef.com/english-resources/english-grammar/present-perfect/'
+                                        ]
+                                    }
                                 ]
                             ], //end of grammar
                             grammar_Topics : [
                                'Comparative and Superlative forms',
                                 'Frequency words',
-                                'Time prepositions'
+                                'Time prepositions',
+                                'Present Continuous',
+                                'Present Perfect'
                             ],
                             matchQuestions: [],//end of match
-                            textTrueOrFalseQuestions: [],//end of textTrueOrFalse
-                            listeningTrueOrFalseQuestions: [], //end of Listening
-                            oddWordOutQuestions: [] //end of OddWordOut
+                            textTrueOrFalseQuestions: [
+                                {
+                                    id: 1,
+                                    type: 'textTrueOrFalse',
+                                    target: 'Reading',
+                                    task: 'Read the text and mark the statements below that are FALSE.',
+                                    text: 'Three husbands met each other. The first one who was a soldier said: - Woman\'s tear is a classic weapon but very dangerous. The second one who was a weatherforcaster said: - Woman\'s tear is a light shower but it can become a flood that can dip many person\'s dead. The third one who was a chemist said: - Woman\'s tear is a special chemical that can ruin steely hearts.',
+                                    q: [
+                                        {id: 0, statement: 'The men who met were single.', add: false},
+                                        {id: 1, statement: 'The statements expressed by the men were influenced by their occupations.', add: false},
+                                        {id: 2, statement: 'The men agreed in that a woman\'s tear is potentially dangerous.', add: false},
+                                        {id: 3, statement: 'None of the men compared a woman\'s tear with a natural phenomenon.', add: false},
+                                        {id: 4, statement: 'The men who met worked in the same field.', add: false},
+                                       ],
+                                    c: [0, 3, 4],
+                                    a: [],
+                                    result: 0
+                                }
+                            ],//end of textTrueOrFalse
+                            listeningTrueOrFalseQuestions: [
+                                {
+                                    id: 1,
+                                    type: 'listeningTrueOrFalse',
+                                    target: 'Listening',
+                                    task: 'Listen to the audio and mark only TRUE statements below.',
+                                    audio: 'assets/audio/test-2-1.mp3',
+                                    q: [
+                                        {id: 0, statement: 'Laura and John have never been in Paris.', add: false},
+                                        {id: 1, statement: 'John wanted Laura to become his wife.', add: false},
+                                        {id: 2, statement: 'John suggested that they spend a honeymoon in New York.', add: false},
+                                        {id: 3, statement: 'Laura agreed to John\'s proposals.', add: false},
+                                        {id: 4, statement: 'John didn\`t sound excited as he was making the proposal.', add: false}
+
+                                    ],
+                                    c: [1, 3],
+                                    a: [],
+                                    result: 0
+                                }
+                            ], //end of Listening
+                            oddWordOutQuestions: [
+                                {
+                                    id: 0,
+                                    type: 'oddWordOut',
+                                    target: 'Lexis',
+                                    task: 'Select the word that doesn\'t fit with the other words.',
+                                    wordlist: [
+                                        'car',
+                                        'squirrel',
+                                        'train',
+                                        'underground',
+                                        'horse',
+                                        'trolleybus'
+                                        
+                                    ],
+                                    odd: 'squirrel',
+                                    a: '',
+                                    result: 0
+                                },
+                                {
+                                    id: 1,
+                                    type: 'oddWordOut',
+                                    target: 'Lexis',
+                                    task: 'Select the word that doesn\'t fit with the other words.',
+                                    wordlist: [
+                                        'beef',
+                                        'pork',
+                                        'paultry',
+                                        'steaks',
+                                        'lettuce' 
+                                    ],
+                                    odd: 'lettuce',
+                                    a: '',
+                                    result: 0
+                                }
+                            ] //end of OddWordOut
                             
                         }, //end of level 2
                         {
