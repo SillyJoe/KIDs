@@ -657,6 +657,7 @@ angular.module('kiddsapp.controllers', [])
     
 }])
 .controller('passTestTestController', ['testDetails', 'test', '$scope', '$state', function(testDetails, test, $scope, $state){
+    if (testDetails == null) $state.go('app.passtest_initial');
     var test = test;
     var questionCycleCounter = 0;
     var shouldCheckLevel = false;
@@ -833,13 +834,6 @@ angular.module('kiddsapp.controllers', [])
     $scope.highlight = '';
     var colors = ["Aqua", "Blue", "BlueViolet", "Brown", "BurlyWood", "CadetBlue", "Chartreuse", "Chocolate", "Coral", "CornflowerBlue", "Cornsilk", "Crimson", "Cyan", "DarkBlue", "DarkCyan", "DarkGoldenRod", "DarkGray", "DarkGrey", "DarkGreen", "DarkKhaki", "DarkMagenta", "DarkOliveGreen", "DarkOrange", "DarkOrchid", "DarkRed", "DarkSalmon", "DarkSeaGreen", "DarkSlateBlue", "DarkSlateGray", "DarkSlateGrey", "DarkTurquoise", "DarkViolet", "DeepPink", "DeepSkyBlue", "DimGray", "DimGrey", "DodgerBlue", "FireBrick", "FloralWhite", "ForestGreen", "Fuchsia", "Gainsboro", "GhostWhite", "Gold", "GoldenRod", "Gray", "Grey", "Green", "GreenYellow", "HoneyDew", "HotPink", "IndianRed", "Indigo", "Ivory", "Khaki", "Lavender", "LavenderBlush", "LawnGreen", "LemonChiffon", "LightBlue", "LightCoral", "LightCyan", "LightGoldenRodYellow", "LightGray", "LightGrey", "LightGreen", "LightPink", "LightSalmon", "LightSeaGreen", "LightSkyBlue", "LightSlateGray", "LightSlateGrey", "LightSteelBlue", "LightYellow", "Lime", "LimeGreen", "Linen", "Magenta", "Maroon", "MediumAquaMarine", "MediumBlue", "MediumOrchid", "MediumPurple", "MediumSeaGreen", "MediumSlateBlue", "MediumSpringGreen", "MediumTurquoise", "MediumVioletRed", "MidnightBlue", "MintCream", "MistyRose", "Moccasin", "NavajoWhite", "Navy", "OldLace", "Olive", "OliveDrab", "Orange", "OrangeRed", "Orchid", "PaleGoldenRod", "PaleGreen", "PaleTurquoise", "PaleVioletRed", "PapayaWhip", "PeachPuff", "Peru", "Pink", "Plum", "PowderBlue", "Purple", "RebeccaPurple", "Red", "RosyBrown", "RoyalBlue", "SaddleBrown", "Salmon", "SandyBrown", "SeaGreen", "SeaShell", "Sienna", "Silver", "SkyBlue", "SlateBlue", "SlateGray", "SlateGrey", "Snow", "SpringGreen", "SteelBlue", "Tan", "Teal", "Thistle", "Tomato", "Turquoise", "Violet", "Wheat", "White", "WhiteSmoke", "Yellow", "YellowGreen"]
     
-   $scope.checkedLeft = function(item){
-       return $scope.currentQuestion.userInput[0].indexOf(item) != -1
-   }
-   
-   $scope.checkedRight = function(item){
-        return $scope.currentQuestion.userInput[1].indexOf(item) != -1
-   }
    
     $scope.getColorLeft = function(item){
         var leftAnswers = $scope.currentQuestion.userInput[0];
@@ -945,28 +939,60 @@ angular.module('kiddsapp.controllers', [])
         var result = 0;
         for(var i = 0; i < question.q.length; i++) {
             var id = question.q[i].id;
-            if (question.c.indexOf(id) == -1 && question.a.indexOf(id) == -1) {result += incr; continue;} 
+            
+            //prepare for display
+            if (question.c.indexOf(id) != -1) {
+                console.log('Assigning true to option correct')
+                question.q[i].correct = true;
+            } else {
+                console.log('Assigning false to option correct')
+                 question.q[i].correct = false;
+            }
+            
+            if (question.c.indexOf(id) == -1 && question.a.indexOf(id) == -1) {
+                result += incr;
+                continue;
+            } 
             else {
                 if (question.c.indexOf(id) != -1 && question.a.indexOf(id) != -1) {
                     result += incr;
                     continue;
                 }
                 result -= incr;
-            }
+            }  
+        }
+        if (question.a.length == 0) {
+            question.result = 0;
+            $scope.saveAndNext();
+            return;
         }
         if (result < 0) result = 0;
         question.result = result;
         $scope.saveAndNext();    
     }
+    
       $scope.checkMatchQuestion = function(question) {
          var incr = 1 / question.left.length;
          var result = 0;
          for (var i = 0; i < question.left.length; i++) {
-            if (question.userInput[0].indexOf(question.c[0][i]) == -1) 
-                result -= incr; else {
+            if (question.userInput[0].indexOf(question.c[0][i]) == -1) {
+                    question.left[question.c[0][i]].correct = false;
+                    question.right[question.c[1][i]].correct = false;
+                    console.log('Decrementing result by: '+incr);
+                    continue;
+                }
+             else {
                     if (question.userInput[1][question.userInput[0].indexOf(question.c[0][i])]
-                       == question.c[1][i])
-                    result += incr; else result -= incr; 
+                       == question.c[1][i]) {
+                        console.log('Incrementing result by: '+incr);
+                        result += incr;
+                        question.left[question.c[0][i]].correct = true;
+                        question.right[question.c[1][i]].correct = true;
+                    } else {
+                        question.left[question.c[0][i]].correct = false;
+                        question.right[question.c[1][i]].correct = false;
+                        continue;
+                    }
                 }
         }
         if (result < 0) result = 0;
@@ -985,13 +1011,19 @@ angular.module('kiddsapp.controllers', [])
     
     
 }])
-.controller('passTestResultController', ['$scope', 'testDetails', function($scope, testDetails){
+.controller('passTestResultController', ['$scope', 'testDetails', '$state', function($scope, testDetails, $state){
+    if (testDetails == null) $state.go('app.passtest_initial');
     $scope.testDetails = testDetails;
     $scope.getTextLevel = function(level_id) {
         if (level_id == 0) return 'Незайманий'
         if (level_id == 1) return 'Початковий'
         if (level_id == 2) return 'Середній'
         if (level_id == 3) return 'Високий'
+    }
+    for (var i = 0; i < testDetails.questions.length; i++) {
+                console.log(testDetails.questions[i].sentence);
+                console.log(testDetails.questions[i].result);
+                
     }
     
     

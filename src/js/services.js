@@ -477,7 +477,7 @@ angular.module('kiddsapp.services', [])
         }])
 .factory('passTestFactory', [function(){
     var englishPlacementTest = {
-            name: 'Визначення рівня англійської мови - комплексний текст',
+            name: 'Визначення рівня англійської мови - комплексний тест',
             alias: 'placement_English',
             levels: [
                         { //first level

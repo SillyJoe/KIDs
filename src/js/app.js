@@ -238,7 +238,7 @@ angular.module('kiddsapp', ['kiddsapp.controllers', 'kiddsapp.services', 'ui.rou
     })
     
     .state('app.passtest_initial', {
-        url: '/passtest',
+        url: 'passtest',
         views: {
             'header@': {
                 templateUrl: 'views/common-header.html',
@@ -256,7 +256,7 @@ angular.module('kiddsapp', ['kiddsapp.controllers', 'kiddsapp.services', 'ui.rou
     })
     
     .state('app.passtest_test', {
-        url: '/:alias',
+        url: ':alias',
         params: {
             testDetails: null
         },
@@ -323,7 +323,7 @@ angular.module('kiddsapp', ['kiddsapp.controllers', 'kiddsapp.services', 'ui.rou
     })
     
     .state('app.passtest_result', {
-        url: '/results/:resultCode',
+        url: 'results/:resultCode',
         params: {
             testDetails: null
         },

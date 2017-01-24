@@ -43,6 +43,32 @@ i {
     min-height: 200px;
 }
 
+.question-perfect {
+    background-color: rgba(79, 168, 0, 0.4);
+    border-radius: 20px;
+    border: solid 1px rgb(73, 149, 5);
+}
+
+.question-medium {
+    background-color: rgba(231, 170, 33, 0.4);
+    border-radius: 20px;
+    border: solid 1px rgb(183, 105, 0);
+}
+
+.question-modest {
+    background-color: rgba(231, 31, 0, 0.4);
+    border-radius: 20px;
+    border: solid 1px rgb(186, 25, 0);
+}
+
+.correct-option {
+    color: green;
+}
+
+.incorrect-option-selected {
+    color: red;
+}
+
 /*End of pass test styles*/
 
 
