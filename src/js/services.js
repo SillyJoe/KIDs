@@ -1645,15 +1645,211 @@ angular.module('kiddsapp.services', [])
                                             ]
                                     }
                                     
+                                ],
+                                [
+                                    {
+                                            id: 10,
+                                            type: 'multipleChoiceGrammar',
+                                            target: 'Grammar',
+                                            task: 'Which sentence expresses a similar meaning? \n\n He started talking before the teacher entered the classroom, and continued talking afterwards.',
+                                            sentence: '',
+                                            q: [
+                                                {id: 0, statement: 'He talked, when the teacher entered the classroom.', add: false},
+                                                {id: 1, statement: 'He talked, when the teacher was entering the classroom.', add: false},
+                                                {id: 2, statement: 'He was talking, when the teacher entered the classroom.', add: false},
+                                                {id: 3, statement: 'He talked and the teacher entered the classroom.', add: false},
+                                                {id: 4, statement: 'As he was talking, the teacher was entering the classroom.', add: false}
+                                            ],
+                                            c: [
+                                               2
+                                            ],
+                                            ref: [
+                                                'http://easy-english.com.ua/future-continuous/'
+                                            ]
+                                    },
+                                    {
+                                            id: 11,
+                                            type: 'multipleChoiceGrammar',
+                                            target: 'Grammar',
+                                            task: 'Complete the sentence.',
+                                            sentence: 'My brother and I _______ sleeping at this time yesterday.',
+                                            q: [
+                                                {id: 0, statement: 'were', add: false},
+                                                {id: 1, statement: 'was', add: false},
+                                                {id: 2, statement: 'are', add: false},
+                                                {id: 3, statement: 'did', add: false},
+                                                {id: 4, statement: 'wasn\'t', add: false}
+                                            ],
+                                            c: [
+                                               0
+                                            ],
+                                            ref: [
+                                                'http://easy-english.com.ua/future-continuous/'
+                                            ]
+                                    },
+                                    {
+                                            id: 11,
+                                            type: 'multipleChoiceGrammar',
+                                            target: 'Grammar',
+                                            task: 'Choose one or several options to complete the sentence.',
+                                            sentence: 'I _______ reading, when he came.',
+                                            q: [
+                                                {id: 0, statement: 'were', add: false},
+                                                {id: 1, statement: 'was', add: false},
+                                                {id: 2, statement: 'did', add: false},
+                                                {id: 3, statement: 'wasn\'t', add: false}
+                                            ],
+                                            c: [
+                                               0
+                                            ],
+                                            ref: [
+                                                
+                                            ]
+                                    }
+                                ],
+                                [
+                                    {
+                                            id: 12,
+                                            type: 'multipleChoiceGrammar',
+                                            target: 'Grammar',
+                                            task: 'Choose one or several options to complete the sentence.',
+                                            sentence: 'When I met her, I had a feeling that I _______ her before.',
+                                            q: [
+                                                {id: 0, statement: 'have seen', add: false},
+                                                {id: 1, statement: 'had seen', add: false},
+                                                {id: 2, statement: 'would have seen', add: false},
+                                                {id: 3, statement: 'was seeing', add: false}
+                                            ],
+                                            c: [
+                                               1
+                                            ],
+                                            ref: [
+                                                
+                                            ]
+                                    },
+                                    {
+                                            id: 13,
+                                            type: 'multipleChoiceGrammar',
+                                            target: 'Grammar',
+                                            task: 'Choose one or several options to complete the sentence.',
+                                            sentence: 'When I got home he was waiting for me. He had _______ before me.',
+                                            q: [
+                                                {id: 0, statement: 'came', add: false},
+                                                {id: 1, statement: 'coming', add: false},
+                                                {id: 2, statement: 'come', add: false},
+                                                {id: 3, statement: 'will come', add: false}
+                                            ],
+                                            c: [
+                                               2
+                                            ],
+                                            ref: [
+                                                
+                                            ]
+                                    }
                                 ]
                                       
                             ], //end of grammar
                             grammar_Topic: [
                                 'Words of cause and effect',
                                 'Future Contiuous',
-                                'Should have done/might have done etc...'
+                                'Should have done/might have done etc...',
+                                'Past Continuous',
+                                'Past Perfect'
                             ],
-                            matchQuestions: [],//end of match
+                            matchQuestions: [
+                                {
+                                    id: 0,
+                                    type: 'match',
+                                    target: 'Lexis',
+                                    task: 'Match words in left column with their SYNONYMS in the right column',
+                                    left: [
+                                        {id: 0, word: 'complex', add: false},
+                                        {id: 1, word: 'exciting', add: false},
+                                        {id: 2, word: 'fierce', add: false},
+                                        {id: 3, word: 'ugly', add: false},
+                                        {id: 4, word: 'due', add: false},
+                                        {id: 5, word: 'urgent', add: false}
+                                    ],
+                                    right: [
+                                        {id: 0, word: 'cruel', add: false},
+                                        {id: 1, word: 'sophisticated', add: false},
+                                        {id: 2, word: 'appropriate', add: false},
+                                        {id: 3, word: 'pressing', add: false},
+                                        {id: 4, word: 'thrilling', add: false},
+                                        {id: 5, word: 'unsightly', add: false},
+                                        
+                                    ],
+                                    c: [
+                                        [
+                                           0,
+                                            1,
+                                            2,
+                                            3,
+                                            4,
+                                            5
+                                        ],
+                                        [
+                                           1,
+                                            4,
+                                            0,
+                                            5,
+                                            2,
+                                            3
+                                        ]
+                                    ],
+                                    userInput: [
+                                        [],
+                                        []
+                                    ],
+                                    result: 0
+                                },
+                                {
+                                    id: 0,
+                                    type: 'match',
+                                    target: 'Lexis',
+                                    task: 'Match phrasal verbs in the left column with their SYNONYM verbs in the right column.',
+                                    left: [
+                                        {id: 0, word: 'give up', add: false},
+                                        {id: 1, word: 'come across', add: false},
+                                        {id: 2, word: 'go on', add: false},
+                                        {id: 3, word: 'blow up', add: false},
+                                        {id: 4, word: 'make up', add: false},
+                                        {id: 5, word: 'run down', add: false}
+                                    ],
+                                    right: [
+                                        {id: 0, word: 'continue', add: false},
+                                        {id: 1, word: 'explode', add: false},
+                                        {id: 2, word: 'contrive', add: false},
+                                        {id: 3, word: 'abandon', add: false},
+                                        {id: 4, word: 'mistreat', add: false},
+                                        {id: 5, word: 'encounter', add: false},
+                                        
+                                    ],
+                                    c: [
+                                        [
+                                           0,
+                                            1,
+                                            2,
+                                            3,
+                                            4,
+                                            5
+                                        ],
+                                        [
+                                           3,
+                                            5,
+                                            0,
+                                            1,
+                                            2,
+                                            4
+                                        ]
+                                    ],
+                                    userInput: [
+                                        [],
+                                        []
+                                    ],
+                                    result: 0
+                                }
+                            ],//end of match
                             textTrueOrFalseQuestions: [],//end of textTrueOrFalse
                             listeningTrueOrFalseQuestions: [], //end of Listening
                             oddWordOutQuestions: [] //end of OddWordOut

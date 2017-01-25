@@ -732,10 +732,13 @@ angular.module('kiddsapp.controllers', [])
             if (shouldCheckLevel) checkLevel();
             var topicArray = popRandomArrayElement(test.levels[$scope.testDetails.level].grammar);
             $scope.currentQuestion = popRandomArrayElement(topicArray);
+        } else if (questionCycleCounter < 5) {
+            if (shouldCheckLevel) checkLevel();
+            $scope.currentQuestion = popRandomArrayElement(test.levels[$scope.testDetails.level].oddWordOutQuestions);
         } else if (questionCycleCounter < 6) {
             if (shouldCheckLevel) checkLevel();
-            $scope.currentQuestion = pickRandomLexisQuestion();
-        } else if (questionCycleCounter == 6) {
+            $scope.currentQuestion = popRandomArrayElement(test.levels[$scope.testDetails.level].matchQuestions);
+        }else if (questionCycleCounter == 6) {
             if (shouldCheckLevel) checkLevel();
             $scope.currentQuestion = popRandomArrayElement(test.levels[$scope.testDetails.level].listeningTrueOrFalseQuestions);
         } else if (questionCycleCounter == 7) {
