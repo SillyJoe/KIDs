@@ -1461,8 +1461,198 @@ angular.module('kiddsapp.services', [])
                             ] //end of OddWordOut
                             
                         }, //end of level 2
-                        {
-                            grammar: [], //end of grammar
+                        {   //level 3
+                            grammar: [
+                                [
+                                    {
+                                        id: 0,
+                                        type: 'multipleChoiceGrammar',
+                                        target: 'Grammar',
+                                        task: 'Which word can be inserted in the sentence to make it grammatically correct?',
+                                        sentence: 'I\'ve missed several Maths lessons and _______ I got a low grade for Maths exam.',
+                                        q: [
+                                            {id: 0, statement: 'because', add: false},
+                                            {id: 1, statement: 'consequently', add: false},
+                                            {id: 2, statement: 'due to', add: false},
+                                            {id: 3, statement: 'because of', add: false},
+                                            {id: 4, statement: 'therefore', add: false}
+                                        ],
+                                        c: [
+                                            0, 4
+                                        ],
+                                        ref: [
+                                            
+                                        ]
+                                    },
+                                    {
+                                        id: 1,
+                                        type: 'multipleChoiceGrammar',
+                                        target: 'Grammar',
+                                        task: 'Which word CANNOT be inserted in the sentence to make it grammatically correct?',
+                                        sentence: 'We haven\'t managed to finish our work ________ bad weather.',
+                                        q: [
+                                            {id: 0, statement: 'because', add: false},
+                                            {id: 1, statement: 'due to', add: false},
+                                            {id: 2, statement: 'because of', add: false},
+                                            {id: 3, statement: 'since', add: false},
+                                        ],
+                                        c: [
+                                            0, 3
+                                        ],
+                                        ref: [
+                                            
+                                        ]   
+                                    },
+                                    {
+                                        id: 2,
+                                        type: 'multipleChoiceGrammar',
+                                        target: 'Grammar',
+                                        task: 'Which word or phrase can be inserted in the sentence to make it grammatically correct?',
+                                        sentence: 'Despite _______, they\'ve managed to win the match.',
+                                        q: [
+                                            {id: 0, statement: 'their experience', add: false},
+                                            {id: 1, statement: 'their lack of experience', add: false},
+                                            {id: 2, statement: 'no experience of them', add: false},
+                                            {id: 3, statement: 'being of no experience', add: false},
+                                            {id: 4, statement: 'their inexperience', add: false}
+                                        ],
+                                        c: [
+                                            1, 4
+                                        ],
+                                        ref: []
+                                    }
+                                ],
+                                [
+                                        {
+                                            id: 3,
+                                            type: 'multipleChoiceGrammar',
+                                            target: 'Grammar',
+                                            task: 'Which word can be inserted in the sentence to make it grammatically correct?',
+                                            sentence: 'At this time I _______ back home tomorrow.',
+                                            q: [
+                                                {id: 0, statement: 'will fly', add: false},
+                                                {id: 1, statement: 'will have flown', add: false},
+                                                {id: 2, statement: 'will have been flying', add: false},
+                                                {id: 3, statement: 'will be flying', add: false},
+                                                {id: 4, statement: 'will have arrived', add: false}
+                                            ],
+                                            c: [
+                                                3, 4
+                                            ],
+                                            ref: [
+                                                'http://easy-english.com.ua/future-continuous/'
+                                            ]
+                                        },
+                                        {
+                                            id: 4,
+                                            type: 'multipleChoiceGrammar',
+                                            target: 'Grammar',
+                                            task: 'Which sentence demonstrates correct use of Future Continuous?',
+                                            sentence: '',
+                                            q: [
+                                                {id: 0, statement: 'Don\'t disturb me at 6 pm tomorrow, because I will be doing my homework at this time.', add: false},
+                                                {id: 1, statement: 'I will be waiting at the stop, when your bus arrives.', add: false},
+                                                {id: 2, statement: 'Don\'t be late tomorrow! - I will be trying!', add: false},
+                                                {id: 3, statement: 'All sentences are correct.', add: false},
+                                            ],
+                                            c: [
+                                                0, 1
+                                            ],
+                                            ref: [
+                                                'http://easy-english.com.ua/future-continuous/'
+                                            ]
+                                        },
+                                        {
+                                            id: 5,
+                                            type: 'multipleChoiceGrammar',
+                                            target: 'Grammar',
+                                            task: 'Which phrase can be inserted in the sentence to make it grammatically correct?',
+                                            sentence: 'What time _______ for school tomorrow?',
+                                            q: [
+                                                {id: 0, statement: 'will you leaving', add: false},
+                                                {id: 1, statement: 'will you be leaving', add: false},
+                                                {id: 2, statement: 'you will leave', add: false},
+                                                {id: 3, statement: 'you will be leaving', add: false},
+                                                {id: 4, statement: 'will leave', add: false}
+                                            ],
+                                            c: [
+                                                1
+                                            ],
+                                            ref: [
+                                                'http://easy-english.com.ua/future-continuous/'
+                                            ]
+                                        }
+                                ],
+                                [
+                                    {
+                                            id: 7,
+                                            type: 'multipleChoiceGrammar',
+                                            target: 'Grammar',
+                                            task: 'Which phrase can be inserted in the sentence to make it grammatically correct?',
+                                            sentence: 'The bus should have _______ by now.',
+                                            q: [
+                                                {id: 0, statement: 'left', add: false},
+                                                {id: 1, statement: 'been left', add: false},
+                                                {id: 2, statement: 'be leaving', add: false},
+                                                {id: 3, statement: 'not left', add: false},
+                                                {id: 4, statement: 'been leaving', add: false}
+                                            ],
+                                            c: [
+                                                0
+                                            ],
+                                            ref: [
+                                                'http://easy-english.com.ua/future-continuous/'
+                                            ]
+                                    },
+                                    {
+                                            id: 8,
+                                            type: 'multipleChoiceGrammar',
+                                            target: 'Grammar',
+                                            task: 'Which sentence (s) is/are grammatically correct?',
+                                            sentence: '',
+                                            q: [
+                                                {id: 0, statement: 'I shouldn\'t shout at him.', add: false},
+                                                {id: 1, statement: 'I shouldn\'t will shout at him.', add: false},
+                                                {id: 2, statement: 'I shouldn\'t have to shout at him.', add: false},
+                                                {id: 3, statement: 'I shouldn\'t have shouted at him.', add: false},
+                                                {id: 4, statement: 'I shouldn\'t have shouting at him.', add: false}
+                                            ],
+                                            c: [
+                                                0, 3
+                                            ],
+                                            ref: [
+                                                'http://easy-english.com.ua/future-continuous/'
+                                            ]
+                                    },
+                                    {
+                                            id: 9,
+                                            type: 'multipleChoiceGrammar',
+                                            target: 'Grammar',
+                                            task: 'Which sentence expresses a similar meaning? n/n/ I went to the city center during rush hour. Now I regret it.',
+                                            sentence: '',
+                                            q: [
+                                                {id: 0, statement: 'I should go to the city center during rush hour.', add: false},
+                                                {id: 1, statement: 'I didn\'t have to go to the city center during rush hour.', add: false},
+                                                {id: 2, statement: 'I shouldn\'t have went to the city center during rush hour.', add: false},
+                                                {id: 3, statement: 'I shouldn\'t have left my home.', add: false},
+                                                {id: 4, statement: 'I shouldn\'t have gone the city center during rush hour.', add: false}
+                                            ],
+                                            c: [
+                                               4
+                                            ],
+                                            ref: [
+                                                'http://easy-english.com.ua/future-continuous/'
+                                            ]
+                                    }
+                                    
+                                ]
+                                      
+                            ], //end of grammar
+                            grammar_Topic: [
+                                'Words of cause and effect',
+                                'Future Contiuous',
+                                'Should have done/might have done etc...'
+                            ],
                             matchQuestions: [],//end of match
                             textTrueOrFalseQuestions: [],//end of textTrueOrFalse
                             listeningTrueOrFalseQuestions: [], //end of Listening
