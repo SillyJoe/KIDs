@@ -1478,7 +1478,7 @@ angular.module('kiddsapp.services', [])
                                             {id: 4, statement: 'therefore', add: false}
                                         ],
                                         c: [
-                                            0, 4
+                                            1, 4
                                         ],
                                         ref: [
                                             
@@ -1628,7 +1628,7 @@ angular.module('kiddsapp.services', [])
                                             id: 9,
                                             type: 'multipleChoiceGrammar',
                                             target: 'Grammar',
-                                            task: 'Which sentence expresses a similar meaning? n/n/ I went to the city center during rush hour. Now I regret it.',
+                                            task: 'Which sentence expresses a similar meaning? \n\n I went to the city center during rush hour. Now I regret it.',
                                             sentence: '',
                                             q: [
                                                 {id: 0, statement: 'I should go to the city center during rush hour.', add: false},

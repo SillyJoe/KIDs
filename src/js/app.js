@@ -314,8 +314,8 @@ angular.module('kiddsapp', ['kiddsapp.controllers', 'kiddsapp.services', 'ui.rou
 //                    console.log(Array.isArray(test[attr]))
 //                }
 
-                
-                return test;
+                test_copy = JSON.parse(JSON.stringify(test));
+                return test_copy;
                 
                 
             }]

@@ -617,10 +617,10 @@ angular.module('kiddsapp.controllers', [])
     }
     
 }])
-.controller('passTestController', ['$state', 'userFactory', '$scope', function($state, userFactory, $scope){
-    $state.go('passtest_initial');
-}])
-.controller('passTestInitialController', ['$scope', 'tests', '$state', function($scope, tests, $state){
+//.controller('passTestController', ['$state', 'userFactory', '$scope', function($state, userFactory, $scope){
+//    $state.go('passtest_initial');
+//}])
+.controller('passTestInitialController', ['$scope', 'tests', '$state', '$window', function($scope, tests, $state, $window){
     $scope.tests = tests;
     $scope.testDetails = {
         test_name: '',
@@ -765,6 +765,7 @@ angular.module('kiddsapp.controllers', [])
         }
         if (eligible) {
             $scope.testDetails.level++;
+            console.log('Changed to level: '+$scope.testDetails.level);
             questionCycleCounter = 0;
             shouldCheckLevel = false;
             
