@@ -479,6 +479,7 @@ angular.module('kiddsapp.services', [])
     var englishPlacementTest = {
             name: 'Визначення рівня англійської мови - комплексний тест',
             alias: 'placement_English',
+            description: 'Складність питань змінюється залежно від Вашого результату. Тест автоматично покаже Ваш результат, коли Ви дасте достатню кількість відповідей для оцінки. Ви можете у будь-яку мить зупинити тест і подивитись свій результат на даний момент, але після цього тест потрібно буде розпочати заново. Успіху!',
             levels: [
                         { //first level
                         grammar: [
@@ -1700,7 +1701,7 @@ angular.module('kiddsapp.services', [])
                                                 {id: 3, statement: 'wasn\'t', add: false}
                                             ],
                                             c: [
-                                               0
+                                               1, 3
                                             ],
                                             ref: [
                                                 
@@ -1749,7 +1750,7 @@ angular.module('kiddsapp.services', [])
                                 ]
                                       
                             ], //end of grammar
-                            grammar_Topic: [
+                            grammar_Topics: [
                                 'Words of cause and effect',
                                 'Future Contiuous',
                                 'Should have done/might have done etc...',
@@ -1850,7 +1851,28 @@ angular.module('kiddsapp.services', [])
                                     result: 0
                                 }
                             ],//end of match
-                            textTrueOrFalseQuestions: [],//end of textTrueOrFalse
+                            textTrueOrFalseQuestions: [
+                                {
+                                    id: 1,
+                                    type: 'textTrueOrFalse',
+                                    target: 'Reading',
+                                    task: 'Read the text and mark the statements below that are TRUE.',
+                                    text: 'Thirty years ago, two Hungarian educators, László and Klara Polgár, decided to challenge the popular assumption that women don’t succeed in areas requiring spatial thinking, such as chess. They wanted to make a point about the power of education. The Polgárs homeschooled their three daughters, and as part of their education the girls started playing chess with their parents at a very young age. Their systematic training and daily practice paid off. By 2000, all three daughters had been ranked in the top ten female players in the world. The youngest, Judit, had become a grand master at age 15, breaking the previous record for the youngest person to earn that title, held by Bobby Fischer, by a month. Today Judit is one of the world’s top players and has defeated almost all the best male players. \n\n It’s not only assumptions about gender differences in expertise that have started to crumble. Back in 1985, Benjamin Bloom, a professor of education at the University of Chicago, published a landmark book, Developing Talent in Young People, which examined the critical factors that contribute to talent. He took a deep retrospective look at the childhoods of 120 elite performers who had won international competitions or awards in fields ranging from music and the arts to mathematics and neurology. Surprisingly, Bloom’s work found no early indicators that could have predicted the virtuosos’ success. Subsequent research indicating that there is no correlation between IQ and expert performance in fields such as chess, music, sports, and medicine has borne out his findings. The only innate differences that turn out to be significant—and they matter primarily in sports—are height and body size.\n\nSo what does correlate with success? One thing emerges very clearly from Bloom’s work: All the superb performers he investigated had practiced intensively, had studied with devoted teachers, and had been supported enthusiastically by their families throughout their developing years. Later research building on Bloom’s pioneering study revealed that the amount and quality of practice were key factors in the level of expertise people achieved. Consistently and overwhelmingly, the evidence showed that experts are always made, not born.\n\n Source: https://hbr.org/2007/07/the-making-of-an-expert',
+                                    q: [
+                                        {id: 0, statement: 'The Polgars\' experiment turned out to be successful.', add: false},
+                                        {id: 1, statement: 'When Judit Polgar became a grandmaster, she was one month younger than Bobby Fischer was, when he achieved the same level.', add: false},
+                                        {id: 2, statement: 'It is clear from the text that Judit Polgar competed only with women chess players.', add: false},
+                                        {id: 3, statement: 'The Polgars\' experiment failed to change any stereotypes popular as of his time.', add: false},
+                                        {id: 4, statement: 'Benjamin Bloom studied people with various backgrounds.', add: false},
+                                        {id: 5, statement: 'Benjamin Bloom argues in his work that one\'s success is determined as early as in one\'s childhood.', add: false},
+                                        {id: 6, statement: 'Later studies totally contradicted Bloom\'s findings.', add: false},
+                                        {id: 7, statement: 'This article promotes fatalistic view on expertise.', add: false},
+                                       ],
+                                    c: [0, 1, 4],
+                                    a: [],
+                                    result: 0
+                                }
+                            ],//end of textTrueOrFalse
                             listeningTrueOrFalseQuestions: [], //end of Listening
                             oddWordOutQuestions: [] //end of OddWordOut
                         } //end of level 3

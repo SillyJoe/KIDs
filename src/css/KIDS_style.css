@@ -41,6 +41,64 @@ i {
 
 .question {
     min-height: 200px;
+    background-color: rgba(255, 255, 255, 1);
+    margin: 30px 10px 20px 30px;
+    padding: 20px 10px 10px 10px;
+    border-radius: 10px;
+    color: rgba(63, 61, 65, 0.86);
+}
+
+.option-selected {
+    background-color: rgba(205, 84, 221, 0.65);
+}
+
+.task {
+    font-size: 150%;
+}
+
+.submit-btn {
+    background-color: white;
+    border-radius: 10px;
+    border: solid rgba(205, 84, 221, 1) 2px;
+    color: rgba(205, 84, 221, 1);
+    font-size: 120%;
+}
+
+.stop-btn {
+    border-radius: 10px;
+    background-color: rgb(119, 119, 129);
+    color: white;
+}
+
+.submit-btn:hover {
+     background-color: rgba(205, 84, 221, 1);
+     color: white;
+}
+
+.option {
+    cursor: pointer;
+    min-width: 250px;
+    min-height: 25px;
+    padding: 3px 3px 0px 5px;
+    border-radius: 10px;
+    color: black;
+}
+
+.option-oddwordout {
+    min-width: 120px;
+    min-height: 25px;
+    padding: 3px 3px 2px 5px;
+    border-radius: 10px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.option-match {
+    cursor: pointer;
+    min-width: 80px;
+    min-height: 25px;
+    padding: 3px 3px 0px 5px;
+    border-radius: 10px;
 }
 
 .question-perfect {
@@ -61,6 +119,7 @@ i {
     border: solid 1px rgb(186, 25, 0);
 }
 
+/*Test report styles*/
 .correct-option {
     color: green;
 }

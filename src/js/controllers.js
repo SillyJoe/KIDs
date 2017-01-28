@@ -661,6 +661,7 @@ angular.module('kiddsapp.controllers', [])
     var test = test;
     var questionCycleCounter = 0;
     var shouldCheckLevel = false;
+    var currentGrammar = '';
     $scope.testDetails = testDetails;
     $scope.testDetails.level = 0;
     $scope.testDetails.grammar = {total:0, scored:0};
@@ -668,6 +669,7 @@ angular.module('kiddsapp.controllers', [])
     $scope.testDetails.reading = {total:0, scored:0};
     $scope.testDetails.listening = {total:0, scored:0};
     $scope.testDetails.questions = [];
+    $scope.testDetails.recommendedGrammar = [];
     $scope.currentQuestion = {};
   
     
@@ -730,20 +732,21 @@ angular.module('kiddsapp.controllers', [])
     function pickAQuestion(){
         if (questionCycleCounter < 4) {
             if (shouldCheckLevel) checkLevel();
-            var topicArray = popRandomArrayElement(test.levels[$scope.testDetails.level].grammar);
-            $scope.currentQuestion = popRandomArrayElement(topicArray);
+            var topicObject = popRandomArrayElement(test.levels[$scope.testDetails.level].grammar);
+            $scope.currentQuestion = popRandomArrayElement(topicObject.elem).elem;
+            currentGrammar = test.levels[$scope.testDetails.level].grammar_Topics[topicObject.index];
         } else if (questionCycleCounter < 5) {
             if (shouldCheckLevel) checkLevel();
-            $scope.currentQuestion = popRandomArrayElement(test.levels[$scope.testDetails.level].oddWordOutQuestions);
+            $scope.currentQuestion = popRandomArrayElement(test.levels[$scope.testDetails.level].oddWordOutQuestions).elem;
         } else if (questionCycleCounter < 6) {
             if (shouldCheckLevel) checkLevel();
-            $scope.currentQuestion = popRandomArrayElement(test.levels[$scope.testDetails.level].matchQuestions);
+            $scope.currentQuestion = popRandomArrayElement(test.levels[$scope.testDetails.level].matchQuestions).elem;
         }else if (questionCycleCounter == 6) {
             if (shouldCheckLevel) checkLevel();
-            $scope.currentQuestion = popRandomArrayElement(test.levels[$scope.testDetails.level].listeningTrueOrFalseQuestions);
+            $scope.currentQuestion = popRandomArrayElement(test.levels[$scope.testDetails.level].listeningTrueOrFalseQuestions).elem;
         } else if (questionCycleCounter == 7) {
             if (shouldCheckLevel) checkLevel();
-            $scope.currentQuestion = popRandomArrayElement(test.levels[$scope.testDetails.level].textTrueOrFalseQuestions);
+            $scope.currentQuestion = popRandomArrayElement(test.levels[$scope.testDetails.level].textTrueOrFalseQuestions).elem;
         } else if (questionCycleCounter == 8) {
             questionCycleCounter = 0;
             if (shouldCheckLevel) {$scope.printResult();}
@@ -762,7 +765,8 @@ angular.module('kiddsapp.controllers', [])
         console.log('Checking level...');
         var eligible = eligibleForNextLevel();
         if (eligible && $scope.testDetails.level == 2) {
-            $scope.testDetails.level = 3;
+            if ($scope.testDetails.overallRating > 95) $scope.testDetails.level = 4;
+            else $scope.testDetails.level = 3;
             $scope.printResult();
             return;
         }
@@ -828,7 +832,10 @@ angular.module('kiddsapp.controllers', [])
         var ind = Math.floor(Math.random()*array.length);
         var element = array[ind];
         array.splice(ind, 1);
-        return element;
+        return {
+            elem: element,
+            index: ind
+        }
     }
     
     
@@ -874,7 +881,8 @@ angular.module('kiddsapp.controllers', [])
                 $scope.currentQuestion.left[leftAnswers.pop()].add = false;
                 leftAnswers.push(item.id);
             } else {
-                leftAnswers.splice(index, 1); item.add = false
+                leftAnswers.splice(index, 1); item.add = false;
+                lookingForRightCounterPart = false;
                 if (index < rightAnswers.length) { 
                     $scope.currentQuestion.right[rightAnswers[index]].add = false;
                     rightAnswers.splice(index, 1);
@@ -908,7 +916,8 @@ angular.module('kiddsapp.controllers', [])
                     $scope.currentQuestion.right[rightAnswers.pop()].add = false;
                     rightAnswers.push(item.id);
                 } else {
-                    rightAnswers.splice(index, 1); item.add = false
+                    rightAnswers.splice(index, 1); item.add = false;
+                    lookingForLeftCounterPart = false;
                     if (index < leftAnswers.length) {
                         $scope.currentQuestion.left[leftAnswers[index]].add = false; 
                         leftAnswers.splice(index, 1); 
@@ -936,6 +945,10 @@ angular.module('kiddsapp.controllers', [])
         }
         console.log('Answers for '+question.type+':');
         console.log(question.a);
+    }
+    
+    $scope.setOddWordAnswer = function(word) {
+        $scope.currentQuestion.a = word;
     }
     
     $scope.checkTrueOrFalse = function(question) {
@@ -970,6 +983,9 @@ angular.module('kiddsapp.controllers', [])
             $scope.saveAndNext();
             return;
         }
+        
+        if (result < 0.6 && $scope.currentQuestion.type == 'multipleChoiceGrammar') 
+            $scope.testDetails.recommendedGrammar.push(currentGrammar);
         if (result < 0) result = 0;
         question.result = result;
         $scope.saveAndNext();    
@@ -1018,11 +1034,14 @@ angular.module('kiddsapp.controllers', [])
 .controller('passTestResultController', ['$scope', 'testDetails', '$state', function($scope, testDetails, $state){
     if (testDetails == null) $state.go('app.passtest_initial');
     $scope.testDetails = testDetails;
+    $scope.message = '';
     $scope.getTextLevel = function(level_id) {
         if (level_id == 0) return 'Незайманий'
         if (level_id == 1) return 'Початковий'
         if (level_id == 2) return 'Середній'
         if (level_id == 3) return 'Високий'
+        if (level_id == 4) return 'Неперевершений'
+        
     }
     for (var i = 0; i < testDetails.questions.length; i++) {
                 console.log(testDetails.questions[i].sentence);

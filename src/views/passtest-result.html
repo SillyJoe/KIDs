@@ -7,7 +7,7 @@
             <h4>Дата: {{testDetails.date.getDate()+'.'+(testDetails.date.getMonth()+1)+'.'+testDetails.date.getFullYear()}}</h4>
             <br><br><br>
             <h2>Ваш рівень:</h2>
-            <h1>{{getTextLevel(testDetails.level)}}</h1>
+            <h1>{{testDetails.level + ' - '+getTextLevel(testDetails.level)}}</h1>
 
             <br><br><br>
 
@@ -22,6 +22,18 @@
             <h3>Лексика: {{testDetails.lexis.rating}}%</h3>
             <h3>Читання: {{testDetails.reading.rating}}%</h3>
             <h3>Слухання: {{testDetails.listening.rating}}%</h3>
+            
+            <div ng-if="testDetails.recommendedGrammar.length > 0">
+            <h2>Радимо звернути увагу на такі граматичні теми:</h2>
+            <p>
+                <ul>
+                    <li ng-repeat="topic in testDetails.recommendedGrammar">
+                        <h3>{{topic.name}}</h3>
+                    </li>
+                </ul>
+            </div>
+            
+            </p>
         </div>
     </div>
         <div class="row" style="padding-top:100px; padding-bottom:100px;">
