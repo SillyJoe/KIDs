@@ -682,8 +682,8 @@ td strong {
     opacity: 0.5;
     position: fixed;
     display: none;
-    top: 0px;
-    right: 0px;
+    top: 5px;
+    right: 10px;
 }
  
   
