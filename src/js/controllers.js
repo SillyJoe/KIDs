@@ -827,8 +827,8 @@ angular.module('kiddsapp.controllers', [])
     }
     
     function popRandomArrayElement(array){
-        if (array == null) return null;
-        if (array.length == 0) return null;
+        if (array == null) return {elem: null, index: -1};
+        if (array.length == 0) return {elem: null, index: -1};
         var ind = Math.floor(Math.random()*array.length);
         var element = array[ind];
         array.splice(ind, 1);
