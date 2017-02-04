@@ -175,12 +175,10 @@ angular.module('kiddsapp', ['kiddsapp.controllers', 'kiddsapp.services', 'ui.rou
         onEnter: ['previousState', '$state', 'photoInfo', function(previousState, $state, photoInfo){
             console.log('This is previous state:')
             console.log(previousState);
-            if (previousState.name != 'app.aboutus.photo' && previousState.name != 'app.aboutus.detail') $state.go('app.aboutus.photo', {
+            if (previousState.name != 'app.aboutus.photo' && previousState.name != 'app.aboutus.detail' && previousState.name != 'app.aboutus.general') $state.go('app.aboutus.photo', {
                 eventId: photoInfo.currentEvent.id,
                 photoId: photoInfo.currentPhoto.id
-            })
-            
-            
+            }) 
         }],
         resolve: {
             photoInfo: ['galleryFactory', '$stateParams',  function(galleryFactory, $stateParams){
