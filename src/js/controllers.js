@@ -732,9 +732,10 @@ angular.module('kiddsapp.controllers', [])
     function pickAQuestion(){
         if (questionCycleCounter < 4) {
             if (shouldCheckLevel) checkLevel();
-            var topicObject = popRandomArrayElement(test.levels[$scope.testDetails.level].grammar);
+            var topicObject = getRandomArrayElement(test.levels[$scope.testDetails.level].grammar);
             $scope.currentQuestion = popRandomArrayElement(topicObject.elem).elem;
             currentGrammar = test.levels[$scope.testDetails.level].grammar_Topics[topicObject.index];
+            console.log('Current grammar topic: '+currentGrammar)
         } else if (questionCycleCounter < 5) {
             if (shouldCheckLevel) checkLevel();
             $scope.currentQuestion = popRandomArrayElement(test.levels[$scope.testDetails.level].oddWordOutQuestions).elem;
@@ -832,6 +833,17 @@ angular.module('kiddsapp.controllers', [])
         var ind = Math.floor(Math.random()*array.length);
         var element = array[ind];
         array.splice(ind, 1);
+        return {
+            elem: element,
+            index: ind
+        }
+    }
+    
+    function getRandomArrayElement(array){
+        if (array == null) return {elem: null, index: -1};
+        if (array.length == 0) return {elem: null, index: -1};
+        var ind = Math.floor(Math.random()*array.length);
+        var element = array[ind];
         return {
             elem: element,
             index: ind

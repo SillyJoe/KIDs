@@ -482,7 +482,7 @@ angular.module('kiddsapp.services', [])
             description: 'Більшість питань може мати кілька правильних варіантів відповідей. Складність питань змінюється залежно від Ваших відповідей. Тест автоматично покаже Ваш результат, коли Ви дасте достатню кількість відповідей для оцінки. Ви можете у будь-яку мить зупинити тест і подивитись свій результат на даний момент, але після цього тест потрібно буде розпочати заново. Успіху!',
             levels: [
                         { //first level
-                        grammar: [
+                            grammar: [
                     [
                         {
                         id: 0,
@@ -1017,46 +1017,17 @@ angular.module('kiddsapp.services', [])
                     }
                 ]
             ],
-
                             grammar_Topics : [
-                {
-                    id: 0,
-                    name: 'Common and demonstrative adjectives'   
-                },
-                {
-                    id: 1,
-                    name: 'Adverbs of frequency'
-                },
-                {
-                    id: 2,
-                    name: 'Comparatives and superlatives'
-                },
-                {
-                    id: 3,
-                    name: 'Going to'
-                },
-                {
-                    id: 4,
-                    name: 'How much/How many'
-                },
-                {
-                    id: 5,
-                    name: 'Would like...'
-                },
-                {
-                    id: 6,
-                    name: 'Modals'
-                },
-                {
-                    id: 7,
-                    name: 'Past Simple of to be'
-                },
-                {
-                    id: 8,
-                    name: 'Past Simple'
-                }
-
-            ],
+                                'Common and demonstrative adjectives',
+                                'Adverbs of frequency',
+                                'Comparatives and superlatives',
+                                'Going to',
+                                'How much/How many',                
+                                'Would like...',
+                                'Modals',
+                                'Past Simple of to be',
+                                'Past Simple'
+                             ],
                             matchQuestions: [
                 {
                     id: 0,
@@ -1141,7 +1112,6 @@ angular.module('kiddsapp.services', [])
                     result: 0
                 }
             ],
-            
                             textTrueOrFalseQuestions: [
                 {
                     id: 1,
@@ -1161,7 +1131,6 @@ angular.module('kiddsapp.services', [])
                     result: 0
                 }
             ],
-            
                             listeningTrueOrFalseQuestions: [
                 {
                     id: 1,
@@ -1182,7 +1151,6 @@ angular.module('kiddsapp.services', [])
                     result: 0
                 }
             ],
-                
                             oddWordOutQuestions: [
                 {
                     id: 0,

@@ -28,7 +28,7 @@
             <p>
                 <ul>
                     <li ng-repeat="topic in testDetails.recommendedGrammar">
-                        <h3>{{topic.name}}</h3>
+                        <h3>{{topic}}</h3>
                     </li>
                 </ul>
             </div>
@@ -38,8 +38,8 @@
     </div>
         <div class="row" style="padding-top:100px; padding-bottom:100px;">
             <div class="col-xs-9 col-xs-offset-1">
-                <uib-accordion close-others="true">               
-                <div uib-accordion-group class="panel-default" heading="Докладний звіт про тест" is-open="false" is-disabled="false">
+                <div class="panel panel-default">
+                <div class="panel-heading">Докладно про результати</div>
                     <div class="panel-body">
                         <div class="form">
                             <div ng-repeat="question in testDetails.questions">
@@ -180,9 +180,7 @@
                         
                         </div>
                     </div>
-                </div>
-                </uib-accordion>
-                    
+            </div>
             
             </div>
         
